@@ -1,0 +1,12 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhistcnt =2
+let g:netrw_dirhist_2='/home/lasse/.ssh'
+let g:netrw_dirhist_1='/home/lasse'
+let g:netrw_dirhist_0='/home'
+let g:netrw_dirhist_9='/home/lasse'
+let g:netrw_dirhist_8='/usr/share/vim/vim82/doc'
+let g:netrw_dirhist_7='/home/lasse/.thunderbird/Crash Reports'
+let g:netrw_dirhist_6='/home/lasse/.thunderbird'
+let g:netrw_dirhist_5='/home/lasse'
+let g:netrw_dirhist_4='/etc/apache2/sites-available'
+let g:netrw_dirhist_3='/etc/apache2'
