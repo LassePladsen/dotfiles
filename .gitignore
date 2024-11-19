@@ -4,5 +4,3 @@
 !.gitignore
 !.tmux.conf
 !send_confs_to_servers.sh
-!.vim/
-!.tmux/plugins/
