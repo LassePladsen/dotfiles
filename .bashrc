@@ -144,3 +144,7 @@ export PS1='\[\e]0;\u@\h: \w\a\]${debian_chroot:+($debian_chroot)}\[\033[01;32m\
 #     exec tmux new-session -A -s ${USER} >/dev/null 2>&1
 # fi
 export EDITOR=/usr/bin/vim
+
+
+# Home dir git alias
+alias configs='/usr/bin/git --git-dir=/repos/configs --work-tree=$HOME'
