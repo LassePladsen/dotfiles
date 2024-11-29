@@ -1,6 +1,6 @@
 #!/bin/bash
 trap "echo; exit" INT
-servers=(dev wp3 wp4 bastion wafmaster wph tripletex afk avvir kleins krydra upk)
+servers=(dev wp3 wp4 bastion wafmaster wph tripletex afk avvir kleins krydra upk, bfkstats)
 
 # First argument is target server. Comma-separated for multiple, defaults to all in $servers array.
 if [ -z "$1" ]; then
