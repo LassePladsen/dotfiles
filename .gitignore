@@ -3,4 +3,4 @@
 !.bashrc
 !.gitignore
 !.tmux.conf
-!send_confs_to_servers.sh
+!scp_dotfiles_to_remotes.sh
