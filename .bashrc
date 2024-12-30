@@ -155,3 +155,5 @@ export JAVA_HOME=/usr/lib/jvm/jdk-23.0.1
 export ANDROID_HOME=$HOME/Android/Sdk
 export PATH=$PATH:$ANDROID_HOME/emulator
 export PATH=$PATH:$ANDROID_HOME/platform-tools
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash

@@ -10,7 +10,9 @@ call plug#begin()
 
 " List your plugins here
 Plug 'tpope/vim-sensible'
-" Plug 'girishji/vimcomplete' 
+Plug 'girishji/vimcomplete' 
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 
 call plug#end()
 
@@ -21,3 +23,9 @@ inoremap <C-j> <Esc>:m .+1<CR>==gi
 inoremap <C-k> <Esc>:m .-2<CR>==gi
 vnoremap <C-j> :m '>+1<CR>gv=gv
 vnoremap <C-k> :m '<-2<CR>gv=gv
+
+" Keybind CTRL-P to FZF fuzzy file finder
+nnoremap <C-p> :FZF<enter>
+inoremap <C-p> <esc>:FZF<enter>
+vnoremap <C-p> <esc>:FZF<enter>
+
