@@ -24,6 +24,8 @@ class Job(str, Enum):
 @app.command()
 def dotfiles(remotes: list[str] = remotes, user: str = "lasse"):
     remotes = ["test"]
+
+    remotes.pop
     for remote in remotes:
         print(f"Sending dotfiles to {remote}:~{user} ...")
         subprocess.run("ls -l")
