@@ -41,3 +41,10 @@ vnoremap <C-p> <esc>:FZF<enter>
 
 " Map C-d and C-u to also center cursor at middle of screen 
 nnoremap <C-d> <C-d>zz
+
+" Map explorer
+nnoremap <leader>e  :E<enter>
+
+" Fully map ctrl-c to esc (default not the exact same)
+inoremap  <C-c> <ESC>
+vnoremap  <C-c> <ESC>
