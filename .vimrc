@@ -1,4 +1,4 @@
-set mouse=a
+"set mouse=a
 let mapleader = " "
 
 " Global and relative line numbers  
