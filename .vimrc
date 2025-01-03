@@ -31,8 +31,6 @@ vnoremap <C-k> :m '<-2<CR>gv=gv
 
 " Map leader-w to write file
 nnoremap <leader>w :w<enter>
-inoremap <leader>w <esc>:w<enter>
-vnoremap <leader>w <esc>:w<enter>
 
 " Map CTRL-P to FZF fuzzy file finder
 nnoremap <C-p> :FZF<enter>

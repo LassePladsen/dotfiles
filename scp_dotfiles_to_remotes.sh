@@ -1,6 +1,6 @@
 #!/bin/bash
 trap "echo; exit" INT
-remotes=(dev wp3 wp4 bastion wafmaster wph tripletex afk avvir kleins krydra upk bfkstats flightpark)
+remotes=(dev wp3 wp4 bastion wafmaster wph tripletex afk avvir kleins krydra upk bfkstats flightpark entercard)
 
 # First argument is target remote. Comma-separated for multiple, defaults to all in $remotes array.
 if [ -z "$1" ] || [ "$1" = "-a" ]; then
