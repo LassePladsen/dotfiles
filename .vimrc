@@ -1,4 +1,9 @@
 set mouse=a
+let mapleader = " "
+
+" Global and relative line numbers  
+set number
+set relativenumber
 
 let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
 if empty(glob(data_dir . '/autoload/plug.vim'))
@@ -24,8 +29,15 @@ inoremap <C-k> <Esc>:m .-2<CR>==gi
 vnoremap <C-j> :m '>+1<CR>gv=gv
 vnoremap <C-k> :m '<-2<CR>gv=gv
 
-" Keybind CTRL-P to FZF fuzzy file finder
+" Map leader-w to write file
+nnoremap <leader>w :w<enter>
+inoremap <leader>w <esc>:w<enter>
+vnoremap <leader>w <esc>:w<enter>
+
+" Map CTRL-P to FZF fuzzy file finder
 nnoremap <C-p> :FZF<enter>
 inoremap <C-p> <esc>:FZF<enter>
 vnoremap <C-p> <esc>:FZF<enter>
 
+" Map C-d and C-u to also center cursor at middle of screen 
+nnoremap <C-d> <C-d>zz
