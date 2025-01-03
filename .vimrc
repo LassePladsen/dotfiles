@@ -1,4 +1,4 @@
-"set mouse=a
+set mouse=a
 let mapleader = " "
 
 " Global and relative line numbers  
@@ -32,16 +32,14 @@ vnoremap <C-k> :m '<-2<CR>gv=gv
 " Map leader-w to write file
 nnoremap <leader>w :w<enter>
 
-" Map CTRL-P to FZF fuzzy file finder
+" Map FZF fuzzy file finder
 nnoremap <C-p> :FZF<enter>
-inoremap <C-p> <esc>:FZF<enter>
-vnoremap <C-p> <esc>:FZF<enter>
 
 " Map C-d and C-u to also center cursor at middle of screen 
 nnoremap <C-d> <C-d>zz
 
 " Map explorer
-nnoremap <leader>e  :E<enter>
+nnoremap <leader>fe :Ex<enter>
 
 " Fully map ctrl-c to esc (default not the exact same)
 inoremap  <C-c> <ESC>
