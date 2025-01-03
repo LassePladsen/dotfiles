@@ -1,3 +1,8 @@
+-- Settings
+vim.opt.hlsearch = false -- disable highlight after search
+vim.opt.scrolloff = 8 -- max 8 lines over/under cursor when scrolling
+
+
 -- Color theme
 require("night-owl").setup()
 vim.cmd.colorscheme("night-owl")
