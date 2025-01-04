@@ -37,9 +37,9 @@ vnoremap <C-k> :m '<-2<CR>gv=gv
 " Map leader-w to write file
 nnoremap <leader>w :w<enter>
 
-" Map FZF fuzzy file finder
+" Map FZF fuzzy file finder for only vim
 if !has('nvim')
-    nnoremap <C-p> :FZF<enter>
+    nnoremap <leader>ff :FZF<enter>
 endif
 
 " Map C-d and C-u to also center cursor at middle of screen 
@@ -53,7 +53,7 @@ nnoremap <leader>fe :Ex<enter>
 inoremap  <C-c> <ESC>
 vnoremap  <C-c> <ESC>
 
-" Greatest remap ever: replace without copying the deleted stuff into buffer
+" Greatest remap ever: replace visual selection without copying the replaced stuff into buffer
 vnoremap <leader>p "_dP
 
 " Yank to system clipboard
@@ -71,10 +71,14 @@ nnoremap <leader>s :%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>
 
 " Make file executable
 nnoremap <leader>x <cmd>silent exec "!chmod +x %"<CR><C-l>
+
+" Next and prev buffer
+nnoremap <leader>n :bn<enter>
+nnoremap <leader>p :bp<enter>
+
 """ END REMAPS
 
 " Only for regular vim:
-
 if !has('nvim')
 	" plugin manager vim-plug
 	let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
