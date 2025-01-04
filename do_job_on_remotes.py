@@ -27,7 +27,7 @@ def dotfiles(remotes: list[str] = remotes, user: str = "lasse"):
     remotes = ["test"]
     for remote in remotes:
         print(f"Sending dotfiles to {remote}:~{user} ...")
-        subprocess.run("ls -l")
+        subprocess.run("ls", "-l")
 
 
 if __name__ == "__main__":

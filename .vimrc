@@ -147,7 +147,7 @@ if !has('nvim')
         " Format document
         nnoremap <buffer> <F3> <plug>(lsp-document-format) 
         " Open diagnostics
-        nnoremap <buffer> <F4> <plug>(lsp-document-diagnostics) 
+        nnoremap <buffer> <F5> <plug>(lsp-document-diagnostics) 
 
 		let g:lsp_format_sync_timeout = 1000
 		autocmd! BufWritePre *.rs,*.go call execute('LspDocumentFormatSync')
