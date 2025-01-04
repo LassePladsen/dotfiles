@@ -145,9 +145,9 @@ if !has('nvim')
 		nnoremap <buffer> <expr><c-d> lsp#scroll(-4)
         
         " Format document
-        nnoremap <buffer> <leader>gf <plug>(lsp-document-format) 
+        nnoremap <buffer> <F3> <plug>(lsp-document-format) 
         " Open diagnostics
-        nnoremap <buffer> <leader>gd <plug>(lsp-document-diagnostics) 
+        nnoremap <buffer> <F4> <plug>(lsp-document-diagnostics) 
 
 		let g:lsp_format_sync_timeout = 1000
 		autocmd! BufWritePre *.rs,*.go call execute('LspDocumentFormatSync')
