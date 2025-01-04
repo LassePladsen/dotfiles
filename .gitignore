@@ -8,5 +8,5 @@
 !do_job_on_remotes.py
 
 !.config/
+.config/*
 !.config/nvim/
-
