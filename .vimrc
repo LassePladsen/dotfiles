@@ -152,12 +152,10 @@ if !has('nvim')
 		let g:lsp_format_sync_timeout = 1000
 		autocmd! BufWritePre *.rs,*.go call execute('LspDocumentFormatSync')
 
-        " Reference highlight (what cursor is on is highlighted) colors
+        " Reference highlight  (what cursor is on is highlighted) colors
         highlight lspReference guibg=darkgrey guifg=white
         
-        " diagnostic higlight (warnings and error) colors
-        highlight lspWarningHighlight guibg=NONE guifg=NONE
-        highlight lspWarningText guibg=NONE guifg=gold4
+        " diagnostic higlight
         let g:lsp_diagnostics_virtual_text_enabled = 0 " disable virtual text for diagnostics (only worked on warnings, seems like no way to enable only for errors)
         
 
