@@ -147,7 +147,7 @@ export EDITOR=/usr/bin/vim
 
 
 # Home dir git alias
-alias dotfiles='/usr/bin/git --git-dir=$HOME/repos/dotfiles.git --work-tree=$HOME'
+    alias dotfiles='/usr/bin/git --git-dir=$HOME/repos/dotfiles.git --work-tree=$HOME'
 
 # Stuff for react native android dev
 export JAVA_HOME=/usr/lib/jvm/jdk-23.0.1

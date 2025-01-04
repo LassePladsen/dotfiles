@@ -53,8 +53,10 @@ nnoremap <leader>fe :Ex<enter>
 inoremap  <C-c> <ESC>
 vnoremap  <C-c> <ESC>
 
-" Greatest remap ever: replace visual selection without copying the replaced stuff into buffer
-vnoremap <leader>p "_dP
+" Greatest remap ever: replace visual selection from buffer, without copying the selection into buffer
+vnoremap <leader>c "_dP
+" Greatest remap ever: replace line with buffer, without copying old line into buffer 
+nnoremap <leader>c "_ddP 
 
 " Yank to system clipboard
 nnoremap <leader>y "+y
@@ -141,9 +143,23 @@ if !has('nvim')
 		nmap <buffer> K <plug>(lsp-hover)
 		nnoremap <buffer> <expr><c-f> lsp#scroll(+4)
 		nnoremap <buffer> <expr><c-d> lsp#scroll(-4)
+        
+        " Format document
+        nnoremap <buffer> <leader>gf <plug>(lsp-document-format) 
+        " Open diagnostics
+        nnoremap <buffer> <leader>gd <plug>(lsp-document-diagnostics) 
 
 		let g:lsp_format_sync_timeout = 1000
 		autocmd! BufWritePre *.rs,*.go call execute('LspDocumentFormatSync')
+
+        " Reference highlight (what cursor is on is highlighted) colors
+        highlight lspReference guibg=darkgrey guifg=white
+        
+        " diagnostic higlight (warnings and error) colors
+        highlight lspWarningHighlight guibg=NONE guifg=NONE
+        highlight lspWarningText guibg=NONE guifg=gold4
+        let g:lsp_diagnostics_virtual_text_enabled = 0 " disable virtual text for diagnostics (only worked on warnings, seems like no way to enable only for errors)
+        
 
 		" refer to doc to add more commands
 	endfunction
@@ -153,6 +169,11 @@ if !has('nvim')
 		" call s:on_lsp_buffer_enabled only for languages that has the server registered.
 		autocmd User lsp_buffer_enabled call s:on_lsp_buffer_enabled()
 	augroup END
+
+    " Autocomplete maps
+    inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
+    inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+    inoremap <expr> <cr>    pumvisible() ? asyncomplete#close_popup() : "\<cr>"
 	""" END LSP STUFF
 endif
 
