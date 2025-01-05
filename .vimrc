@@ -25,6 +25,9 @@ set smartcase " only case insensitive when searching with only lowercase. using 
 
 """ REMAPS
 let mapleader = " "
+" Save on ctrl s
+nnoremap <C-s> :w<enter>
+
 " Map moving selected lines 
 nnoremap <C-j> :m .+1<CR>==
 nnoremap <C-k> :m .-2<CR>==
