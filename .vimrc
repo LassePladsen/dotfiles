@@ -9,19 +9,16 @@ set tabstop=4
 set softtabstop=4
 set shiftwidth=4
 set expandtab
-
 set smartindent
-
 set wrap
+set scrolloff=8
 
 set nohlsearch
 set incsearch
 
 set termguicolors
-
-set scrolloff=8
-
 set updatetime=500
+set ignorecase
 """ STOP SETTINGS
 
 """ REMAPS
