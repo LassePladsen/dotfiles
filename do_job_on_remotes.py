@@ -25,7 +25,6 @@ class Job(str, Enum):
 @app.command()
 def dotfiles(remotes: list[str] = remotes, user: str = "lasse"):
     remotes = ["test"]
-    test_wf_is_thjis WhatTheFuckIsThis oakwdoawd l
     for remote in remotes:
         print("Checking if vim-plug is installed")
         subprocess.run(["ssh", "$user@$remote", "test", "-d", "/home/$user/.tmux"])
