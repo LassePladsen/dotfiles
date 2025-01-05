@@ -1,21 +1,16 @@
 return {
-    -- "smoka7/multicursors.nvim",
-    -- event = "VeryLazy",
-    -- dependencies = {
-    --     'nvimtools/hydra.nvim',
-    -- },
-    -- opts = {},
-    -- cmd = { 'MCstart', 'MCvisual', 'MCclear', 'MCpattern', 'MCvisualPattern', 'MCunderCursor' },
-    -- keys = {
-    --         {
-    --             mode = { 'v', 'n' },
-    --             '<Leader>m',
-    --             '<cmd>MCstart<cr>',
-    --             desc = 'Create a selection for selected text or word under the cursor',
-    --         },
-    --     },
-    'vscode-neovim/vscode-multi-cursor.nvim',
-    event = 'VeryLazy',
-    cond = not not vim.g.vscode,
-    opts = {},
+    {
+        "folke/flash.nvim",
+        event = "VeryLazy",
+        opts = {},
+    },
+    {
+        'vscode-neovim/vscode-multi-cursor.nvim',
+        dependencies = {
+            { 'folke/flash.nvim' },
+        },
+        event = 'VeryLazy',
+        cond = not not vim.g.vscode,
+        opts = {},
+    }
 }
