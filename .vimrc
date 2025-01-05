@@ -70,6 +70,9 @@ nnoremap <leader>d "+d
 vnoremap <leader>d "+d
 nnoremap <leader>D "+D
 
+" Do search for word you're on
+nnoremap <leader><S-f> :/\<<C-r><C-w>\><enter>
+
 " Start replacing word you're on
 nnoremap <leader>s :%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>
 
