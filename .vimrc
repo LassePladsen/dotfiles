@@ -25,8 +25,12 @@ set smartcase " only case insensitive when searching with only lowercase. using 
 
 """ REMAPS
 let mapleader = " "
+
 " Save on ctrl s
 nnoremap <C-s> :w<enter>
+
+" J (move up and append to end of line) keeps cursor at same position
+nnoremap J mzJ`z
 
 " Map moving selected lines 
 nnoremap <C-j> :m .+1<CR>==
@@ -36,8 +40,8 @@ inoremap <C-k> <Esc>:m .-2<CR>==gi
 vnoremap <C-j> :m '>+1<CR>gv=gv
 vnoremap <C-k> :m '<-2<CR>gv=gv
 
-" Map leader-w to write file
-" nnoremap <leader>w :w<enter>
+" unmap ZZ exit
+nnoremap ZZ <nop>
 
 " Map FZF fuzzy file finder for only vim
 if !has('nvim')
