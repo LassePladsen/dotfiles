@@ -18,7 +18,9 @@ set incsearch
 
 set termguicolors
 set updatetime=500
+
 set ignorecase
+set smartcase " only case insensitive when searching with only lowercase. using upper case makes it case sensitive
 """ STOP SETTINGS
 
 """ REMAPS
