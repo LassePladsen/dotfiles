@@ -35,7 +35,7 @@ vnoremap <C-j> :m '>+1<CR>gv=gv
 vnoremap <C-k> :m '<-2<CR>gv=gv
 
 " Map leader-w to write file
-nnoremap <leader>w :w<enter>
+" nnoremap <leader>w :w<enter>
 
 " Map FZF fuzzy file finder for only vim
 if !has('nvim')
@@ -99,7 +99,12 @@ if !has('nvim')
 	Plug 'mattn/vim-lsp-settings'
 	Plug 'prabirshrestha/asyncomplete.vim'
 	Plug 'prabirshrestha/asyncomplete-lsp.vim'
+    Plug 'tpope/vim-surround'
+    Plug 'bkad/CamelCaseMotion'
 	call plug#end()
+
+    "CamelcaseMotion default maps
+    let g:camelcasemotion_key = '<leader>'
 
 	"""" COLORSCHEME
 	" If you have vim >=8.0 or Neovim >= 0.1.5
