@@ -31,7 +31,7 @@ class Job:
     def __init__(self, argv: Iterable = []):
         self.argv = argv
         self.args = None
-        
+
     def main(self):
         """Parse command-line and run jobs"""
 
@@ -50,7 +50,7 @@ class Job:
         parser.add_argument(
             "-r",
             "--remotes",
-            help="Comma-separated list of remote(s) to do job on. Hostname, ip, sshconfig, etc. Defaults to harcoded personal remote list.",
+            help="Comma-separated list of remote(s) to do job on. Hostname, ip, sshconfig, etc. Defaults to harcoded personal remote list",
             default=DEFAULT_REMOTES,
         )
 
@@ -58,12 +58,14 @@ class Job:
         parser.add_argument(
             "-u",
             "--user",
-            help="User to do job on remote as. Defaults to current user.",
+            help="User to do job on remote as. Defaults to current user",
             default=DEFAULT_USER,
         )
 
         # Optinal verbosity flag
-        parser.add_argument("-v", "--verbose", action="count", default=0)
+        parser.add_argument(
+            "-v", "--verbose", action="count", default=0, help="Increase verbosity"
+        )
 
         # parse arguments and call job function
         self.args = parser.parse_args(self.argv)
@@ -79,12 +81,19 @@ class Job:
         # I think its better to raise error if job failed inside the job function, so this else could be removed, instead catching the error.
         print("Jobs done.") if result else print("Job failed.")
 
-    def scp_dotfiles(self, user=DEFAULT_USER, remotes=DEFAULT_REMOTES):
+    def scp_dotfiles(
+        self, user: str = DEFAULT_USER, remotes: Iterable[str] = DEFAULT_REMOTES
+    ):
+        """Scp dotfiles and dependencies to each remote as the given user."""
         for remote in remotes:
-            print("Checking if tpm is installed") if self.args.verbose > 0 else None
+            self.verbose_print("Checking if tpm is installed")
             # subprocess.run(["ssh", "{user}@{remote}", "test", "-d", "/home/{user}/.tmux"])
-            print(f"{user}@{remote}, test, -d, /home/{user}/.tmux])")
+            self.verbose_print(f"{user}@{remote}, test, -d, /home/{user}/.tmux])")
         return True
+
+    def verbose_print(self, msg: str):
+        """Print message if verbosity is given"""
+        print(msg) if self.args.verbose > 0 else None
 
 
 if __name__ == "__main__":
