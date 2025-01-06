@@ -22,7 +22,7 @@ send_dotfiles() {
     scp /home/lasse/.bashrc /home/lasse/.tmux.conf /home/lasse/.vimrc "$remote:/home/$user/"
 
     # Install tmux tpm manager if not exists
-    if ! ssh "$user@$remote" "test -d /home/$user/.tmux"; then
+    if ! ssh "$user@$remote" "test -d /home/$user/.tmux/plugins/tpm"; then
         echo -e "\nInstalling tmux tpm to $remote:/home/$user/ ..."
         ssh "$user@$remote" git clone https://github.com/tmux-plugins/tpm /home/$user/.tmux/plugins/tpm
     fi
