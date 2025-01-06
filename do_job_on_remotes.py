@@ -111,6 +111,8 @@ class Job:
 
             self.__verbose_print(
                 f"Remote {remote} done!", color=Fore.BLUE)
+
+            # TODO: git clone fzf
         return True
 
     def __verbose_print(self, msg: str, verbosity: int = 1, color: Fore = "", end: str = "\n") -> bool:
