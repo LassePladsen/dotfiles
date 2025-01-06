@@ -110,9 +110,13 @@ if !has('nvim')
 	Plug 'prabirshrestha/asyncomplete-lsp.vim'
     Plug 'tpope/vim-surround'
     Plug 'bkad/CamelCaseMotion'
+    Plug 'machakann/vim-highlightedyank'
 	call plug#end()
 
-    "CamelcaseMotion default maps
+    " Timeout for yank hightlight
+    let g:highlightedyank_highlight_duration = 250
+
+    " CamelcaseMotion default maps
     let g:camelcasemotion_key = '<leader>'
 
 	"""" COLORSCHEME
