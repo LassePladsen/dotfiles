@@ -1,5 +1,4 @@
-""" SETTINGS
-set mouse=a
+""" SETTINGS set mouse=a
 
 " Global and relative line numbers  
 set nu
@@ -11,16 +10,30 @@ set shiftwidth=4
 set expandtab
 set smartindent
 set wrap
-set scrolloff=8
+set breakindent " wrap starts at same indentation
+set scrolloff=10
 
 set nohlsearch
 set incsearch
 
 set termguicolors
-set updatetime=500
+set updatetime=250
 
 set ignorecase
 set smartcase " only case insensitive when searching with only lowercase. using upper case makes it case sensitive
+
+set undofile
+
+" new splits locations
+set splitright
+set splitbelow
+
+" display of certain whitespaces chars
+set list
+
+set cursorline
+highlight CursorLine term=underline ctermbg=235 guibg=#112630
+
 """ STOP SETTINGS
 
 """ REMAPS
@@ -29,7 +42,7 @@ let mapleader = " "
 " Save on ctrl s
 nnoremap <C-s> :w<enter>
 
-" J (move up and append to end of line) keeps cursor at same position
+" J (append below line to end of current line) keeps cursor at same position
 nnoremap J mzJ`z
 
 " Map moving selected lines 
