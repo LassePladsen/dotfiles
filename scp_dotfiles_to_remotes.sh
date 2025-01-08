@@ -18,13 +18,19 @@ fi
 
 send_dotfiles() {
     local remote="$1"
-    echo -e "Sending .dotfiles to $remote:/home/$user/ ..."
-    scp /home/lasse/.bashrc /home/lasse/.tmux.conf /home/lasse/.vimrc "$remote:/home/$user/"
+    echo -e "Sending .dotfiles to $remote:~$user/ ..."
+    scp /home/lasse/.bashrc /home/lasse/.tmux.conf /home/lasse/.vimrc "$remote:~$user/"
 
     # Install tmux tpm manager if not exists
-    if ! ssh "$user@$remote" "test -d /home/$user/.tmux/plugins/tpm"; then
-        echo -e "\nInstalling tmux tpm to $remote:/home/$user/ ..."
-        ssh "$user@$remote" git clone https://github.com/tmux-plugins/tpm /home/$user/.tmux/plugins/tpm
+    if ! ssh "$user@$remote" "test -d ~$user/.tmux/plugins/tpm"; then
+        echo -e "\nInstalling tmux tpm to $remote:~$user/ ..."
+        ssh "$user@$remote" git clone https://github.com/tmux-plugins/tpm ~$user/.tmux/plugins/tpm
+    fi
+
+    # Install fzf if not exists
+    if ! ssh "$user@$remote" "test -d ~$user/.fzf"; then
+        echo -e "\nInstalling fzf to $remote:~$user/ ..."
+        echo "git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf && ~/.fzf/install" | ssh "$user@$remote"
     fi
 
     echo -e "\n$remote done!\n\n--------------\n"
