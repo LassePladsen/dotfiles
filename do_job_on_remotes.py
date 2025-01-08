@@ -43,10 +43,17 @@ class Job:
         # Positional argument: job
         parser.add_argument(
             "job",
-            default="dotfiles",
             choices=JOBS,
             metavar="job",
-            help="What job to do. Default is dotfiles. {%(choices)s}",
+            help="What job to do. {%(choices)s}",
+        )
+
+        # Optional command argument that becomes required if job="command"
+        parser.add_argument(
+            "cmd",
+            nargs="?",  # Makes it optional initially
+            metavar="cmd",
+            help="The command to execute (required when job=command)",
         )
 
         # Optional remote target argument
@@ -73,6 +80,11 @@ class Job:
         # parse arguments and call job function
         self.args = parser.parse_args(self.argv)
 
+        # Validate command is provided when job="command"
+        if self.args.job == "command" and not self.args.cmd:
+            parser.error(
+                'Failed to give argument cmd for the command job.')
+
         # Parse comma-separated remotes list. Supports a single string
         if isinstance(self.args.remotes, str):
             self.args.remotes = self.args.remotes.split(",")
@@ -81,6 +93,7 @@ class Job:
         while not self.args.remotes[-1]:
             self.args.remotes = self.args.remotes[:-1]
 
+        self.failed_tasks = 0
         match self.args.job:
             case "dotfiles":
                 self.__scp_dotfiles()
@@ -98,11 +111,9 @@ class Job:
 
     def __scp_dotfiles(self) -> bool:
         """Scp dotfiles and dependencies to each remote as the given user."""
-        remotes = self.args.remotes
         user = self.args.user
 
-        self.failed_tasks = 0
-        for remote in remotes:
+        for remote in self.args.remotes:
             self.__verbose_print(
                 f"\nStarting on remote {remote}", color=Fore.YELLOW)
 
@@ -118,7 +129,6 @@ class Job:
             if not self.__do_ssh_command(user, remote, f"test -d ~{user}/.tmux/plugins/tpm"):
                 self.__verbose_print(
                     "Tpm not installed - git cloning it...")
-
 
                 if not self.__do_ssh_command(user, remote, f"git clone https://github.com/tmux-plugins/tpm ~{user}/.tmux/plugins/tpm"):
                     self.failed_tasks += 1
@@ -151,7 +161,17 @@ class Job:
         return False
 
     def __ssh_command(self) -> bool:
-        raise NotImplementedError()
+        """Do ssh command for all remotes"""
+        for remote in self.args.remotes:
+            self.__verbose_print(
+                f"\nStarting on remote {remote}", color=Fore.YELLOW)
+
+            if not self.__do_ssh_command(self.args.user, remote, self.args.cmd):
+                self.failed_tasks += 1
+
+            self.__verbose_print(
+                f"Remote {remote} done!", color=Fore.BLUE)
+        return True
 
     def __do_ssh_command(self, user: str, remote: str, cmd: str, echo_to_ssh: bool = False) -> bool:
         """Do a single ssh command on the remote"""
