@@ -73,9 +73,9 @@ inoremap  <C-c> <ESC>
 vnoremap  <C-c> <ESC>
 
 " Greatest remap ever: replace visual selection from buffer, without copying the selection into buffer
-vnoremap <leader>c "_dP
+vnoremap <leader>p "_dP
 " Greatest remap ever: replace line with buffer, without copying old line into buffer 
-nnoremap <leader>c "_ddP 
+nnoremap <leader>p "_ddP 
 
 " Yank to system clipboard
 nnoremap <leader>y "+y
@@ -97,8 +97,8 @@ nnoremap <leader>s :%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>
 nnoremap <leader>x <cmd>silent exec "!chmod +x %"<CR><C-l>
 
 " Next and prev buffer
-nnoremap <leader>n :bn<enter>
-nnoremap <leader>p :bp<enter>
+nnoremap <leader>i :bn<enter>
+nnoremap <leader>o :bp<enter>
 
 """ END REMAPS
 
