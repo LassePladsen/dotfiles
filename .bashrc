@@ -146,7 +146,7 @@ export PS1='\[\e]0;\u@\h: \w\a\]${debian_chroot:+($debian_chroot)}\[\033[01;32m\
 export EDITOR=nvim
 
 # Home dir git alias
-alias dotfiles='/usr/bin/git --git-dir=$HOME/repos/dotfiles.git --work-tree=$HOME'
+alias {dotfiles,dot}='/usr/bin/git --git-dir=$HOME/repos/dotfiles.git --work-tree=$HOME'
 
 # Stuff for react native android dev
 export JAVA_HOME=/usr/lib/jvm/jdk-23.0.1
