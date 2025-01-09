@@ -6,3 +6,4 @@ vim.cmd([[au TextYankPost * lua vim.highlight.on_yank {higroup="IncSearch", time
 -- listchars not supported in regular vim
 vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
 
+-- vim.g.have_nerd_font = true

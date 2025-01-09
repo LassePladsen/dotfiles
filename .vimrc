@@ -4,8 +4,8 @@
 set nu
 set rnu
 
-set tabstop=4
 set softtabstop=4
+set tabstop=4
 set shiftwidth=4
 set expandtab
 set smartindent
@@ -21,6 +21,7 @@ set updatetime=250
 
 set ignorecase
 set smartcase " only case insensitive when searching with only lowercase. using upper case makes it case sensitive
+set signcolumn=yes
 
 set undofile
 
@@ -38,6 +39,7 @@ highlight CursorLine term=underline ctermbg=235 guibg=#112630
 
 """ REMAPS
 let mapleader = " "
+let localmapleader = " "
 
 " Save on ctrl s
 nnoremap <C-s> :w<enter>
@@ -88,10 +90,13 @@ vnoremap <leader>d "+d
 nnoremap <leader>D "+D
 
 " Do search for word you're on
-nnoremap <leader>/ :/\<<C-r><C-w>\><enter>
+" Disable:  this is default on *
+" nnoremap <leader>/ :/\<<C-r><C-w>\><enter>
 
 " Start replacing word you're on
-nnoremap <leader>s :%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>
+" Remap: to <leader>* since* is deafult search current word
+" nnoremap <leader>s :%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>
+nnoremap <leader>* :%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>
 
 " Make file executable
 nnoremap <leader>x <cmd>silent exec "!chmod +x %"<CR><C-l>
@@ -160,7 +165,6 @@ if !has('nvim')
 
 	function! s:on_lsp_buffer_enabled() abort
 		setlocal omnifunc=lsp#complete
-		setlocal signcolumn=yes
 		if exists('+tagfunc') | setlocal tagfunc=lsp#tagfunc | endif
 		nmap <buffer> gd <plug>(lsp-definition)
 		nmap <buffer> gs <plug>(lsp-document-symbol-search)
