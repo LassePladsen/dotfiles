@@ -10,5 +10,6 @@ return {
 		vim.keymap.set('n', '<leader>fh', builtin.help_tags, { desc = 'Telescope help tags' })
 		vim.keymap.set('n', '<leader>fd', builtin.diagnostics, { desc = 'Telescope search diagnostics' })
 		vim.keymap.set('n', '<leader>fr', builtin.oldfiles, { desc = 'Telescope search recent files' })
+		vim.keymap.set('n', '<leader>fk', builtin.keymaps, { desc = 'Telescope search keys' })
 	end,
 }
