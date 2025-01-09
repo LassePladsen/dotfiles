@@ -143,11 +143,10 @@ export PS1='\[\e]0;\u@\h: \w\a\]${debian_chroot:+($debian_chroot)}\[\033[01;32m\
 # if [ -x "$(command -v tmux)" ] && [ -n "${DISPLAY}" ] && [ -z "${TMUX}" ]; then
 #     exec tmux new-session -A -s ${USER} >/dev/null 2>&1
 # fi
-export EDITOR=/usr/bin/vim
-
+export EDITOR=nvim
 
 # Home dir git alias
-    alias dotfiles='/usr/bin/git --git-dir=$HOME/repos/dotfiles.git --work-tree=$HOME'
+alias dotfiles='/usr/bin/git --git-dir=$HOME/repos/dotfiles.git --work-tree=$HOME'
 
 # Stuff for react native android dev
 export JAVA_HOME=/usr/lib/jvm/jdk-23.0.1
