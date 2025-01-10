@@ -1,4 +1,4 @@
 return {
     'nvim-treesitter/nvim-treesitter-context',
-    opts = { max_lines = 10 },
+    opts = { max_lines = 3 },
 }
