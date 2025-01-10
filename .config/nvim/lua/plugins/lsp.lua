@@ -63,12 +63,12 @@ return {
 
 					-- Fuzzy find all the symbols in your current document.
 					--  Symbols are things like variables, functions, types, etc.
-					map("<leader>ds", require("telescope.builtin").lsp_document_symbols, "[D]ocument [S]ymbols")
+					map("<leader>ssd", require("telescope.builtin").lsp_document_symbols, "[D]ocument [S]ymbols")
 
 					-- Fuzzy find all the symbols in your current workspace.
 					--  Similar to document symbols, except searches over your entire project.
 					map(
-						"<leader>ws",
+						"<leader>ssw",
 						require("telescope.builtin").lsp_dynamic_workspace_symbols,
 						"[W]orkspace [S]ymbols"
 					)
@@ -88,6 +88,7 @@ return {
 					map("gD", vim.lsp.buf.declaration, "[G]oto [D]eclaration")
 
                     map('K', vim.lsp.buf.hover, "Hover definition")
+                    map('gs', vim.lsp.buf.signature_help, "[Go]to [S]ignature help")
 
 					-- The following two autocommands are used to highlight references of the
 					-- word under your cursor when your cursor rests there for a little while.
