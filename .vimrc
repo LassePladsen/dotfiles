@@ -68,7 +68,7 @@ nnoremap <C-d> <C-d>zz
 nnoremap <C-u> <C-u>zz
 
 " Map explorer
-nnoremap <leader>fe :Ex<enter>
+nnoremap <leader>ex :Ex<enter>
 
 " Fully map ctrl-c to esc (default not the exact same)
 inoremap  <C-c> <ESC>
