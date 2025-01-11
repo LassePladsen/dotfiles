@@ -3,6 +3,7 @@ return {
     opts = {
         options = {
             diagnostics = "nvim_lsp",
+            mode = "tabs",
         },
     },
 }

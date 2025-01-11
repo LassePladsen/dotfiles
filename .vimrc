@@ -35,6 +35,10 @@ set list
 set cursorline
 highlight CursorLine term=underline ctermbg=235 guibg=#112630
 
+" Netrw file explorer
+let g:netrw_banner=0 " disable help banner
+let netrw_liststyle=3 " tree view
+
 """ STOP SETTINGS
 
 """ REMAPS
@@ -68,7 +72,7 @@ nnoremap <C-d> <C-d>zz
 nnoremap <C-u> <C-u>zz
 
 " Map explorer
-nnoremap <leader>ex :Ex<enter>
+nnoremap <leader>se :Ex<enter>
 
 " Fully map ctrl-c to esc (default not the exact same)
 inoremap  <C-c> <ESC>
