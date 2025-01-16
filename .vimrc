@@ -1,4 +1,5 @@
-""" SETTINGS set mouse=a
+""" SETTINGS 
+set mouse=a
 
 " Global and relative line numbers  
 set nu
@@ -30,7 +31,7 @@ set splitright
 set splitbelow
 
 " display of certain whitespaces chars
-set list
+" set list
 
 " disable new line continuing comments
 " set formatoptions-=r formatoptions-=o " this will be overwritten... do
