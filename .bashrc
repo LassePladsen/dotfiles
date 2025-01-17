@@ -156,7 +156,7 @@ export PATH=$PATH:$ANDROID_HOME/emulator
 export PATH=$PATH:$ANDROID_HOME/platform-tools
 
 # Nvim
-export PATH="$PATH:/opt/nvim-linux64/bin"
+export PATH="$PATH:/opt/nvim-linux64/bin:$HOME/opt/nvim-linux64/bin"
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
