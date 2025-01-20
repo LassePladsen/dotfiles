@@ -164,3 +164,10 @@ export WPH_REMOTES="dev,wp3,wp4,bastion,wafmaster,wph,tripletex,afk,avvir,kleins
 # fzf
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 [ -f ~/.fzfrc ] && export FZF_DEFAULT_OPTS_FILE="$HOME/.fzfrc"
+
+# Command for man help pages. Use nvim if installed, else vim, else default to vim
+if command -v nvim >/dev/null 2>&1; then 
+    export MANPAGER="nvim +Man!"
+elif command -v vim >/dev/null 2>&1; then 
+    export MANPAGER="vim -M +MANPAGER - "
+fi

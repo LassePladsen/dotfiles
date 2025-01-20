@@ -220,3 +220,7 @@ if !has('nvim')
 	""" END LSP STUFF
 endif
 
+" Source man pager to use vim for man help pages
+runtime ftplugin/man.vim
+
+
