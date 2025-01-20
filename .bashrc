@@ -158,5 +158,9 @@ export PATH=$PATH:$ANDROID_HOME/platform-tools
 # Nvim
 export PATH="$PATH:/opt/nvim-linux64/bin:$HOME/opt/nvim-linux64/bin"
 
-[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+# Remote list for scripts
+export WPH_REMOTES="dev,wp3,wp4,bastion,wafmaster,wph,tripletex,afk,avvir,kleins,krydra,upk,bfkstats,flightpark,entercard"
 
+# fzf
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+[ -f ~/.fzfrc ] && export FZF_DEFAULT_OPTS_FILE="$HOME/.fzfrc"

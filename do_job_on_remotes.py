@@ -9,7 +9,8 @@ from typing import Iterable
 
 JOBS = ["dotfiles", "command"]
 DEFAULT_USER = os.environ["USER"]
-DEFAULT_REMOTES = [
+DEFAULT_REMOTES = os.environ.get("WPH_REMOTES", [
+    # default to backup list if not set in env.
     "dev",
     "wp3",
     "wp4",
@@ -23,9 +24,12 @@ DEFAULT_REMOTES = [
     "krydra",
     "upk",
     "bfkstats",
-    "fightpark",
+    "flightpark",
     "entercard",
 ]
+)
+
+DOTFILES = [".bashrc", ".vimrc", ".fzfrc", ".tmux.conf"]
 
 
 class Job:
@@ -99,7 +103,8 @@ class Job:
             case "command":
                 self.__ssh_command()
             case _:
-                raise ValueError(f"Unknown job {self.args.job}. The choices are {JOBS}")
+                raise ValueError(
+                    f"Unknown job {self.args.job}. The choices are {JOBS}")
 
         if self.failed_tasks:
             self.__verbose_print(
@@ -115,12 +120,14 @@ class Job:
         user = self.args.user
 
         for remote in self.args.remotes:
-            self.__verbose_print(f"\nStarting on remote {remote}", color=Fore.YELLOW)
+            self.__verbose_print(
+                f"\nStarting on remote {remote}", color=Fore.YELLOW)
 
             # DOTFILES
             self.__verbose_print(f"Sending .dotfiles to remote {remote}...")
             if not self.__do_scp(
-                f"{os.path.expanduser('~' + user)}/.bashrc {os.path.expanduser('~' + user)}/.tmux.conf {os.path.expanduser('~' + user)}/.vimrc {user}@{remote}:~{user}/"
+                (" ".join([f"{os.path.expanduser('~' + user)}/" +
+                 file for file in DOTFILES]) + f" {user}@{remote}:~{user}")
             ):
                 self.failed_tasks += 1
                 self.__verbose_print("Could not send dotfiles", color=Fore.RED)
@@ -139,7 +146,8 @@ class Job:
                     f"git clone https://github.com/tmux-plugins/tpm ~{user}/.tmux/plugins/tpm",
                 ):
                     self.failed_tasks += 1
-                    self.__verbose_print("Could not install tpm", color=Fore.RED)
+                    self.__verbose_print(
+                        "Could not install tpm", color=Fore.RED)
             # END TPM
 
             # FZF
@@ -154,7 +162,8 @@ class Job:
                     echo_to_ssh=True,
                 ):
                     self.failed_tasks += 1
-                    self.__verbose_print("Could not install fzf", color=Fore.RED)
+                    self.__verbose_print(
+                        "Could not install fzf", color=Fore.RED)
             # END FZF
 
             self.__verbose_print(f"Remote {remote} done!", color=Fore.BLUE)
@@ -180,9 +189,10 @@ class Job:
     def __ssh_command(self) -> bool:
         """Do ssh command for all remotes"""
         for remote in self.args.remotes:
-            self.__verbose_print(f"\nStarting on remote {remote}", color=Fore.YELLOW)
+            self.__verbose_print(
+                f"\nStarting on remote {remote}", color=Fore.YELLOW)
 
-            if not self.__do_ssh_command(self.args.user, remote, self.args.cmd):
+            if not self.__do_ssh_command(self.args.user, remote, self.args.cmd, True):
                 self.failed_tasks += 1
 
             self.__verbose_print(f"Remote {remote} done!", color=Fore.BLUE)

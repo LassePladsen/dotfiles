@@ -70,7 +70,7 @@ nnoremap ZZ <nop>
 
 " Map FZF fuzzy file finder for only vim
 if !has('nvim')
-    nnoremap <leader>ff :FZF<enter>
+    nnoremap <leader>sf :FZF<enter>
 endif
 
 " Map C-d and C-u to also center cursor at middle of screen 

@@ -1,6 +1,12 @@
 #!/bin/bash
 trap "echo; exit" INT
-remotes=(dev wp3 wp4 bastion wafmaster wph tripletex afk avvir kleins krydra upk bfkstats flightpark entercard)
+backup_remotes=(dev wp3 wp4 bastion wafmaster wph tripletex afk avvir kleins krydra upk bfkstats flightpark entercard)
+
+if [ -z "$WPH_REMOTES" ]; then
+    remotes=backup_remotes
+else
+    IFS=',' read -r -a remotes <<< "$WPH_REMOTES"
+fi
 
 # First argument is target remote. Comma-separated for multiple, defaults to all in $remotes array.
 if [ -z "$1" ] || [ "$1" = "-a" ]; then
@@ -19,7 +25,7 @@ fi
 send_dotfiles() {
     local remote="$1"
     echo -e "Sending .dotfiles to $remote:~$user/ ..."
-    scp /home/lasse/.bashrc /home/lasse/.tmux.conf /home/lasse/.vimrc "$remote:~$user/"
+    scp /home/lasse/.bashrc /home/lasse/.tmux.conf /home/lasse/.vimrc /home/lasse/.fzfrc "$remote:~$user/"
 
     # Install tmux tpm manager if not exists
     if ! ssh "$user@$remote" "test -d ~$user/.tmux/plugins/tpm"; then

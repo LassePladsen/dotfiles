@@ -3,6 +3,7 @@
 !.vimrc
 !.vimrc.basic
 !.bashrc
+!.fzfrc
 !.gitignore
 !.tmux.conf
 !scp_dotfiles_to_remotes.sh
