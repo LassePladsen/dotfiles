@@ -143,7 +143,13 @@ export PS1='\[\e]0;\u@\h: \w\a\]${debian_chroot:+($debian_chroot)}\[\033[01;32m\
 # if [ -x "$(command -v tmux)" ] && [ -n "${DISPLAY}" ] && [ -z "${TMUX}" ]; then
 #     exec tmux new-session -A -s ${USER} >/dev/null 2>&1
 # fi
-export EDITOR=nvim
+
+# Default editor. Use nvim if installed, else vim if installed
+if command -v nvim >/dev/null 2>&1; then 
+    export EDITOR="nvim"
+elif command -v vim >/dev/null 2>&1; then 
+    export EDITOR="vim"
+fi
 
 # Home dir git alias
 alias {dotfiles,dot}='/usr/bin/git --git-dir=$HOME/repos/dotfiles.git --work-tree=$HOME'
@@ -165,9 +171,12 @@ export WPH_REMOTES="dev,wp3,wp4,bastion,wafmaster,wph,tripletex,afk,avvir,kleins
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 [ -f ~/.fzfrc ] && export FZF_DEFAULT_OPTS_FILE="$HOME/.fzfrc"
 
-# Command for man help pages. Use nvim if installed, else vim, else default to vim
+# Command for man help pages. Use nvim if installed, else vim if installed
 if command -v nvim >/dev/null 2>&1; then 
     export MANPAGER="nvim +Man!"
 elif command -v vim >/dev/null 2>&1; then 
     export MANPAGER="vim -M +MANPAGER - "
 fi
+
+# Cargo (Rust) stuff
+export PATH="$PATH:$HOME/.cargo/bin/"
