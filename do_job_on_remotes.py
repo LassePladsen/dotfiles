@@ -120,7 +120,7 @@ class Job:
     
     def __git_dotfiles(self) -> bool:
         """Send git pull dotfiles to each remote"""
-            raise NotImplementedError("Please use job scp_dotfiles for now.");
+        raise NotImplementedError("Please use job scp_dotfiles for now.");
 
     def __scp_dotfiles(self) -> bool:
         """Scp dotfiles and dependencies to each remote as the given user."""
