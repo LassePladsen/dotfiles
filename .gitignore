@@ -9,6 +9,8 @@
 !scp_dotfiles_to_remotes.sh
 !do_job_on_remotes.py
 
+!.fzf/
+
 !.config/
 .config/*
 !.config/nvim/

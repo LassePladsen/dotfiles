@@ -7,7 +7,7 @@ import argparse
 import subprocess
 from typing import Iterable
 
-JOBS = ["dotfiles", "command"]
+JOBS = ["dotfiles", "scp_dotfiles", "command"]
 DEFAULT_USER = os.environ["USER"]
 DEFAULT_REMOTES = os.environ.get("WPH_REMOTES", [
     # default to backup list if not set in env.
@@ -99,6 +99,8 @@ class Job:
         self.failed_tasks = 0
         match self.args.job:
             case "dotfiles":
+                self.__git_dotfiles()
+            case "scp_dotfiles":
                 self.__scp_dotfiles()
             case "command":
                 self.__ssh_command()
@@ -114,6 +116,11 @@ class Job:
             )
         else:
             self.__verbose_print("\nJobs done.\n", 0, color=Fore.GREEN)
+    
+    
+    def __git_dotfiles(self) -> bool:
+        """Send git pull dotfiles to each remote"""
+            raise NotImplementedError("Please use job scp_dotfiles for now.");
 
     def __scp_dotfiles(self) -> bool:
         """Scp dotfiles and dependencies to each remote as the given user."""
