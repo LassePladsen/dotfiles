@@ -7,26 +7,28 @@ import argparse
 import subprocess
 from typing import Iterable
 
-JOBS = ["dotfiles", "scp_dotfiles", "command"]
+JOBS = ["dotfiles", "command"]
 DEFAULT_USER = os.environ["USER"]
-DEFAULT_REMOTES = os.environ.get("WPH_REMOTES", [
-    # default to backup list if not set in env.
-    "dev",
-    "wp3",
-    "wp4",
-    "bastion",
-    "wafmaster",
-    "wph",
-    "tripletex",
-    "afk",
-    "avvir",
-    "kleins",
-    "krydra",
-    "upk",
-    "bfkstats",
-    "flightpark",
-    "entercard",
-]
+DEFAULT_REMOTES = os.environ.get(
+    "WPH_REMOTES",
+    [
+        # default to backup list if not set in env.
+        "dev",
+        "wp3",
+        "wp4",
+        "bastion",
+        "wafmaster",
+        "wph",
+        "tripletex",
+        "afk",
+        "avvir",
+        "kleins",
+        "krydra",
+        "upk",
+        "bfkstats",
+        "flightpark",
+        "entercard",
+    ],
 )
 
 DOTFILES = [".bashrc", ".vimrc", ".fzfrc", ".tmux.conf"]
@@ -99,14 +101,11 @@ class Job:
         self.failed_tasks = 0
         match self.args.job:
             case "dotfiles":
-                self.__git_dotfiles()
-            case "scp_dotfiles":
                 self.__scp_dotfiles()
             case "command":
                 self.__ssh_command()
             case _:
-                raise ValueError(
-                    f"Unknown job {self.args.job}. The choices are {JOBS}")
+                raise ValueError(f"Unknown job {self.args.job}. The choices are {JOBS}")
 
         if self.failed_tasks:
             self.__verbose_print(
@@ -116,25 +115,26 @@ class Job:
             )
         else:
             self.__verbose_print("\nJobs done.\n", 0, color=Fore.GREEN)
-    
-    
-    def __git_dotfiles(self) -> bool:
-        """Send git pull dotfiles to each remote"""
-        raise NotImplementedError("Please use job scp_dotfiles for now.");
 
     def __scp_dotfiles(self) -> bool:
         """Scp dotfiles and dependencies to each remote as the given user."""
         user = self.args.user
 
         for remote in self.args.remotes:
-            self.__verbose_print(
-                f"\nStarting on remote {remote}", color=Fore.YELLOW)
+            self.__verbose_print(f"\nStarting on remote {remote}", color=Fore.YELLOW)
 
             # DOTFILES
             self.__verbose_print(f"Sending .dotfiles to remote {remote}...")
             if not self.__do_scp(
-                (" ".join([f"{os.path.expanduser('~' + user)}/" +
-                 file for file in DOTFILES]) + f" {user}@{remote}:~{user}")
+                (
+                    " ".join(
+                        [
+                            f"{os.path.expanduser('~' + user)}/" + file
+                            for file in DOTFILES
+                        ]
+                    )
+                    + f" {user}@{remote}:~{user}"
+                )
             ):
                 self.failed_tasks += 1
                 self.__verbose_print("Could not send dotfiles", color=Fore.RED)
@@ -153,8 +153,7 @@ class Job:
                     f"git clone https://github.com/tmux-plugins/tpm ~{user}/.tmux/plugins/tpm",
                 ):
                     self.failed_tasks += 1
-                    self.__verbose_print(
-                        "Could not install tpm", color=Fore.RED)
+                    self.__verbose_print("Could not install tpm", color=Fore.RED)
             # END TPM
 
             # FZF
@@ -169,8 +168,7 @@ class Job:
                     echo_to_ssh=True,
                 ):
                     self.failed_tasks += 1
-                    self.__verbose_print(
-                        "Could not install fzf", color=Fore.RED)
+                    self.__verbose_print("Could not install fzf", color=Fore.RED)
             # END FZF
 
             self.__verbose_print(f"Remote {remote} done!", color=Fore.BLUE)
@@ -196,8 +194,7 @@ class Job:
     def __ssh_command(self) -> bool:
         """Do ssh command for all remotes"""
         for remote in self.args.remotes:
-            self.__verbose_print(
-                f"\nStarting on remote {remote}", color=Fore.YELLOW)
+            self.__verbose_print(f"\nStarting on remote {remote}", color=Fore.YELLOW)
 
             if not self.__do_ssh_command(self.args.user, remote, self.args.cmd, True):
                 self.failed_tasks += 1
