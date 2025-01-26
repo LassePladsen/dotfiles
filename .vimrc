@@ -104,8 +104,6 @@ nnoremap <leader>D "+D
 " nnoremap <leader>/ :/\<<C-r><C-w>\><enter>
 
 " Start replacing word you're on
-" Remap: to <leader>* since* is deafult search current word
-" nnoremap <leader>s :%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>
 nnoremap <leader>* :%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>
 
 " Make file executable
@@ -114,6 +112,11 @@ nnoremap <leader>x <cmd>silent exec "!chmod +x %"<CR><C-l>
 " Next and prev buffer
 nnoremap <leader>i :bn<enter>
 nnoremap <leader>o :bp<enter>
+
+" Faster terminal mode exit (apparantly wont work with all terminal
+" emulators/tmux etc
+tnoremap <Esc><Esc> <C-\><C-n>
+
 
 """ END REMAPS
 
@@ -222,5 +225,4 @@ endif
 
 " Source man pager to use vim for man help pages
 runtime ftplugin/man.vim
-
 
