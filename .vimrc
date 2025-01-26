@@ -117,6 +117,9 @@ nnoremap <leader>o :bp<enter>
 " emulators/tmux etc
 tnoremap <Esc><Esc> <C-\><C-n>
 
+" New tab from current file (:tab split)
+nnoremap <C-w><C-t> :tab split<CR>
+
 
 """ END REMAPS
 
