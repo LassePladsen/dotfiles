@@ -125,6 +125,11 @@ nnoremap <C-w><C-t> :tab split<CR>
 
 " Only for regular vim:
 if !has('nvim')
+    " VIM EXCLUSIVE REMAPS
+    " List buffers 
+    nnoremap <leader><leader> :buffers<CR>
+    " END REMAPS
+
     " plugin manager vim-plug
     let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
     if empty(glob(data_dir . '/autoload/plug.vim'))
