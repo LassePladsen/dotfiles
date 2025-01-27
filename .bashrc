@@ -180,3 +180,7 @@ fi
 
 # Cargo (Rust) stuff
 export PATH="$PATH:$HOME/.cargo/bin/"
+
+# Git shorthand alias'
+alias gs="git status"
+alias gss='git status -s -b' # git status short with branch

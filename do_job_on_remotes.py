@@ -99,13 +99,20 @@ class Job:
             self.args.remotes = self.args.remotes[:-1]
 
         self.failed_tasks = 0
+
+        # This is handled by argparser, but just in case
+        if self.args.job not in JOBS:
+            raise ValueError(
+                f"Unknown job {self.args.job}. The choices are {JOBS}")
+
         match self.args.job:
             case "dotfiles":
                 self.__scp_dotfiles()
             case "command":
                 self.__ssh_command()
             case _:
-                raise ValueError(f"Unknown job {self.args.job}. The choices are {JOBS}")
+                raise NotImplementedError(
+                    f"Job {self.args.job} is not implemented.")
 
         if self.failed_tasks:
             self.__verbose_print(
@@ -121,7 +128,8 @@ class Job:
         user = self.args.user
 
         for remote in self.args.remotes:
-            self.__verbose_print(f"\nStarting on remote {remote}", color=Fore.YELLOW)
+            self.__verbose_print(
+                f"\nStarting on remote {remote}", color=Fore.YELLOW)
 
             # DOTFILES
             self.__verbose_print(f"Sending .dotfiles to remote {remote}...")
@@ -153,7 +161,8 @@ class Job:
                     f"git clone https://github.com/tmux-plugins/tpm ~{user}/.tmux/plugins/tpm",
                 ):
                     self.failed_tasks += 1
-                    self.__verbose_print("Could not install tpm", color=Fore.RED)
+                    self.__verbose_print(
+                        "Could not install tpm", color=Fore.RED)
             # END TPM
 
             # FZF
@@ -168,7 +177,8 @@ class Job:
                     echo_to_ssh=True,
                 ):
                     self.failed_tasks += 1
-                    self.__verbose_print("Could not install fzf", color=Fore.RED)
+                    self.__verbose_print(
+                        "Could not install fzf", color=Fore.RED)
             # END FZF
 
             self.__verbose_print(f"Remote {remote} done!", color=Fore.BLUE)
@@ -194,7 +204,8 @@ class Job:
     def __ssh_command(self) -> bool:
         """Do ssh command for all remotes"""
         for remote in self.args.remotes:
-            self.__verbose_print(f"\nStarting on remote {remote}", color=Fore.YELLOW)
+            self.__verbose_print(
+                f"\nStarting on remote {remote}", color=Fore.YELLOW)
 
             if not self.__do_ssh_command(self.args.user, remote, self.args.cmd, True):
                 self.failed_tasks += 1
