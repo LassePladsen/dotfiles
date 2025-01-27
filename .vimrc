@@ -120,6 +120,12 @@ tnoremap <Esc><Esc> <C-\><C-n>
 " New tab from current file (:tab split)
 nnoremap <C-w><C-t> :tab split<CR>
 
+" Next and prev in quickfix menu
+nnoremap <leader>cn :cn<CR>
+nnoremap <leader>cp :cp<CR>
+" Open and close quickfix menu
+nnoremap <leader>cq :copen<CR>
+nnoremap <leader>cQ :cclose<CR>
 
 """ END REMAPS
 
