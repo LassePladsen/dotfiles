@@ -10,6 +10,7 @@ set tabstop=4
 set shiftwidth=4
 set expandtab
 set smartindent
+set autoindent
 set wrap
 set breakindent " wrap starts at same indentation
 set scrolloff=10
@@ -156,6 +157,7 @@ if !has('nvim')
     Plug 'tpope/vim-surround'
     Plug 'bkad/CamelCaseMotion'
     Plug 'machakann/vim-highlightedyank'
+    Plug 'jiangmiao/auto-pairs'
     call plug#end()
 
     " Timeout for yank hightlight
