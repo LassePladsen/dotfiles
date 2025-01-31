@@ -54,17 +54,20 @@ let localmapleader = " "
 
 " Save on ctrl s
 nnoremap <C-s> :w<enter>
+" Enter normal mode and save on ctrl s
+inoremap <C-s> <ESC>:w<enter>
+vnoremap <C-s> <ESC>:w<enter>
 
 " J (append below line to end of current line) keeps cursor at same position
 nnoremap J mzJ`z
 
 " Map moving selected lines 
-nnoremap <C-j> :m .+1<CR>==
-nnoremap <C-k> :m .-2<CR>==
-inoremap <C-j> <Esc>:m .+1<CR>==gi
-inoremap <C-k> <Esc>:m .-2<CR>==gi
-vnoremap <C-j> :m '>+1<CR>gv=gv
-vnoremap <C-k> :m '<-2<CR>gv=gv
+nnoremap <M-j> :m .+1<CR>==
+nnoremap <M-k> :m .-2<CR>==
+inoremap <M-j> <Esc>:m .+1<CR>==gi
+inoremap <M-k> <Esc>:m .-2<CR>==gi
+vnoremap <M-j> :m '>+1<CR>gv=gv
+vnoremap <M-k> :m '<-2<CR>gv=gv
 
 " unmap ZZ exit
 nnoremap ZZ <nop>
@@ -145,7 +148,9 @@ if !has('nvim')
     endif
 
     call plug#begin()
+    Plug 'mg979/vim-visual-multi', {'branch': 'master'}
     Plug 'tpope/vim-sensible'
+    Plug 'tpope/vim-commentary'
     Plug 'girishji/vimcomplete' 
     Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
     Plug 'junegunn/fzf.vim'
