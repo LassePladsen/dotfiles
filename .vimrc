@@ -158,6 +158,7 @@ if !has('nvim')
     Plug 'bkad/CamelCaseMotion'
     Plug 'machakann/vim-highlightedyank'
     Plug 'jiangmiao/auto-pairs'
+    Plug 'tpope/vim-commentary'
     call plug#end()
 
     " Timeout for yank hightlight

@@ -20,7 +20,7 @@ return { -- Fuzzy Finder (files, lsp, etc)
 		require("telescope").setup({
 			defaults = {
 				layout_strategy = "vertical",
-				layout_config = { height = 0.95, width = 0.95, preview_height=0.6 },
+				layout_config = { height = 0.95, width = 0.95, vertical = { preview_height=0.6 } },
 			},
 			extensions = {
 				["ui-select"] = {
