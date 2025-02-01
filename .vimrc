@@ -164,6 +164,8 @@ if !has('nvim')
     Plug 'machakann/vim-highlightedyank'
     Plug 'jiangmiao/auto-pairs'
     Plug 'tpope/vim-commentary'
+    Plug 'itchyny/lightline.vim'
+    Plug 'phanviet/vim-monokai-pro'
     call plug#end()
 
     " Timeout for yank hightlight
@@ -174,18 +176,16 @@ if !has('nvim')
 
     """" COLORSCHEME
     " If you have vim >=8.0 or Neovim >= 0.1.5
-    if (has("termguicolors"))
-	set termguicolors
-    endif
-
-    " For Neovim 0.1.3 and 0.1.4
-    let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+    " if (has("termguicolors"))
+	" set termguicolors
+    " endif
 
     syntax enable
-    colorscheme night-owl
+    " colorscheme night-owl
+    colorscheme monokai_pro
 
-    " To enable the lightline theme
-    let g:lightline = { 'colorscheme': 'nightowl' }
+    " " To enable the lightline theme
+    let g:lightline = { 'colorscheme': 'monokai_pro' }
     """ END COLORSCHEME
 
     """ LSP STUFF

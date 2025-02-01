@@ -5,3 +5,4 @@ let &packpath = &runtimepath
 lua require('init')
 
 source ~/.vimrc
+
