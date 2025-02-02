@@ -6,3 +6,5 @@ lua require('init')
 
 source ~/.vimrc
 
+colorscheme monokai-pro-spectrum
+
