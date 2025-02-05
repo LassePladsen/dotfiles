@@ -1,10 +1,5 @@
 return {
     {
-        "folke/flash.nvim",
-        event = "VeryLazy",
-        opts = {},
-    },
-    {
         'vscode-neovim/vscode-multi-cursor.nvim',
         dependencies = {
             { 'folke/flash.nvim', event = "VeryLazy", opts = {} },
