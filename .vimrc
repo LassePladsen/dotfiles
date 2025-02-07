@@ -1,4 +1,4 @@
-""" SETTINGS 
+    """ SETTINGS 
 set mouse=a
 
 " Global and relative line numbers  
@@ -130,6 +130,12 @@ nnoremap <leader>cp :cp<CR>
 " Open and close quickfix menu
 nnoremap <leader>cq :copen<CR>
 nnoremap <leader>cQ :cclose<CR>
+
+" Window sizes
+nnoremap <M-+> <C-w>+
+nnoremap <M--> <C-w>-
+nnoremap <M-<> <C-w><
+nnoremap <M->> <C-w>>
 
 """ END REMAPS
 
