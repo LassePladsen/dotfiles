@@ -153,6 +153,7 @@ fi
 
 # Home dir git alias
 alias {dotfiles,dot}='/usr/bin/git --git-dir=$HOME/repos/dotfiles.git --work-tree=$HOME'
+alias {dotnvim,dot-nvim}='/usr/bin/git -C ~/.config/nvim'
 
 # Stuff for react native android dev
 export JAVA_HOME=/usr/lib/jvm/jdk-23.0.1
