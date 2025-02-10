@@ -96,12 +96,12 @@ nnoremap <leader>p "_ddP
 " Yank to system clipboard
 nnoremap <leader>y "+y
 vnoremap <leader>y "+y
-nnoremap <leader>Y "+Y
+nnoremap <leader>Y "+y$
 
 " Delete to system clipboard
 nnoremap <leader>d "+d
 vnoremap <leader>d "+d
-nnoremap <leader>D "+D
+nnoremap <leader>D "+d$
 
 " Do search for word you're on
 " Disable:  this is default on *
