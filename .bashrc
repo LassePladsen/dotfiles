@@ -185,3 +185,6 @@ export PATH="$PATH:$HOME/.cargo/bin/"
 # Git shorthand alias'
 alias gs="git status"
 alias gss='git status -s -b' # git status short with branch
+alias gl="git log"
+alias gll="git log --oneline"
+alias glg="git log --graph"
