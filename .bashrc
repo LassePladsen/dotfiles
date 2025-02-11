@@ -188,3 +188,4 @@ alias gss='git status -s -b' # git status short with branch
 alias gl="git log"
 alias gll="git log --oneline"
 alias glg="git log --graph"
+alias gp="git show HEAD~" # think "git previous"
