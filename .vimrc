@@ -52,14 +52,23 @@ let netrw_liststyle=3 " tree view
 let mapleader = " "
 let localmapleader = " "
 
+" stop small delete 
+nnoremap x "_x
+
 " Save on ctrl s
 nnoremap <C-s> :w<enter>
+
 " Enter normal mode and save on ctrl s
 inoremap <C-s> <ESC>:w<enter>
 vnoremap <C-s> <ESC>:w<enter>
 
 " J (append below line to end of current line) keeps cursor at same position
-nnoremap J mzJ`z
+nnoremap J mpJ`p
+
+" Opposite of J (split line into two without entering insert mode + enter + esc)
+" warning: control maps cant assert between capital and lower character (j and J
+" same)
+nnoremap <C-j> hmpa<CR><ESC>`p
 
 " Map moving selected lines 
 nnoremap <M-j> :m .+1<CR>==
@@ -108,7 +117,7 @@ nnoremap <leader>D "+d$
 " nnoremap <leader>/ :/\<<C-r><C-w>\><enter>
 
 " Start replacing word you're on
-nnoremap <leader>* :%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>
+noremap <leader>* :%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>
 
 " Make file executable
 nnoremap <leader>x <cmd>silent exec "!chmod +x %"<CR><C-l>
