@@ -1,4 +1,4 @@
-    """ SETTINGS 
+""" SETTINGS 
 set mouse=a
 
 " Global and relative line numbers  
