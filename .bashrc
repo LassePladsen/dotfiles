@@ -191,6 +191,11 @@ alias gss='git status -s -b' # git status short with branch
 alias gl="git log"
 alias gls="git log --oneline" # think "git log short"
 alias glg="git log --graph"
-alias gp="git show HEAD~" # think "git previous"
 alias gc="git commit -m"
 alias gca="git commit --amend"
+# Think "git previous". does git show with input parameter of the target number commit back from HEAD. Defaults to 0, and accepts arguments if and only if the target number is given.
+gp() {
+    target=${1-0} # if arg 1 not given; default to 0.
+    shift 1
+    git show HEAD~$target $@
+}
