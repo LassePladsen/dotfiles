@@ -63,12 +63,12 @@ inoremap <C-s> <ESC>:w<enter>
 vnoremap <C-s> <ESC>:w<enter>
 
 " J (append below line to end of current line) keeps cursor at same position
-nnoremap J mpJ`p
+nnoremap J mzJ`z
 
 " Opposite of J (split line into two without entering insert mode + enter + esc)
 " warning: control maps cant assert between capital and lower character (j and J
 " same)
-nnoremap <C-j> hmpa<CR><ESC>`p
+nnoremap <C-j> hmza<CR><ESC>`z
 
 " Map moving selected lines 
 nnoremap <M-j> :m .+1<CR>==
