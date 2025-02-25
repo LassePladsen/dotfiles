@@ -185,7 +185,7 @@ fi
 # Cargo (Rust) stuff
 export PATH="$PATH:$HOME/.cargo/bin/"
 
-# Git shorthand alias'
+# Git shortcuts
 alias gs="git status"
 alias gss='git status -s -b' # git status short with branch
 alias gl="git log"
@@ -198,4 +198,10 @@ gp() {
     target=${1-0} # if arg 1 not given; default to 0.
     shift 1
     git show HEAD~$target $@
+}
+# Git diff with fuzzy file search
+gd() {
+    pattern=$1
+    shift 1
+    git diff "*$pattern*" $@
 }
