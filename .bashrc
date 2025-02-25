@@ -205,3 +205,9 @@ gd() {
     shift 1
     git diff "*$pattern*" $@
 }
+# Git add with fuzzy file search
+ga() {
+    pattern=$1
+    shift 1
+    git add "*$pattern*" $@
+}
