@@ -146,6 +146,9 @@ nnoremap <M--> <C-w>-
 nnoremap <M-<> <C-w><
 nnoremap <M->> <C-w>>
 
+" Select whole file
+nnoremap <leader><C-a> ggVG
+
 """ END REMAPS
 
 " Only for regular vim:
