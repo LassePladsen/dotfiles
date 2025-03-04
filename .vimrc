@@ -1,3 +1,5 @@
+let g:remoteSession = ($STY == "") " For some settings that should not activate on remotes (ssh)
+
 """ SETTINGS 
 set mouse=a
 
@@ -26,6 +28,9 @@ set smartcase " only case insensitive when searching with only lowercase. using 
 set signcolumn=yes
 
 set undofile
+if g:remoteSession
+    set noundofile
+endif
 
 " new splits locations
 set splitright
