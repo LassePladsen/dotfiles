@@ -60,11 +60,8 @@ let localmapleader = " "
 " stop small delete 
 nnoremap x "_x
 
-" Save on ctrl s, not on remote because tmux on remote can crash when using
-" this
-if !g:remoteSession
-    nnoremap <C-s> :w<enter>
-endif
+" Save on ctrl s
+nnoremap <C-s> :w<enter>
 
 " Enter normal mode and save on ctrl s
 inoremap <C-s> <ESC>:w<enter>
