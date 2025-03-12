@@ -3,6 +3,9 @@ let g:remoteSession = ($STY == "") " For some settings that should not activate 
 """ SETTINGS 
 set mouse=a
 
+" So :find can search recursively
+set path+=**
+
 " Global and relative line numbers  
 set nu
 set rnu
