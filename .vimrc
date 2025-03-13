@@ -124,7 +124,7 @@ nnoremap <leader>D "+d$
 " nnoremap <leader>/ :/\<<C-r><C-w>\><enter>
 
 " Start replacing word you're on
-noremap <leader>* :%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>
+noremap <leader>* :%s/\<<C-r><C-w>\>//gI<Left><Left><Left>
 
 " Make file executable
 nnoremap <leader>x <cmd>silent exec "!chmod +x %"<CR><C-l>
