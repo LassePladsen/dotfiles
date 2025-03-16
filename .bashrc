@@ -166,7 +166,7 @@ export PATH=$PATH:$ANDROID_HOME/emulator
 export PATH=$PATH:$ANDROID_HOME/platform-tools
 
 # Nvim
-export PATH="$PATH:/opt/nvim-linux64/bin:$HOME/opt/nvim-linux64/bin"
+export PATH="$PATH:/opt/nvim-linux64/bin:$HOME/opt/nvim-linux64/bin:/opt/nvim:$HOME/opt/nvim"
 
 # Remote list for scripts
 export WPH_REMOTES="dev,wp3,wp4,bastion,wafmaster,wph,tripletex,afk,avvir,kleins,krydra,upk,bfkstats,flightpark,entercard"
