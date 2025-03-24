@@ -270,7 +270,7 @@ if !has('nvim')
     inoremap <expr> <cr>    pumvisible() ? asyncomplete#close_popup() : "\<cr>"
 
     " Git files fuzzy search
-    nnoremap <leader>sg :Git<CR>
+    nnoremap <leader>st :Git<CR>
     """ END LSP STUFF
 endif
 

@@ -213,5 +213,6 @@ ga() {
 }
 
 ### PROJECT SHORTCUTS FOR EASE
+alias {fp,flightpark}="cd ~/work/local/flightpark/"
 alias fpapp="cd ~/work/local/flightpark/flightparkapp/"
 alias {vipps,woo-vipps}="cd ~/work/local/sites/lassevippsdev/wp-content/plugins/woo-vipps/"
