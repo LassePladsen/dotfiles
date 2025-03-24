@@ -88,11 +88,6 @@ vnoremap <M-k> :m '<-2<CR>gv=gv
 " unmap ZZ exit
 nnoremap ZZ <nop>
 
-" Map FZF fuzzy file finder for only vim
-if !has('nvim')
-    nnoremap <leader>sf :FZF<enter>
-endif
-
 " Map C-d and C-u to also center cursor at middle of screen 
 nnoremap <C-d> <C-d>zz
 nnoremap <C-u> <C-u>zz
@@ -161,6 +156,8 @@ nnoremap <leader><C-a> ggVG
 " Only for regular vim:
 if !has('nvim')
     " VIM EXCLUSIVE REMAPS
+    " FZF as fuzzy file finder
+    nnoremap <leader>sf :FZF<enter> 
     " List buffers 
     nnoremap <leader><leader> :buffers<CR>
     " END REMAPS
