@@ -216,3 +216,5 @@ ga() {
 alias {fp,flightpark}="cd ~/work/local/flightpark/"
 alias fpapp="cd ~/work/local/flightpark/flightparkapp/"
 alias {vipps,woo-vipps}="cd ~/work/local/sites/lassevippsdev/wp-content/plugins/woo-vipps/"
+alias {ea,eaccounting}="cd ~/work/local/tripletex/eaccounting/"
+alias tripletex="cd ~/work/local/tripletex/"
