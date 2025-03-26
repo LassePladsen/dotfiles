@@ -60,6 +60,9 @@ let netrw_liststyle=3 " tree view
 let mapleader = " "
 let localmapleader = " "
 
+" File explorer in current parent dir on -
+nnoremap - :Ex .<CR>
+
 " stop small delete 
 nnoremap x "_x
 
