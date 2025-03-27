@@ -157,7 +157,7 @@ nnoremap <leader><C-a> ggVG
 if !has('nvim')
     " VIM EXCLUSIVE REMAPS
     " File explorer in current parent dir on -
-    nnoremap - :Ex .<CR>
+    nnoremap - :Ex<CR>
 
     " FZF as fuzzy file finder
     nnoremap <leader>sf :FZF<enter> 
