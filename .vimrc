@@ -60,9 +60,6 @@ let netrw_liststyle=3 " tree view
 let mapleader = " "
 let localmapleader = " "
 
-" File explorer in current parent dir on -
-nnoremap - :Ex .<CR>
-
 " stop small delete 
 nnoremap x "_x
 
@@ -159,6 +156,9 @@ nnoremap <leader><C-a> ggVG
 " Only for regular vim:
 if !has('nvim')
     " VIM EXCLUSIVE REMAPS
+    " File explorer in current parent dir on -
+    nnoremap - :Ex .<CR>
+
     " FZF as fuzzy file finder
     nnoremap <leader>sf :FZF<enter> 
     " List buffers 
