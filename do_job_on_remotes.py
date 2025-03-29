@@ -31,7 +31,7 @@ DEFAULT_REMOTES = os.environ.get(
     ],
 )
 
-DOTFILES = [".bashrc", ".vimrc", ".fzfrc", ".tmux.conf"]
+DOTFILES = [".inputrc", ".bashrc", ".vimrc", ".fzfrc", ".tmux.conf"]
 
 
 class Job:
@@ -83,6 +83,12 @@ class Job:
             "-v", "--verbose", action="count", default=0, help="Increase verbosity"
         )
 
+        # Optional skip non-essential stuff
+        parser.add_argument(
+            "-s", "--skip", action="store_true", default=False, help="Skip non-essentials, often running faster"
+        )
+
+
         # parse arguments and call job function
         self.args = parser.parse_args(self.argv)
 
@@ -128,7 +134,7 @@ class Job:
         for remote in self.args.remotes:
             self.__verbose_print(f"\nStarting on remote {remote}", color=Fore.YELLOW)
 
-            # DOTFILES
+            # DOTFILES (essential)
             self.__verbose_print(f"Sending .dotfiles to remote {remote}...")
             if not self.__do_scp(
                 (
@@ -145,36 +151,38 @@ class Job:
                 self.__verbose_print("Could not send dotfiles", color=Fore.RED)
             # END DOTFILES
 
-            # TPM
-            self.__verbose_print("Checking if tpm is installed...")
-            if not self.__do_ssh_command(
-                user, remote, f"test -d ~{user}/.tmux/plugins/tpm"
-            ):
-                self.__verbose_print("Tpm not installed - git cloning it...")
+            # non-essentials:
+            if not self.args.skip:
+                # FZF (non-essential)
+                self.__verbose_print("Checking if fzf is installed...")
+                if not self.__do_ssh_command(user, remote, f"test -f ~{user}/.fzf/bin/fzf"):
+                    self.__verbose_print("fzf not installed - git cloning it...")
 
+                    if not self.__do_ssh_command(
+                        user,
+                        remote,
+                        f"git clone --depth 1 https://github.com/junegunn/fzf.git ~{user}/.fzf && ~{user}/.fzf/install",
+                        echo_to_ssh=True,
+                    ):
+                        self.failed_tasks += 1
+                        self.__verbose_print("Could not install fzf", color=Fore.RED)
+                # END FZF
+                
+                # TPM (non-essential)
+                self.__verbose_print("Checking if tpm is installed...")
                 if not self.__do_ssh_command(
-                    user,
-                    remote,
-                    f"git clone https://github.com/tmux-plugins/tpm ~{user}/.tmux/plugins/tpm",
+                    user, remote, f"test -d ~{user}/.tmux/plugins/tpm"
                 ):
-                    self.failed_tasks += 1
-                    self.__verbose_print("Could not install tpm", color=Fore.RED)
-            # END TPM
+                    self.__verbose_print("Tpm not installed - git cloning it...")
 
-            # FZF
-            self.__verbose_print("Checking if fzf is installed...")
-            if not self.__do_ssh_command(user, remote, f"test -f ~{user}/.fzf/bin/fzf"):
-                self.__verbose_print("fzf not installed - git cloning it...")
-
-                if not self.__do_ssh_command(
-                    user,
-                    remote,
-                    f"git clone --depth 1 https://github.com/junegunn/fzf.git ~{user}/.fzf && ~{user}/.fzf/install",
-                    echo_to_ssh=True,
-                ):
-                    self.failed_tasks += 1
-                    self.__verbose_print("Could not install fzf", color=Fore.RED)
-            # END FZF
+                    if not self.__do_ssh_command(
+                        user,
+                        remote,
+                        f"git clone https://github.com/tmux-plugins/tpm ~{user}/.tmux/plugins/tpm",
+                    ):
+                        self.failed_tasks += 1
+                        self.__verbose_print("Could not install tpm", color=Fore.RED)
+                # END TPM
 
             self.__verbose_print(f"Remote {remote} done!", color=Fore.BLUE)
         return True
@@ -187,9 +195,8 @@ class Job:
         end: str = "\n",
     ) -> bool:
         """Print message if job verbosity is greater than or equal to parameter verbosity"""
-        verbosity_level = (
-            self.INFO_VERBOSITY if verbosity_level is None else verbosity_level
-        )
+        if verbosity_level is None:
+            verbosity_level = self.INFO_VERBOSITY
 
         if self.args.verbose >= verbosity_level:
             print(color + msg + Style.RESET_ALL, end=end)
