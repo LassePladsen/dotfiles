@@ -85,7 +85,7 @@ class Job:
 
         # Optional skip non-essential stuff
         parser.add_argument(
-            "-s", "--skip", action="store_true", default=False, help="Skip non-essentials, often running faster"
+            "-s", "--skip", "--skip-nonessentials", "--only-essentials", "--fast", action="store_true", default=False, help="Skip non-essentials, often running faster"
         )
 
 
