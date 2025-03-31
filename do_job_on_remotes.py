@@ -38,7 +38,7 @@ class Job:
     INFO_VERBOSITY = 0
     STDOUT_VERBOSITY = 1
 
-    def __init__(self, argv: Iterable = []):
+    def __init__(self, argv):
         self.argv = argv
         self.args = None
 
@@ -67,7 +67,7 @@ class Job:
             "-r",
             "--remotes",
             help="Comma-separated list of remote(s) to do job on. Hostname, ip, sshconfig, etc. Defaults to harcoded personal remote list",
-            default=DEFAULT_REMOTES,
+            default=[],
         )
 
         # Optional user argument
