@@ -6,6 +6,9 @@ set mouse=a
 " So :find can search recursively
 set path+=**
 
+" Case insensitive file and dir completions
+set wildignorecase
+
 " Global and relative line numbers  
 set nu
 set rnu
