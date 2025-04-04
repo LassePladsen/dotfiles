@@ -153,9 +153,12 @@ nnoremap <M->> <C-w>>
 
 " Select whole file
 nnoremap <leader><C-a> ggVG
-
-
 """ END REMAPS
+
+""" AUTOCOMMANDS
+" Set php commenstring from default /* */ to //
+autocmd FileType php setlocal commentstring=//\ %s
+"""END AUTOCOMMANDS
 
 
 " Only for regular vim:
