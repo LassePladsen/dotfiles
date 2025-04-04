@@ -154,7 +154,9 @@ nnoremap <M->> <C-w>>
 " Select whole file
 nnoremap <leader><C-a> ggVG
 
+
 """ END REMAPS
+
 
 " Only for regular vim:
 if !has('nvim')
@@ -275,6 +277,11 @@ if !has('nvim')
     " Git files fuzzy search
     nnoremap <leader>st :Git<CR>
     """ END LSP STUFF
+
+    """ CUSTOM COMMANDS
+    " Manually close popup when it bugs out... see https://github.com/vim/vim/issues/5744 by 
+    command PopupClose :call popup_close(win_getid())
+    """ END CUSTOM COMMANDS
 endif
 
 " Source man pager to use vim for man help pages
