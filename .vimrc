@@ -155,12 +155,6 @@ nnoremap <M->> <C-w>>
 nnoremap <leader><C-a> ggVG
 """ END REMAPS
 
-""" AUTOCOMMANDS
-" Set php commenstring from default /* */ to //
-autocmd FileType php setlocal commentstring=//\ %s
-"""END AUTOCOMMANDS
-
-
 " Only for regular vim:
 if !has('nvim')
     " VIM EXCLUSIVE REMAPS
@@ -289,4 +283,10 @@ endif
 
 " Source man pager to use vim for man help pages
 runtime ftplugin/man.vim
+
+""" AUTOCOMMANDS
+" Set php commenstring from default /* */ to //
+autocmd FileType php setlocal commentstring=//\ %s
+"""END AUTOCOMMANDS
+
 
