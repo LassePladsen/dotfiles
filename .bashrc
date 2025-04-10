@@ -185,7 +185,7 @@ fi
 # Cargo (Rust) stuff
 export PATH="$PATH:$HOME/.cargo/bin/"
 
-# Git shortcuts
+# Git alias shortcuts
 alias gs="git status"
 alias gss='git status -s -b' # git status short with branch
 alias gl="git log"
@@ -219,3 +219,6 @@ alias nsb="cd ~/work/local/nsb/"
 alias {vipps,woo-vipps}="cd ~/work/local/sites/lassevippsdev/wp-content/plugins/woo-vipps/"
 alias {ea,eaccounting}="cd ~/work/local/tripletex/eaccounting/"
 alias {tt,tripletex}="cd ~/work/local/tripletex/"
+alias {nvimhome,homenvim,nvimconf,nvimplugins}="cd ~/.config/nvim/lua/plugins/"
+
+. "/home/lasse/.deno/env"
