@@ -153,6 +153,9 @@ nnoremap <M->> <C-w>>
 
 " Select whole file
 nnoremap <leader><C-a> ggVG
+
+" Outputs comment signature with date in unix format like: LP 2025-04-10
+nnoremap <leader># a LP<ESC>:r!date +"\%Y-\%m-\%d"<CR>kJ
 """ END REMAPS
 
 " Only for regular vim:
