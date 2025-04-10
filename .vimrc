@@ -155,7 +155,7 @@ nnoremap <M->> <C-w>>
 nnoremap <leader><C-a> ggVG
 
 " Outputs comment signature with date in unix format like: LP 2025-04-10
-nnoremap <leader># aLP<ESC>:r!date +"\%Y-\%m-\%d"<CR>kJ
+nnoremap <leader># :execute "normal! aLP " . strftime("%Y-%m-%d")<CR>
 """ END REMAPS
 
 " Only for regular vim:
