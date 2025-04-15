@@ -66,6 +66,9 @@ let localmapleader = " "
 " stop small delete 
 nnoremap x "_x
 
+" go to definition in new tab
+nnoremap <leader>gd <C-w><C-]><C-w>T
+
 " Save on ctrl s
 nnoremap <C-s> :w<enter>
 
