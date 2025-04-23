@@ -221,4 +221,8 @@ alias {ea,eaccounting}="cd ~/work/local/tripletex/eaccounting/"
 alias {tt,tripletex}="cd ~/work/local/tripletex/"
 alias {nvimhome,homenvim,nvimconf,nvimplugins}="cd ~/.config/nvim/lua/plugins/"
 
-. "/home/lasse/.deno/env"
+# Vim alias.. yolo
+if command -v nvim >/dev/null 2>&1; then 
+    alias vim="nvim"
+    alias vvim="/usr/bin/vim"
+fi
