@@ -212,6 +212,7 @@ ga() {
     git add "*$pattern*" $@
 }
 
+
 ### PROJECT SHORTCUTS FOR EASE
 alias {fp,flightpark}="cd ~/work/local/flightpark/"
 alias fpapp="cd ~/work/local/flightpark/flightparkapp/"
@@ -226,3 +227,6 @@ if command -v nvim >/dev/null 2>&1; then
     alias vim="nvim"
     alias vvim="/usr/bin/vim"
 fi
+
+# General aliases / functions
+alias ffind="find -type f -name "
