@@ -211,6 +211,12 @@ ga() {
     shift 1
     git add "*$pattern*" $@
 }
+# Git restore with fuzzy file search
+gr() {
+    pattern=$1
+    shift 1
+    git restore "*$pattern*" $@
+}
 
 
 ### PROJECT SHORTCUTS FOR EASE
