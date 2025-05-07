@@ -185,6 +185,9 @@ fi
 # Cargo (Rust) stuff
 export PATH="$PATH:$HOME/.cargo/bin/"
 
+# go stuff
+export PATH="$PATH:$HOME/go/bin/"
+
 # Git alias shortcuts
 alias gs="git status"
 alias gss='git status -s -b' # git status short with branch
@@ -217,6 +220,8 @@ gr() {
     shift 1
     git restore "*$pattern*" $@
 }
+# lazygit
+alias lg="lazygit"
 
 
 ### PROJECT SHORTCUTS FOR EASE
