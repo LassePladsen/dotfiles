@@ -13,5 +13,6 @@
 !.config/
 .config/*
 !.config/nvim/
+!scripts/
 
 *-lock*
