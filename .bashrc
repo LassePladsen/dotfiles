@@ -142,11 +142,6 @@ function parse_git_branch {
 }
 export PS1='\[\e]0;\u@\h: \w\a\]${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\[\033[01;31m\]$(parse_git_branch)\[\e[m\]\n\$ ' # remove \n to remove new line after path
 
-
-# Home dir git alias
-alias {dotfiles,dot}='/usr/bin/git --git-dir=$HOME/repos/dotfiles.git --work-tree=$HOME'
-alias {dotnvim,dot-nvim}='/usr/bin/git -C ~/.config/nvim'
-
 # Stuff for react native android dev
 export JAVA_HOME=/usr/lib/jvm/jdk-23.0.1
 
@@ -204,6 +199,7 @@ fi
 #### ALIASES
 alias ffind="find -type f -name "
 alias lg="lazygit"
+
 # project aliases
 alias {fp,flightpark}="cd ~/work/local/flightpark/"
 alias fpapp="cd ~/work/local/flightpark/flightparkapp/"
@@ -212,6 +208,10 @@ alias {vipps,woo-vipps}="cd ~/work/local/sites/lassevippsdev/wp-content/plugins/
 alias {ea,eaccounting}="cd ~/work/local/tripletex/eaccounting/"
 alias {tt,tripletex}="cd ~/work/local/tripletex/"
 alias {nvimhome,homenvim,nvimconf,nvimplugins}="cd ~/.config/nvim/lua/plugins/"
+# Home dir git alias
+# alias {dotfiles,dot}='/usr/bin/git --git-dir=$HOME/repos/dotfiles.git --work-tree=$HOME -C $HOME'
+alias {dotfiles,dot}='/usr/bin/git -C ~/repos/dotfiles'
+alias {dotnvim,dot-nvim}='/usr/bin/git -C ~/.config/nvim'
 # git aliases and functions
 alias gs="git status"
 alias gss='git status -s -b' # git status short with branch
