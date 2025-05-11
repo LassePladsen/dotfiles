@@ -6,17 +6,19 @@ sudo apt install git stow
 ```
 
 # Installation
-Git via ssh (recommended)
+Git via. ssh (recommended)
 ```bash
-git clone git@github.com:LassePladsen/dotfiles.git ~/repos/dotfiles &&
+git clone --recursive git@github.com:LassePladsen/dotfiles.git ~/repos/dotfiles &&
 cd ~/repos/dotfiles &&
 stow . -t ~ --adopt &&
-git restore .
+git restore . &&
+~/.fzf/install
 ```
-Git via https
+Git via. https
 ```bash
-git clone https://github.com/LassePladsen/dotfiles.git ~/repos/dotfiles &&
+git clone --recursive https://github.com/LassePladsen/dotfiles.git ~/repos/dotfiles &&
 cd ~/repos/dotfiles &&
 stow . -t ~ --adopt &&
-git restore .
+git restore . &&
+~/.fzf/install
 ```
