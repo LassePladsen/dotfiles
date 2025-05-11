@@ -140,19 +140,8 @@ function parse_git_dirty {
 function parse_git_branch {
   git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e "s/* \(.*\)/ (\1$(parse_git_dirty))/"
 }
-export PS1='\[\e]0;\u@\h: \w\a\]${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\[\033[01;31m\]$(parse_git_branch)\[\e[m\]\$ '
+export PS1='\[\e]0;\u@\h: \w\a\]${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\[\033[01;31m\]$(parse_git_branch)\[\e[m\]\n\$ ' # remove \n to remove new line after path
 
-# Open tmux on shell open
-# if [ -x "$(command -v tmux)" ] && [ -n "${DISPLAY}" ] && [ -z "${TMUX}" ]; then
-#     exec tmux new-session -A -s ${USER} >/dev/null 2>&1
-# fi
-
-# Default editor. Use nvim if installed, else vim if installed
-if command -v nvim >/dev/null 2>&1; then 
-    export EDITOR="nvim"
-elif command -v vim >/dev/null 2>&1; then 
-    export EDITOR="vim"
-fi
 
 # Home dir git alias
 alias {dotfiles,dot}='/usr/bin/git --git-dir=$HOME/repos/dotfiles.git --work-tree=$HOME'
@@ -174,13 +163,21 @@ export WPH_REMOTES="dev,wp3,wp4,bastion,wafmaster,wph,tripletex,afk,avvir,kleins
 # fzf
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 [ -f ~/.fzfrc ] && export FZF_DEFAULT_OPTS_FILE="$HOME/.fzfrc"
+# [ -f ~/.fzfrc ] && export FZF_COMPLETION_PATH_OPTS='--walker file,dir,follow,hidden' # add dirs to search
+# Advanced customization of fzf options via _fzf_comprun function
+# - The first argument to the function is the name of the command.
+# - You should make sure to pass the rest of the arguments ($@) to fzf.
+_fzf_comprun() {
+  local command=$1
+  shift
 
-# Command for man help pages. Use nvim if installed, else vim if installed
-if command -v nvim >/dev/null 2>&1; then 
-    export MANPAGER="nvim +Man!"
-elif command -v vim >/dev/null 2>&1; then 
-    export MANPAGER="vim -M +MANPAGER - "
-fi
+  case "$command" in
+    cd)           fzf --preview 'tree -C {} | head -200'   "$@" ;;
+    export|unset) fzf --preview "eval 'echo \$'{}"         "$@" ;;
+    ssh)          fzf --preview 'dig {}'                   "$@" ;;
+    *)            fzf --preview 'bat -n --color=always {}' "$@" ;;
+  esac
+}
 
 # Cargo (Rust) stuff
 export PATH="$PATH:$HOME/.cargo/bin/"
@@ -188,7 +185,34 @@ export PATH="$PATH:$HOME/.cargo/bin/"
 # go stuff
 export PATH="$PATH:$HOME/go/bin/"
 
-# Git alias shortcuts
+# only if nvim exists
+if command -v nvim >/dev/null 2>&1; then 
+    # Default editor. Use nvim if installed, else vim if installed
+    export EDITOR="nvim"
+
+    # Vim alias.. yolo
+    alias vim="nvim"
+    alias vvim="/usr/bin/vim"
+
+# Command for man help pages. Use nvim if installed, else vim if installed
+    export MANPAGER="nvim +Man!"
+elif command -v vim >/dev/null 2>&1; then 
+    export EDITOR="vim"
+    export MANPAGER="vim -M +MANPAGER - "
+fi
+
+#### ALIASES
+alias ffind="find -type f -name "
+alias lg="lazygit"
+# project aliases
+alias {fp,flightpark}="cd ~/work/local/flightpark/"
+alias fpapp="cd ~/work/local/flightpark/flightparkapp/"
+alias nsb="cd ~/work/local/nsb/"
+alias {vipps,woo-vipps}="cd ~/work/local/sites/lassevippsdev/wp-content/plugins/woo-vipps/"
+alias {ea,eaccounting}="cd ~/work/local/tripletex/eaccounting/"
+alias {tt,tripletex}="cd ~/work/local/tripletex/"
+alias {nvimhome,homenvim,nvimconf,nvimplugins}="cd ~/.config/nvim/lua/plugins/"
+# git aliases and functions
 alias gs="git status"
 alias gss='git status -s -b' # git status short with branch
 alias gl="git log"
@@ -197,47 +221,28 @@ alias glg="git log --graph"
 alias gc="git commit -m"
 alias gca="git commit --amend"
 # Think "git previous". does git show with input parameter of the target number commit back from HEAD. Defaults to 0, and accepts arguments if and only if the target number is given.
-gp() {
+function gp() {
     target=${1-0} # if arg 1 not given; default to 0.
     shift 1
     git show HEAD~$target $@
 }
 # Git diff with fuzzy file search
-gd() {
+function gd() {
     pattern=$1
     shift 1
     git diff "*$pattern*" $@
 }
 # Git add with fuzzy file search
-ga() {
+function ga() {
     pattern=$1
     shift 1
     git add "*$pattern*" $@
 }
 # Git restore with fuzzy file search
-gr() {
+function gr() {
     pattern=$1
     shift 1
     git restore "*$pattern*" $@
 }
-# lazygit
-alias lg="lazygit"
 
-
-### PROJECT SHORTCUTS FOR EASE
-alias {fp,flightpark}="cd ~/work/local/flightpark/"
-alias fpapp="cd ~/work/local/flightpark/flightparkapp/"
-alias nsb="cd ~/work/local/nsb/"
-alias {vipps,woo-vipps}="cd ~/work/local/sites/lassevippsdev/wp-content/plugins/woo-vipps/"
-alias {ea,eaccounting}="cd ~/work/local/tripletex/eaccounting/"
-alias {tt,tripletex}="cd ~/work/local/tripletex/"
-alias {nvimhome,homenvim,nvimconf,nvimplugins}="cd ~/.config/nvim/lua/plugins/"
-
-# Vim alias.. yolo
-if command -v nvim >/dev/null 2>&1; then 
-    alias vim="nvim"
-    alias vvim="/usr/bin/vim"
-fi
-
-# General aliases / functions
-alias ffind="find -type f -name "
+eval "$(zoxide init --cmd cd bash)"
