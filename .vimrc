@@ -187,7 +187,6 @@ if !has('nvim')
     Plug 'mg979/vim-visual-multi', {'branch': 'master'}
     Plug 'tpope/vim-sensible'
     Plug 'tpope/vim-commentary'
-    Plug 'girishji/vimcomplete' 
     Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
     Plug 'junegunn/fzf.vim'
     Plug 'haishanh/night-owl.vim'
@@ -202,6 +201,10 @@ if !has('nvim')
     Plug 'tpope/vim-commentary'
     Plug 'itchyny/lightline.vim'
     Plug 'phanviet/vim-monokai-pro'
+    " Only load vimcomplete if Vim version >= 9.1.0646
+    if has('vim9script') && v:version >= 901 && has('patch-9.1.0646')
+        Plug 'girishji/vimcomplete'
+    endif
     call plug#end()
 
     " Timeout for yank hightlight
@@ -213,7 +216,7 @@ if !has('nvim')
     """" COLORSCHEME
     " If you have vim >=8.0 or Neovim >= 0.1.5
     " if (has("termguicolors"))
-	" set termguicolors
+    " set termguicolors
     " endif
 
     syntax enable
@@ -226,52 +229,52 @@ if !has('nvim')
 
     """ LSP STUFF
     if executable('pylsp')
-	" pip install python-lsp-server
-	au User lsp_setup call lsp#register_server({
-		    \ 'name': 'pylsp',
-		    \ 'cmd': {server_info->['pylsp']},
-		    \ 'allowlist': ['python'],
-		    \ })
+        " pip install python-lsp-server
+        au User lsp_setup call lsp#register_server({
+                    \ 'name': 'pylsp',
+                    \ 'cmd': {server_info->['pylsp']},
+                    \ 'allowlist': ['python'],
+                    \ })
     endif
 
     function! s:on_lsp_buffer_enabled() abort
-	setlocal omnifunc=lsp#complete
-	if exists('+tagfunc') | setlocal tagfunc=lsp#tagfunc | endif
-	nmap <buffer> gd <plug>(lsp-definition)
-	nmap <buffer> <leader>ds <plug>(lsp-document-symbol-search)
-	nmap <buffer> <leader>ws <plug>(lsp-workspace-symbol-search)
-	nmap <buffer> gr <plug>(lsp-references)
-	nmap <buffer> gi <plug>(lsp-implementation)
-	nmap <buffer> gD <plug>(lsp-type-definition)
-	nmap <buffer> <leader>rn <plug>(lsp-rename)
-	nmap <buffer> [g <plug>(lsp-previous-diagnostic)
-	nmap <buffer> ]g <plug>(lsp-next-diagnostic)
-	nmap <buffer> K <plug>(lsp-hover)
-	nnoremap <buffer> <expr><c-d> lsp#scroll(+4)
-	nnoremap <buffer> <expr><c-u> lsp#scroll(-4)
+        setlocal omnifunc=lsp#complete
+        if exists('+tagfunc') | setlocal tagfunc=lsp#tagfunc | endif
+        nmap <buffer> gd <plug>(lsp-definition)
+        nmap <buffer> <leader>ds <plug>(lsp-document-symbol-search)
+        nmap <buffer> <leader>ws <plug>(lsp-workspace-symbol-search)
+        nmap <buffer> gr <plug>(lsp-references)
+        nmap <buffer> gi <plug>(lsp-implementation)
+        nmap <buffer> gD <plug>(lsp-type-definition)
+        nmap <buffer> <leader>rn <plug>(lsp-rename)
+        nmap <buffer> [g <plug>(lsp-previous-diagnostic)
+        nmap <buffer> ]g <plug>(lsp-next-diagnostic)
+        nmap <buffer> K <plug>(lsp-hover)
+        nnoremap <buffer> <expr><c-d> lsp#scroll(+4)
+        nnoremap <buffer> <expr><c-u> lsp#scroll(-4)
 
-	" Format document
-	nnoremap <buffer> <F3> <plug>(lsp-document-format) 
-	" Open diagnostics
-	nnoremap <buffer> <F5> <plug>(lsp-document-diagnostics) 
+        " Format document
+        nnoremap <buffer> <F3> <plug>(lsp-document-format) 
+        " Open diagnostics
+        nnoremap <buffer> <F5> <plug>(lsp-document-diagnostics) 
 
-	let g:lsp_format_sync_timeout = 1000
-	autocmd! BufWritePre *.rs,*.go call execute('LspDocumentFormatSync')
+        let g:lsp_format_sync_timeout = 1000
+        autocmd! BufWritePre *.rs,*.go call execute('LspDocumentFormatSync')
 
-	" Reference highlight  (what cursor is on is highlighted) colors
-	highlight lspReference guibg=darkgrey guifg=white
+        " Reference highlight  (what cursor is on is highlighted) colors
+        highlight lspReference guibg=darkgrey guifg=white
 
-	" diagnostic higlight
-	let g:lsp_diagnostics_virtual_text_enabled = 0 " disable virtual text for diagnostics (only worked on warnings, seems like no way to enable only for errors)
+        " diagnostic higlight
+        let g:lsp_diagnostics_virtual_text_enabled = 0 " disable virtual text for diagnostics (only worked on warnings, seems like no way to enable only for errors)
 
 
-	" refer to doc to add more commands
+        " refer to doc to add more commands
     endfunction
 
     augroup lsp_install
-	au!
-	" call s:on_lsp_buffer_enabled only for languages that has the server registered.
-	autocmd User lsp_buffer_enabled call s:on_lsp_buffer_enabled()
+        au!
+        " call s:on_lsp_buffer_enabled only for languages that has the server registered.
+        autocmd User lsp_buffer_enabled call s:on_lsp_buffer_enabled()
     augroup END
 
     " Autocomplete maps
