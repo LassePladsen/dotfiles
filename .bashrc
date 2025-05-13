@@ -157,8 +157,10 @@ export WPH_REMOTES="dev,wp3,wp4,bastion,wafmaster,wph,tripletex,afk,avvir,kleins
 
 # fzf
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
-[ -f ~/.fzfrc ] && export FZF_DEFAULT_OPTS_FILE="$HOME/.fzfrc"
-# [ -f ~/.fzfrc ] && export FZF_COMPLETION_PATH_OPTS='--walker file,dir,follow,hidden' # add dirs to search
+if [ -f ~/.fzfrc ]; then
+    export FZF_DEFAULT_OPTS_FILE="$HOME/.fzfrc"
+    export FZF_COMPLETION_PATH_OPTS='--walker file,dir,follow,hidden' # add dirs to search
+fi
 # Advanced customization of fzf options via _fzf_comprun function
 # - The first argument to the function is the name of the command.
 # - You should make sure to pass the rest of the arguments ($@) to fzf.
@@ -248,3 +250,4 @@ function gr() {
 if command -v zoxide >/dev/null 2>&1; then 
     eval "$(zoxide init --cmd cd bash)"
 fi
+. "$HOME/.cargo/env"
