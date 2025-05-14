@@ -251,4 +251,4 @@ function gr() {
 if command -v zoxide >/dev/null 2>&1; then 
     eval "$(zoxide init --cmd cd bash)"
 fi
-. "$HOME/.cargo/env"
+[[ -f "$HOME/.cargo/env" ]] &&  . "$HOME/.cargo/env"
