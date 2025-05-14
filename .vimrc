@@ -65,6 +65,9 @@ let netrw_liststyle=3 " tree view
 let mapleader = " "
 let localmapleader = " "
 
+" toggle line numbers
+nnoremap <M-c> :set nu! rnu!<CR>
+
 " stop small delete 
 nnoremap x "_x
 
