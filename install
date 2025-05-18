@@ -10,15 +10,7 @@ if [[ -n $1 && $1 = "-f" ]]; then
     force=1
 fi
 
-# use stow if installed, fallback to manually creating symlinks
-if command -v nvim >/dev/null 2>&1; then 
-    stow . -t ~ --adopt &&
-    git restore . &&
-else
-    make_symlinks
-done
-
-make_symlinks() 
+function make_symlinks() {
     for target in "${symlink_targets[@]}"; do
         echo "ln -s $repo_path/$target ~/$target"
         ln -s ./$target ~/$target > /dev/null 2>&1
@@ -36,4 +28,13 @@ make_symlinks()
             ln -s ./$target ~/$target > /dev/null 2>&1
         fi
     done
+}
+
+# use stow if installed, else fallback to manually creating symlinks
+if command -v stow >/dev/null 2>&1; then 
+    stow . -t ~ --adopt &&
+    git restore .
+else
+    make_symlinks
+fi
 
