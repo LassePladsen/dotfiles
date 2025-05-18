@@ -15,7 +15,7 @@ stow . -t ~ --adopt &&
 git restore . &&
 ~/.fzf/install
 ```
-### https (recommended)
+### https
 ```bash
 git clone --recursive https://github.com/LassePladsen/dotfiles.git ~/repos/dotfiles &&
 cd ~/repos/dotfiles &&
@@ -32,7 +32,7 @@ cd ~/repos/dotfiles &&
 ~/repos/dotfiles/scripts/make-symlinks.sh &&
 ~/.fzf/install
 ```
-### https (recommended)
+### https
 ```bash
 git clone --recursive https://github.com/LassePladsen/dotfiles.git ~/repos/dotfiles &&
 cd ~/repos/dotfiles &&
