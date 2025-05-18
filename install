@@ -1,5 +1,5 @@
 #!/usr/bin/bash
-symlink_targets=(.bashrc .vimrc .inputrc .fzfrc .tmux.conf .fzf .tmux .config scripts)
+symlink_targets=(.bashrc .vimrc .inputrc .fzfrc .tmux.conf .fzf .tmux .config)
 
 repo_path=$( cd "$(dirname "${BASH_SOURCE[0]}")" ; pwd -P )
 cd $repo_path
