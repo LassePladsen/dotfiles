@@ -29,9 +29,8 @@ make_symlinks() {
         if [[ $force -ne 0 || $answer = 'y' ]]; then
             mkdir -p ~/backup/dotfiles
 
-            # Move to backup. Dirs handled a bit differently
-            if [ -d $target ]; then
-
+            # Move to backup. Nested dirs handled a bit differently
+            if [[ $target == *"/"* ]]; then
                 mv ~/$target ~/backup/dotfiles/ # > /dev/null 2>&1
             else
                 mv ~/$target ~/backup/dotfiles/$target #> /dev/null 2>&1
