@@ -24,7 +24,7 @@ function make_symlinks() {
         # Replace if they said yes or used -f flag
         if [[ $force -ne 0 || $answer = 'y' ]]; then
             # mv ~/$target ~/$target.bkp # dont do backup...
-            rm ~/$target
+            rm -rf ~/$target
             ln -s ./$target ~/$target > /dev/null 2>&1
         fi
     done
