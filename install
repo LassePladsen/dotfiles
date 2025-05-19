@@ -4,7 +4,7 @@ symlink_targets=(.bashrc .vimrc .inputrc .fzfrc .tmux.conf .fzf .tmux .config/nv
 repo_path=$( cd "$(dirname "${BASH_SOURCE[0]}")" ; pwd -P )
 cd $repo_path
 
-# -f force flag: dont ask to replace files 
+# -f force flag: dont ask to backup & replace files
 force=0
 if [[ -n $1 && $1 = "-f" ]]; then
     force=1
@@ -23,8 +23,7 @@ function make_symlinks() {
 
         # Replace if they said yes or used -f flag
         if [[ $force -ne 0 || $answer = 'y' ]]; then
-            # mv ~/$target ~/$target.bkp # dont do backup...
-            rm -rf ~/$target
+            mv ~/$target ~/backup/dotfiles/$target.bkp # dont do backup...
             ln -s ./$target ~/$target > /dev/null 2>&1
         fi
     done
