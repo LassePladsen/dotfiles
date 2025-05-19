@@ -23,7 +23,8 @@ function make_symlinks() {
 
         # Replace if they said yes or used -f flag
         if [[ $force -ne 0 || $answer = 'y' ]]; then
-            mv ~/$target ~/backup/dotfiles/$target.bkp # dont do backup...
+            mkdir -p ~/backup/dotfiles
+            mv ~/$target ~/backup/dotfiles/$target.bkp 
             ln -s ./$target ~/$target > /dev/null 2>&1
         fi
     done
