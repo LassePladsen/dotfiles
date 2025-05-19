@@ -13,7 +13,7 @@ fi
 function make_symlinks() {
     for target in "${symlink_targets[@]}"; do
         echo "ln -s $repo_path/$target ~/$target"
-        ln -s ./$target ~/$target > /dev/null 2>&1
+        ln -s $repo_path/$target ~/$target > /dev/null 2>&1
 
         # If failed (file exists), ask to replace it after backup, unless force flag
         if [[  $? -ne 0 && $force -eq 0 ]]; then
@@ -25,7 +25,7 @@ function make_symlinks() {
         if [[ $force -ne 0 || $answer = 'y' ]]; then
             mkdir -p ~/backup/dotfiles
             mv ~/$target ~/backup/dotfiles/$target.bkp > /dev/null 2>&1
-            ln -s ./$target ~/$target > /dev/null 2>&1
+            ln -s $repo_path/$target ~/$target > /dev/null 2>&1
         fi
     done
 }
