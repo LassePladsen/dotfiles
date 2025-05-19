@@ -9,43 +9,57 @@ force=0
 
 # Parse command line options
 while getopts "f" opt; do
-  case $opt in
-    f) force=1 ;;
-  esac
+    case $opt in
+        f) force=1 ;;
+    esac
 done
+
+make_symlink()  {
+    # Create symlink. Nested dirs handled a bit differently
+    if [[ $target == *"/"* ]]; then
+        echo "ln -s $repo_path/$target '$(dirname ~/$target)'"
+        ln -s $repo_path/$target "$(dirname ~/$target)"  > /dev/null 2>&1
+    else
+        echo "ln -s $repo_path/$target ~/$target"
+        ln -s $repo_path/$target ~/$target  > /dev/null 2>&1
+    fi
+}
+
+do_backup() {
+    mkdir -p ~/backup/dotfiles > /dev/null 2>&1
+    rm -rf ~/backup/dotfiles/$target # > /dev/null 2>&1 # delete old backup just incase
+    mv ~/$target ~/backup/dotfiles/ # > /dev/null 2>&1
+}
 
 make_symlinks() {
     for target in "${symlink_targets[@]}"; do
-        echo "ln -s $repo_path/$target ~/$target"
-        ln -s $repo_path/$target ~/$target > /dev/null 2>&1
+        # If target exists, ask to replace it after backup, unless force flag
+        if [[ -a ~/$target ]]; then
 
-        # If failed (file exists), ask to replace it after backup, unless force flag
-        if [[  $? -ne 0 && $force -eq 0 ]]; then
-            read -p "$target already exists... overwrite it? (y/n) " -s -n 1 answer # wait for input, read one character in silent mode (dont echo typed chars)
-            echo ""
-        fi
-
-        # Replace if they said yes or used -f flag
-        if [[ $force -ne 0 || $answer = 'y' ]]; then
-            # Move to backup 
-            mkdir -p ~/backup/dotfiles
-            mv ~/$target ~/backup/dotfiles/ # > /dev/null 2>&1
-
-            # Create symlink. Nested dirs handled a bit differently
-            if [[ $target == *"/"* ]]; then
-                ln -s $repo_path/$target "$(dirname ~/$target)" # > /dev/null 2>&1
-            else
-                ln -s $repo_path/$target ~/$target # > /dev/null 2>&1
+            # Unless they used the -f force flag, ask to backup and replace it
+            if [[ $force -eq 0 ]];then
+                # wait for input, read one character in silent mode (dont echo typed chars)
+                read -p "$target already exists... back it up and replace it? (y/n) " -s -n 1 answer 
+                echo ""
             fi
+
+            # Backup and replace if they said yes or used the -f flag
+            if [[ $force -ne 0 || $answer = 'y' ]]; then
+                do_backup
+                make_symlink
+            fi
+        else
+            make_symlink
         fi
     done
 }
 
 # use stow if installed, else fallback to manually creating symlinks
 if command -v stow >/dev/null 2>&1; then 
-    git stash
-    stow . -t ~ --adopt &&
-    git restore .
+    make_symlinks
+    # git stash && 
+    #     stow . -t ~ --adopt &&
+    #     git restore .
 else
     make_symlinks
 fi
