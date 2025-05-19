@@ -32,11 +32,11 @@ make_symlinks() {
             # Move to backup. Dirs handled a bit differently
             if [ -d $target ]; then
 
-                mv ~/$target ~/backup/dotfiles/# > /dev/null 2>&1
+                mv ~/$target ~/backup/dotfiles/ # > /dev/null 2>&1
             else
                 mv ~/$target ~/backup/dotfiles/$target #> /dev/null 2>&1
             fi
-            ln -s $repo_path/$target ~/$target# > /dev/null 2>&1
+            ln -s $repo_path/$target ~/$target # > /dev/null 2>&1
         fi
     done
 }
