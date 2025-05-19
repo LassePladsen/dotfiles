@@ -10,7 +10,7 @@ if [[ -n $1 && $1 = "-f" ]]; then
     force=1
 fi
 
-function make_symlinks() {
+make_symlinks() {
     for target in "${symlink_targets[@]}"; do
         echo "ln -s $repo_path/$target ~/$target"
         ln -s $repo_path/$target ~/$target > /dev/null 2>&1
@@ -32,6 +32,7 @@ function make_symlinks() {
 
 # use stow if installed, else fallback to manually creating symlinks
 if command -v stow >/dev/null 2>&1; then 
+    git stash
     stow . -t ~ --adopt &&
     git restore .
 else

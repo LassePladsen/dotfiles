@@ -134,10 +134,10 @@ fi
 export OLD_PS1=$PS1
 # export PS1='\[\e]0;\u@\h: \w\a\]${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\[\033[01;31m\]$(__git_ps1)\[\e[m\]\$ '
 
-function parse_git_dirty {
+parse_git_dirty() {
   [[ $(git status --porcelain 2> /dev/null) ]] && echo "*"
 }
-function parse_git_branch {
+parse_git_branch() {
   git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e "s/* \(.*\)/ (\1$(parse_git_dirty))/"
 }
 # export PS1='\[\e]0;\u@\h: \w\a\]${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\[\033[01;31m\]$(parse_git_branch)\[\e[m\]\n\$ ' # remove \n to remove new line after path
@@ -224,25 +224,25 @@ alias glg="git log --graph"
 alias gc="git commit -m"
 alias gca="git commit --amend"
 # Think "git previous". does git show with input parameter of the target number commit back from HEAD. Defaults to 0, and accepts arguments if and only if the target number is given.
-function gp() {
+gp() {
     target=${1-0} # if arg 1 not given; default to 0.
     shift 1
     git show HEAD~$target $@
 }
 # Git diff with fuzzy file search
-function gd() {
+gd() {
     pattern=$1
     shift 1
     git diff "*$pattern*" $@
 }
 # Git add with fuzzy file search
-function ga() {
+ga() {
     pattern=$1
     shift 1
     git add "*$pattern*" $@
 }
 # Git restore with fuzzy file search
-function gr() {
+gr() {
     pattern=$1
     shift 1
     git restore "*$pattern*" $@
