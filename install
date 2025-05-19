@@ -27,15 +27,16 @@ make_symlinks() {
 
         # Replace if they said yes or used -f flag
         if [[ $force -ne 0 || $answer = 'y' ]]; then
+            # Move to backup 
             mkdir -p ~/backup/dotfiles
+            mv ~/$target ~/backup/dotfiles/ # > /dev/null 2>&1
 
-            # Move to backup. Nested dirs handled a bit differently
+            # Create symlink. Nested dirs handled a bit differently
             if [[ $target == *"/"* ]]; then
-                mv ~/$target ~/backup/dotfiles/ # > /dev/null 2>&1
+                ln -s $repo_path/$target "$(dirname ~/$target)" # > /dev/null 2>&1
             else
-                mv ~/$target ~/backup/dotfiles/$target #> /dev/null 2>&1
+                ln -s $repo_path/$target ~/$target # > /dev/null 2>&1
             fi
-            ln -s $repo_path/$target ~/$target # > /dev/null 2>&1
         fi
     done
 }
