@@ -1,14 +1,18 @@
 #!/bin/bash
-symlink_targets=(.bashrc .vimrc .inputrc .fzfrc .tmux.conf .fzf .tmux .config/nvim)
+symlink_targets=(".bashrc" ".vimrc" ".inputrc" ".fzfrc" ".tmux.conf" ".fzf" ".tmux" ".config/nvim")
 
 repo_path=$( cd "$(dirname "${BASH_SOURCE[0]}")" ; pwd -P )
 cd $repo_path
 
 # -f force flag: dont ask to backup & replace files
 force=0
-if [[ -n $1 && $1 = "-f" ]]; then
-    force=1
-fi
+
+# Parse command line options
+while getopts "f" opt; do
+  case $opt in
+    f) force=1 ;;
+  esac
+done
 
 make_symlinks() {
     for target in "${symlink_targets[@]}"; do
