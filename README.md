@@ -4,7 +4,7 @@ My dotfiles for linux and some other useful stuff, managed my stow (symlink mana
 ```bash
 sudo apt install git stow
 ```
-Stow is a soft dependency, as the install script will attempt to manually make the necessary symlinks, however stow is still recommended since its more robust and easy to use and maintan. 
+Stow is only a soft dependency, as the install script will attempt to manually make the necessary symlinks, however stow is still recommended since its more robust and easy to use and maintan. 
 
 # Installation
 ## ssh (recommended)
