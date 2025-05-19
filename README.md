@@ -1,4 +1,4 @@
-My dotfiles for linux and some other usefull stuff, managed my stow (symlink manager) and git.
+My dotfiles for linux and some other useful stuff, managed my stow (symlink manager) and git.
 
 # Dependencies
 ```bash
