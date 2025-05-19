@@ -10,12 +10,12 @@ Stow is a soft dependency, as the install script will manually make the necessar
 ## ssh (recommended)
 ```bash
 git clone --recursive git@github.com:LassePladsen/dotfiles.git ~/repos/dotfiles &&
-~/repos/dotfiles/install &&
+~/repos/dotfiles/install 
 ~/.fzf/install
 ```
 ## https
 ```bash
 git clone --recursive https://github.com/LassePladsen/dotfiles.git ~/repos/dotfiles &&
-~/repos/dotfiles/install &&
+~/repos/dotfiles/install
 ~/.fzf/install
 ```
