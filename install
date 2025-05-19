@@ -36,7 +36,7 @@ make_symlinks() {
             else
                 mv ~/$target ~/backup/dotfiles/$target #> /dev/null 2>&1
             fi
-            ln -s $repo_path/$target ~/$target > /dev/null 2>&1
+            ln -s $repo_path/$target ~/$target# > /dev/null 2>&1
         fi
     done
 }
