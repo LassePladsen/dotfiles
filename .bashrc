@@ -255,6 +255,8 @@ fi
 
 # vi motions in bash...
 # set -o vi
+
+# make command edit (ctrl-x + ctrl-e) not auto execute on quit
 _edit_wo_executing() {
     local editor="${EDITOR:-nano}"
     tmpf="$(mktemp)"
