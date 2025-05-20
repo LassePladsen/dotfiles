@@ -33,7 +33,6 @@ set updatetime=250
 
 set ignorecase
 set smartcase " only case insensitive when searching with only lowercase. using upper case makes it case sensitive
-set signcolumn=auto:2
 
 set undofile
 if g:remoteSession
@@ -177,7 +176,7 @@ nnoremap <leader># :execute "normal! aLP " . strftime("%Y-%m-%d")<CR>
 
 " Only for regular vim:
 if !has('nvim')
-    set signcolumn=2
+    set signcolumn=yes
 
     " VIM EXCLUSIVE REMAPS
     " File explorer in current parent dir on -
