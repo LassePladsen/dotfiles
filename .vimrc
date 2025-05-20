@@ -134,7 +134,7 @@ vnoremap <leader>d "+d
 nnoremap <leader>D "+d$
 
 " Do search for word you're on
-" Disable:  this is default on *
+" Disable:  this is default on *. upwards is #
 " nnoremap <leader>/ :/\<<C-r><C-w>\><enter>
 
 " Start replacing word you're on
