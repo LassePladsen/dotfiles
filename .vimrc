@@ -1,4 +1,4 @@
-let g:remoteSession = ($STY == "") " For some settings that should not activate on remotes (ssh)
+let g:remoteSession = ($SSH_CLIENT != "") " For some settings that should not activate on remotes (ssh)
 
 """ SETTINGS 
 set mouse=a
@@ -33,7 +33,7 @@ set updatetime=250
 
 set ignorecase
 set smartcase " only case insensitive when searching with only lowercase. using upper case makes it case sensitive
-set signcolumn=yes
+set signcolumn=auto:2
 
 set undofile
 if g:remoteSession
@@ -177,6 +177,8 @@ nnoremap <leader># :execute "normal! aLP " . strftime("%Y-%m-%d")<CR>
 
 " Only for regular vim:
 if !has('nvim')
+    set signcolumn=2
+
     " VIM EXCLUSIVE REMAPS
     " File explorer in current parent dir on -
     nnoremap - :Ex<CR>
