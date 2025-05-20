@@ -44,6 +44,9 @@ endif
 set splitright
 set splitbelow
 
+" auto change dir to current file
+set autochdir
+
 " display of certain whitespaces chars
 " set list
 
