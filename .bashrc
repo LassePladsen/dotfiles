@@ -131,6 +131,10 @@ if [ -d $HOME/.pyenv ]; then
     eval "$(pyenv init -)"  
 fi
 
+
+
+
+############# CUSTOM
 export OLD_PS1=$PS1
 # export PS1='\[\e]0;\u@\h: \w\a\]${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\[\033[01;31m\]$(__git_ps1)\[\e[m\]\$ '
 
@@ -142,6 +146,12 @@ parse_git_branch() {
 }
 # export PS1='\[\e]0;\u@\h: \w\a\]${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\[\033[01;31m\]$(parse_git_branch)\[\e[m\]\n\$ ' # remove \n to remove new line after path
 export PS1='\[\e]0;\u@\h: \w\a\]${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\[\033[01;31m\]$(parse_git_branch)\[\033[00m\]\n\$ ' # claude version claiming to fix potential problems
+
+# Returns 1 if command exists
+cmd_exists() {
+    command -v $1 >/dev/null 2>&1
+    return $?
+}
 
 # Stuff for react native android dev
 export JAVA_HOME=/usr/lib/jvm/jdk-23.0.1
@@ -184,7 +194,7 @@ export PATH="$PATH:$HOME/.cargo/bin/"
 export PATH="$PATH:$HOME/go/bin/"
 
 # only if nvim exists
-if command -v nvim >/dev/null 2>&1; then 
+if cmd_exists nvim; then 
     # Default editor. Use nvim if installed, else vim if installed
     export EDITOR="nvim"
 
@@ -194,7 +204,7 @@ if command -v nvim >/dev/null 2>&1; then
 
 # Command for man help pages. Use nvim if installed, else vim if installed
     export MANPAGER="nvim +Man!"
-elif command -v vim >/dev/null 2>&1; then 
+elif cmd_exists vim; then 
     export EDITOR="vim"
     export MANPAGER="vim -M +MANPAGER - "
 fi
@@ -248,9 +258,8 @@ gr() {
     git restore "*$pattern*" $@
 }
 
-if command -v zoxide >/dev/null 2>&1; then 
-    eval "$(zoxide init --cmd cd bash)"
-fi
+cmd_exists zoxide && eval "$(zoxide init --cmd cd bash)"
+
 [[ -f "$HOME/.cargo/env" ]] &&  . "$HOME/.cargo/env"
 
 # vi motions in bash...
@@ -269,3 +278,7 @@ _edit_wo_executing() {
 
 bind -x '"\C-x\C-e":_edit_wo_executing'
 
+# if cmd_exists eza; then
+#     alias ls='eza --icons=always --group-directories-first'
+#     alias ll='eza -laah --icons=always --group-directories-first'
+# fi
