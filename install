@@ -15,18 +15,12 @@ while getopts "f" opt; do
 done
 
 make_symlink()  {
-    # Create symlink. Nested dirs handled a bit differently
-    if [[ $target == *"/"* ]]; then
-        echo "ln -s $repo_path/$target '$(dirname ~/$target)'"
-        ln -s $repo_path/$target "$(dirname ~/$target)"  > /dev/null 2>&1
-    else
-        echo "ln -s $repo_path/$target ~/$target"
-        ln -s $repo_path/$target ~/$target  > /dev/null 2>&1
-    fi
+    echo "ln -s $repo_path/$target ~/"
+    ln -s $repo_path/$target ~ >/dev/null 2>&1
 }
 
 do_backup() {
-    mkdir -p ~/backup/dotfiles > /dev/null 2>&1
+    mkdir -p ~/backup/dotfiles >/dev/null 2>&1
     rm -rf ~/backup/dotfiles/$target # > /dev/null 2>&1 # delete old backup just incase
     mv ~/$target ~/backup/dotfiles/ # > /dev/null 2>&1
 }

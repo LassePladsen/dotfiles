@@ -258,6 +258,8 @@ gr() {
     git restore "*$pattern*" $@
 }
 
+export PATH="$PATH:$HOME/.local/bin/:$HOME/repos/dotfiles/.local/bin"
+
 cmd_exists zoxide && eval "$(zoxide init --cmd cd bash)"
 
 [[ -f "$HOME/.cargo/env" ]] &&  . "$HOME/.cargo/env"
