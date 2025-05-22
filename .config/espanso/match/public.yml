@@ -30,5 +30,9 @@ matches:
         type: date
         params:
           format: "LP %Y-%m-%d"
+  # Print markdown code triple ````
+  - trigger: ":code:"
+    # replace: "```\n```"
+    replace: "\u0060\u0060\u0060$|$\n\n\u0060\u0060\u0060"
 
   # And much more! For more information, visit the docs: https://espanso.org/docs/
