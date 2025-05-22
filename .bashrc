@@ -187,6 +187,9 @@ _fzf_comprun() {
   esac
 }
 
+# keyboard repeat delay and rate
+cmd_exists xset && xset r rate 200 33
+
 # Cargo (Rust) stuff
 export PATH="$PATH:$HOME/.cargo/bin/"
 
