@@ -51,8 +51,8 @@ make_symlinks() {
 # use stow if installed, else fallback to manually creating symlinks
 if command -v stow >/dev/null 2>&1; then 
     git stash && 
-        stow . -t ~ --adopt &&
-        git restore .
+        stow . -t ~ --adopt #&&
+        ##git restore .
 else
     make_symlinks
 fi
