@@ -30,6 +30,7 @@ matches:
         type: date
         params:
           format: "LP %Y-%m-%d"
+
   # Print markdown code triple ````
   - trigger: ":code:"
     # replace: "```\n```"
