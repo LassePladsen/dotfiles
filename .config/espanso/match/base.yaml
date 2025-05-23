@@ -23,7 +23,7 @@ matches:
           format: "%Y-%m-%d"
 
   # Print comment signature with date
-  - trigger: ":lp:"
+  - triggers: [":lp:", ":signature:"]
     replace: "{{signature}}"
     vars:
       - name: signature
