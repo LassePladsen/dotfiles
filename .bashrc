@@ -132,39 +132,13 @@ if [ -d $HOME/.pyenv ]; then
 fi
 
 
-
-
-############# CUSTOM
-export OLD_PS1=$PS1
-# export PS1='\[\e]0;\u@\h: \w\a\]${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\[\033[01;31m\]$(__git_ps1)\[\e[m\]\$ '
-
-parse_git_dirty() {
-  [[ $(git status --porcelain 2> /dev/null) ]] && echo "*"
-}
-parse_git_branch() {
-  git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e "s/* \(.*\)/ (\1$(parse_git_dirty))/"
-}
-# export PS1='\[\e]0;\u@\h: \w\a\]${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\[\033[01;31m\]$(parse_git_branch)\[\e[m\]\n\$ ' # remove \n to remove new line after path
-export PS1='\[\e]0;\u@\h: \w\a\]${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\[\033[01;31m\]$(parse_git_branch)\[\033[00m\]\n\$ ' # claude version claiming to fix potential problems
-
+############# CUSTOM #####################
+### ALIAS AND FUNCTIONS ###
 # Returns 1 if command exists
 cmd_exists() {
     command -v $1 >/dev/null 2>&1
     return $?
 }
-
-# Stuff for react native android dev
-export JAVA_HOME=/usr/lib/jvm/jdk-23.0.1
-
-export ANDROID_HOME=$HOME/Android/Sdk
-export PATH=$PATH:$ANDROID_HOME/emulator
-export PATH=$PATH:$ANDROID_HOME/platform-tools
-
-# Nvim
-export PATH="$PATH:/opt/nvim-linux64/bin:$HOME/opt/nvim-linux64/bin:/opt/nvim/bin:$HOME/opt/nvim/bin"
-
-# Remote list for scripts
-export WPH_REMOTES="dev,wp3,wp4,bastion,wafmaster,wph,tripletex,afk,avvir,kleins,krydra,upk,bfkstats,flightpark,entercard"
 
 # fzf
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
@@ -172,6 +146,7 @@ if [ -f ~/.fzfrc ]; then
     export FZF_DEFAULT_OPTS_FILE="$HOME/.fzfrc"
     export FZF_COMPLETION_PATH_OPTS='--walker file,dir,follow,hidden' # add dirs to search
 fi
+
 # Advanced customization of fzf options via _fzf_comprun function
 # - The first argument to the function is the name of the command.
 # - You should make sure to pass the rest of the arguments ($@) to fzf.
@@ -187,36 +162,11 @@ _fzf_comprun() {
   esac
 }
 
-# keyboard repeat delay and rate
-cmd_exists xset && xset r rate 200 33
-
-# Cargo (Rust) stuff
-export PATH="$PATH:$HOME/.cargo/bin/"
-
-# go stuff
-export PATH="$PATH:$HOME/go/bin/"
-
-# only if nvim exists
-if cmd_exists nvim; then 
-    # Default editor. Use nvim if installed, else vim if installed
-    export EDITOR="nvim"
-
-    # Vim alias.. yolo
-    alias vim="nvim"
-    alias vvim="/usr/bin/vim"
-
-# Command for man help pages. Use nvim if installed, else vim if installed
-    export MANPAGER="nvim +Man!"
-elif cmd_exists vim; then 
-    export EDITOR="vim"
-    export MANPAGER="vim -M +MANPAGER - "
-fi
-
 #### ALIASES
 alias ffind="find -type f -name "
 alias lg="lazygit"
 
-# project aliases
+# projects 
 alias {fp,flightpark}="cd ~/work/local/flightpark/"
 alias fpapp="cd ~/work/local/flightpark/flightparkapp/"
 alias nsb="cd ~/work/local/nsb/"
@@ -260,15 +210,57 @@ gr() {
     shift 1
     git restore "*$pattern*" $@
 }
+### END ALIAS AND FUNCTIONS ###
+parse_git_dirty() {
+  [[ $(git status --porcelain 2> /dev/null) ]] && echo "*"
+}
+parse_git_branch() {
+  git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e "s/* \(.*\)/ (\1$(parse_git_dirty))/"
+}
 
+
+### PATHS AND ENVIRONMENT VARIABLES ### 
+export OLD_PS1=$PS1
+# export PS1='\[\e]0;\u@\h: \w\a\]${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\[\033[01;31m\]$(__git_ps1)\[\e[m\]\$ '
+# export PS1='\[\e]0;\u@\h: \w\a\]${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\[\033[01;31m\]$(parse_git_branch)\[\e[m\]\n\$ ' # remove \n to remove new line after path
+export PS1='\[\e]0;\u@\h: \w\a\]${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\[\033[01;31m\]$(parse_git_branch)\[\033[00m\]\n\$ ' # claude version claiming to fix potential problems
+
+export PATH="$PATH:/opt/nvim-linux64/bin:$HOME/opt/nvim-linux64/bin:/opt/nvim/bin:$HOME/opt/nvim/bin"
+export PATH="$PATH:$HOME/.cargo/bin/"
 export PATH="$PATH:$HOME/.local/bin/:$HOME/repos/dotfiles/.local/bin"
+export PATH="$PATH:$HOME/go/bin/"
 
+# Stuff for react native android dev
+export JAVA_HOME=/usr/lib/jvm/jdk-23.0.1
+export ANDROID_HOME=$HOME/Android/Sdk
+export PATH=$PATH:$ANDROID_HOME/emulator
+export PATH=$PATH:$ANDROID_HOME/platform-tools
+
+# Remote list for scripts
+export WPH_REMOTES="dev,wp3,wp4,bastion,wafmaster,wph,tripletex,afk,avvir,kleins,krydra,upk,bfkstats,flightpark,entercard"
+
+
+# only if nvim exists
+if cmd_exists nvim; then 
+    # Default editor. Use nvim if installed, else vim if installed
+    export EDITOR="nvim"
+
+    # Vim alias.. yolo
+    alias vim="nvim"
+    alias vvim="/usr/bin/vim"
+
+# Command for man help pages. Use nvim if installed, else vim if installed
+    export MANPAGER="nvim +Man!"
+elif cmd_exists vim; then 
+    export EDITOR="vim"
+    export MANPAGER="vim -M +MANPAGER - "
+fi
+### END PATHS ### 
+
+### OPTIONS ###
+# set -o vi # vi motions in bash...
+cmd_exists xset && xset r rate 200 33 # keyboard repeat delay and rate
 cmd_exists zoxide && eval "$(zoxide init --cmd cd bash)"
-
-[[ -f "$HOME/.cargo/env" ]] &&  . "$HOME/.cargo/env"
-
-# vi motions in bash...
-# set -o vi
 
 # make command edit (ctrl-x + ctrl-e) not auto execute on quit
 _edit_wo_executing() {
@@ -287,3 +279,7 @@ bind -x '"\C-x\C-e":_edit_wo_executing'
 #     alias ls='eza --icons=always --group-directories-first'
 #     alias ll='eza -laah --icons=always --group-directories-first'
 # fi
+### END OPTIONS ###
+
+
+[[ -f "$HOME/.cargo/env" ]] &&  . "$HOME/.cargo/env"
