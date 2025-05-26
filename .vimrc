@@ -73,8 +73,9 @@ endif
 let mapleader = " "
 let localmapleader = " "
 
-" toggle line numbers
-nnoremap <M-c> :set nu! rnu!<CR>
+" toggle line numbers on Alt-c (NB: default vim in gnome terminal cant
+" differenciate escape-c to alt-c ...)
+nnoremap <Esc>c :set nu! rnu!<CR>
 
 " stop small delete 
 nnoremap x "_x
