@@ -14,7 +14,7 @@ matches:
   # But matches can also be dynamic:
 
   # Print the current date
-  - trigger: ":date:"
+  - regex: "(?i):date:"
     replace: "{{mydate}}"
     vars:
       - name: mydate
@@ -23,7 +23,7 @@ matches:
           format: "%Y-%m-%d"
 
   # Print comment signature with date
-  - triggers: [":lp:", ":signature:"]
+  - regex: "(?i):lp:"
     replace: "{{signature}}"
     vars:
       - name: signature
