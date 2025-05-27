@@ -212,7 +212,6 @@ if !has('nvim')
     Plug 'bkad/CamelCaseMotion'
     Plug 'machakann/vim-highlightedyank'
     Plug 'jiangmiao/auto-pairs'
-    Plug 'tpope/vim-commentary'
     Plug 'itchyny/lightline.vim'
     Plug 'phanviet/vim-monokai-pro'
     " Only load vimcomplete if Vim version >= 9.1.0646
