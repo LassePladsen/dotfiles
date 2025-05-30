@@ -174,10 +174,6 @@ alias {vipps,woo-vipps}="cd ~/work/local/sites/lassevippsdev/wp-content/plugins/
 alias {ea,eaccounting}="cd ~/work/local/tripletex/eaccounting/"
 alias {tt,tripletex}="cd ~/work/local/tripletex/"
 alias {nvimhome,homenvim,nvimconf,nvimplugins}="cd ~/.config/nvim/lua/plugins/"
-# Home dir git alias
-# alias {dotfiles,dot}='/usr/bin/git --git-dir=$HOME/repos/dotfiles.git --work-tree=$HOME -C $HOME'
-alias {dotfiles,dot}='/usr/bin/git -C ~/repos/dotfiles'
-alias {dotnvim,dot-nvim}='/usr/bin/git -C ~/.config/nvim'
 # git aliases and functions
 alias gs="git status"
 alias gss='git status -s -b' # git status short with branch
@@ -186,6 +182,17 @@ alias gls="git log --oneline" # think "git log short"
 alias glg="git log --graph"
 alias gc="git commit -m"
 alias gca="git commit --amend"
+# Home dir git alias
+# alias {dotfiles,dot}='/usr/bin/git --git-dir=$HOME/repos/dotfiles.git --work-tree=$HOME -C $HOME'
+alias {dotfiles,dot}='/usr/bin/git -C ~/repos/dotfiles'
+alias {dotnvim,dot-nvim}='/usr/bin/git -C ~/.config/nvim'
+alias ds='/usr/bin/git -C ~/repos/dotfiles status'
+alias dss='/usr/bin/git -C ~/repos/dotfiles status -s -b'
+alias dl='/usr/bin/git -C ~/repos/dotfiles log'
+alias dls="/usr/bin/git -C ~/repos/dotfiles log --oneline" # think "git log short"
+alias dlg="/usr/bin/git -C ~/repos/dotfiles log --graph"
+alias dc="/usr/bin/git -C ~/repos/dotfiles commit -m"
+alias dca="/usr/bin/git -C ~/repos/dotfiles commit --amend"
 # Think "git previous". does git show with input parameter of the target number commit back from HEAD. Defaults to 0, and accepts arguments if and only if the target number is given.
 gp() {
     target=${1-0} # if arg 1 not given; default to 0.
