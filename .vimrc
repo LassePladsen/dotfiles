@@ -80,8 +80,20 @@ nnoremap <Esc>c :set nu! rnu!<CR>
 " stop small delete 
 nnoremap x "_x
 
-" go to definition in new tab
-nnoremap <leader>gd <C-w><C-]><C-w>T
+" jump to start of root function/method. Now works for not only first column,
+" nice for react components
+function! JumpToRootFunction()
+    execute "normal! ?{\<CR>w99[{"
+endfunction
+nnoremap [[ :call JumpToRootFunction()<CR>
+nnoremap <leader>[ :call JumpToRootFunction()<CR>
+" Jump to the end of function
+nnoremap <leader>] :call JumpToRootFunction()<CR>%
+
+" read help on [[ -> scroll down to sections. Dont really use this
+nnoremap ][ /}<CR>b99]}
+nnoremap ]] j0[[%/{<CR>
+nnoremap [] k$][%?}<CR>
 
 " Save on ctrl s
 nnoremap <C-s> :w<enter>
