@@ -200,12 +200,11 @@ if !has('nvim')
     nnoremap <leader>sf :FZF<enter> 
     nnoremap <leader><leader> :Buffers<CR> 
     " grep current file
-    nnoremap <leader>sg :BLines<CR> 
+    nnoremap <leader>s/ :BLines<CR> 
     nnoremap <leader>sm :Marks<CR> 
     nnoremap <leader>sj :Jumps<CR> 
     nnoremap <leader>s. :History<CR> 
     nnoremap <leader>s: :History:<CR> 
-    nnoremap <leader>s/ :History/<CR> 
     nnoremap <leader>sc :Commits<CR> 
     " search keybindings/maps
     nnoremap <leader>sk :Maps<CR> 
