@@ -1,5 +1,5 @@
 #!/bin/bash
-symlink_targets=(".bashrc" ".vimrc" ".inputrc" ".fzfrc" ".tmux.conf" ".fzf" ".tmux" ".config/nvim" ".config/espanso")
+symlink_targets=(".bashrc" ".vimrc" ".inputrc" ".fzfrc" ".tmux.conf" ".fzf" ".tmux" ".config/nvim" ".config/espanso" ".config/devilspie2" ".gitignore_global")
 
 repo_path=$( cd "$(dirname "${BASH_SOURCE[0]}")" ; pwd -P )
 cd $repo_path
@@ -50,9 +50,9 @@ make_symlinks() {
 
 # use stow if installed, else fallback to manually creating symlinks
 if command -v stow >/dev/null 2>&1; then 
-    git stash && 
-        stow . -t ~ --adopt #&&
-        ##git restore .
+    # git stash 
+    stow . -t ~ --adopt
+    ##git restore .
 else
     make_symlinks
 fi

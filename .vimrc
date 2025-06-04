@@ -195,10 +195,18 @@ if !has('nvim')
     " File explorer in current parent dir on -
     nnoremap - :Ex<CR>
 
-    " FZF as fuzzy file finder
-    nnoremap <leader>sf :FZF<enter> 
-    " List buffers 
-    nnoremap <leader><leader> :buffers<CR>
+    " Fzf binds
+    nnoremap <leader>sf :FZF<enter> " file finder
+    nnoremap <leader><leader> :Buffers<CR> 
+    nnoremap <leader>sg :BLines<CR> " grep current file
+    nnoremap <leader>sm :Marks<CR> 
+    nnoremap <leader>sj :Jumps<CR> 
+    nnoremap <leader>s. :History<CR> 
+    nnoremap <leader>s: :History:<CR> 
+    nnoremap <leader>s/ :History/<CR> 
+    nnoremap <leader>sc :Commits<CR> 
+    nnoremap <leader>sk :Maps<CR> " search keybindings/maps
+    nnoremap <leader>sh :Helptags<CR> " search help
     " END REMAPS
 
     " plugin manager vim-plug
