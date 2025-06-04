@@ -196,17 +196,21 @@ if !has('nvim')
     nnoremap - :Ex<CR>
 
     " Fzf binds
-    nnoremap <leader>sf :FZF<enter> " file finder
+    " file finder
+    nnoremap <leader>sf :FZF<enter> 
     nnoremap <leader><leader> :Buffers<CR> 
-    nnoremap <leader>sg :BLines<CR> " grep current file
+    " grep current file
+    nnoremap <leader>sg :BLines<CR> 
     nnoremap <leader>sm :Marks<CR> 
     nnoremap <leader>sj :Jumps<CR> 
     nnoremap <leader>s. :History<CR> 
     nnoremap <leader>s: :History:<CR> 
     nnoremap <leader>s/ :History/<CR> 
     nnoremap <leader>sc :Commits<CR> 
-    nnoremap <leader>sk :Maps<CR> " search keybindings/maps
-    nnoremap <leader>sh :Helptags<CR> " search help
+    " search keybindings/maps
+    nnoremap <leader>sk :Maps<CR> 
+    " search help
+    nnoremap <leader>sh :Helptags<CR> 
     " END REMAPS
 
     " plugin manager vim-plug
