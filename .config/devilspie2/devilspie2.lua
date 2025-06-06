@@ -4,6 +4,7 @@ debug_print("Window: " .. get_window_name());
 
 local window_name = get_window_name()
 if (string.match(window_name, "Spotify")) then
+    set_viewport(1) -- left monitor
     pin_window() -- show on all workspaces
 end
 
