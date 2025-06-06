@@ -21,7 +21,7 @@ if (string.match(window_name, "Obsidian")) then
 end
 
 if (window_name == "Mozilla Thunderbird") then
-    set_viewport(2) -- move to right monitor
+    set_viewport(1) -- move to right monitor
     maximize()
     pin_window() -- show on all workspaces
 end
