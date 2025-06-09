@@ -339,6 +339,23 @@ runtime ftplugin/man.vim
 """ AUTOCOMMANDS
 " Set php commenstring from default /* */ to //
 autocmd FileType php setlocal commentstring=//\ %s
-"""END AUTOCOMMANDS
+""""END AUTOCOMMANDS
 
+""" DEBUGPRINT for filetypes
+function! DebugPrintLP()
+    let line = getline('.')
+    let word = expand('<cword>')
+    
+    echo 'filetype is ' . &filetype
+    if &filetype == 'php'
+        execute "normal! oerror_log('" . word . ": ' . print_r($" . word . ", true));"
+    elseif &filetype =~ '\v^(javascript|typescript|javascriptreact|typescriptreact)$'
+        execute "normal! oconsole.log('" . word . ": ', " . word . ");"
+    elseif &filetype == 'python'
+        execute "normal! oprint('" . word . ": ', " . word . ")"
+    else
+        echo "Debug print not supported for filetype: " . &filetype . ". Add it to your .vimrc!"
+    endif
+endfunction
 
+nnoremap <leader>ld :call DebugPrintLP()<CR>
