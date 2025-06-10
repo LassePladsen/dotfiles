@@ -22,7 +22,7 @@ end
 
 if (window_name == "Mozilla Thunderbird") then
     set_viewport(1) -- move to right monitor
-    maximize()
+    -- maximize()
     pin_window() -- show on all workspaces
 end
 
