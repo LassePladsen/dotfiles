@@ -31,15 +31,28 @@ matches:
         params:
           format: "LP %Y-%m-%d"
 
-  # Print markdown code triple ````
-  - regex: "(?i):code:"
-    # replace: "```\n```"
-    replace: "\u0060\u0060\u0060$|$\n\u0060\u0060\u0060"
-
   # Php error_log with print_r
   - triggers: 
     - ":print_r:"
     - ":print:"
     replace: "error_log(\"LP \" . print_r($|$, true));"
+
+  # Print markdown code triple ````
+  - regex: "(?i):code:"
+    replace: "\u0060\u0060\u0060$|$\n\u0060\u0060\u0060"
+
+  # alias shorthands for different types of markdown codeblocks
+  - regex: "(?i):sql:"
+    replace: "\u0060\u0060\u0060sql\n$|$\n\u0060\u0060\u0060"
+  - regex: "(?i):php:"
+    replace: "\u0060\u0060\u0060php\n$|$\n\u0060\u0060\u0060"
+  - regex: "(?i):js:"
+    replace: "\u0060\u0060\u0060js\n$|$\n\u0060\u0060\u0060"
+  - regex: "(?i):ts:"
+    replace: "\u0060\u0060\u0060ts\n$|$\n\u0060\u0060\u0060"
+  - regex: "(?i):html:"
+    replace: "\u0060\u0060\u0060html\n$|$\n\u0060\u0060\u0060"
+  - regex: "(?i):python:"
+    replace: "\u0060\u0060\u0060python\n$|$\n\u0060\u0060\u0060"
 
   # And much more! For more information, visit the docs: https://espanso.org/docs/
