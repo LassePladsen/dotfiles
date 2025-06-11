@@ -32,12 +32,14 @@ matches:
           format: "LP %Y-%m-%d"
 
   # Print markdown code triple ````
-  - trigger: ":code:"
+  - regex: "(?i):code:"
     # replace: "```\n```"
     replace: "\u0060\u0060\u0060$|$\n\u0060\u0060\u0060"
 
   # Php error_log with print_r
-  - trigger: ":print_r:"
+  - triggers: 
+    - ":print_r:"
+    - ":print:"
     replace: "error_log(\"LP \" . print_r($|$, true));"
 
   # And much more! For more information, visit the docs: https://espanso.org/docs/
