@@ -190,6 +190,108 @@ nnoremap <leader><C-a> ggVG
 
 " Outputs comment signature with date in unix format like: LP 2025-04-10
 nnoremap <leader># :execute "normal! aLP " . strftime("%Y-%m-%d")<CR>
+
+""" DEBUGPRINT for filetypes
+function! DebugPrintLP()
+    let line = getline('.')
+    let word = expand('<cword>')
+    
+    echo 'filetype is ' . &filetype
+    if &filetype == 'php'
+        execute "normal! oerror_log('" . word . ": ' . print_r($" . word . ", true));"
+    elseif &filetype =~ '\v^(javascript|typescript|javascriptreact|typescriptreact)$'
+        execute "normal! oconsole.log('" . word . ": ', " . word . ");"
+    elseif &filetype == 'python'
+        execute "normal! oprint('" . word . ": ', " . word . ")"
+    else
+        echo "Debug print not supported for filetype: " . &filetype . ". Add it to your .vimrc!"
+    endif
+endfunction
+
+nnoremap <leader>ld :call DebugPrintLP()<CR>
+
+" edits next file in rustlings (next number filename var4.rs -> var5.rs)
+" Remap + to edit the next numbered file in sequence
+nnoremap + :call EditNextNumberedFile()<CR>
+
+function! EditNextNumberedFile()
+    let current_file = expand('%:t')
+    let current_dir = expand('%:p:h')
+    let cwd = getcwd()
+    
+    " Extract the base name, number, and extension
+    let match_result = matchlist(current_file, '\(.*\)\(\d\+\)\.\(.*\)')
+    
+    if empty(match_result)
+        echo "Current file doesn't match pattern: name[number].extension"
+        return
+    endif
+    
+    let base_name = match_result[1]
+    let current_number = str2nr(match_result[2])
+    let extension = match_result[3]
+    
+    " Calculate next number and construct filename
+    let next_number = current_number + 1
+    let next_file = base_name . next_number . '.' . extension
+    let next_path = current_dir . '/' . next_file
+    
+    " Check if the next file exists
+    if filereadable(next_path)
+        execute 'edit ' . fnameescape(next_path)
+        echo "Editing: " . next_file
+    else
+        " File doesn't exist, try to find next directory
+        call EditNextDirectoryFile(extension)
+    endif
+endfunction
+
+function! EditNextDirectoryFile(extension)
+    let cwd = getcwd()
+    let current_dir = expand('%:p:h')
+    let current_dir_name = fnamemodify(current_dir, ':t')
+    
+    " Extract current directory number (e.g., "01" from "01_variables")
+    let dir_match = matchlist(current_dir_name, '^\(\d\+\)_\(.*\)')
+    
+    if empty(dir_match)
+        echo "Current directory doesn't match pattern: [number]_[name]"
+        return
+    endif
+    
+    let current_dir_num = str2nr(dir_match[1])
+    let next_dir_num = current_dir_num + 1
+    
+    " Get all directories in cwd that start with numbers
+    let dirs = glob(cwd . '/' . printf('%02d', next_dir_num) . '_*', 0, 1)
+    
+    if empty(dirs)
+        echo "No next directory found matching pattern: " . printf('%02d', next_dir_num) . "_*"
+        return
+    endif
+    
+    " Use the first matching directory
+    let next_dir = dirs[0]
+    let next_dir_name = fnamemodify(next_dir, ':t')
+    
+    " Extract step name from next directory (e.g., "loops" from "02_loops")
+    let next_dir_match = matchlist(next_dir_name, '^\d\+_\(.*\)')
+    
+    if empty(next_dir_match)
+        echo "Next directory doesn't match expected pattern"
+        return
+    endif
+    
+    let step_name = next_dir_match[1]
+    let next_file = step_name . '1.' . a:extension
+    let next_path = next_dir . '/' . next_file
+    
+    " Edit the next file
+    execute 'edit ' . fnameescape(next_path)
+    echo "Editing: " . next_dir_name . '/' . next_file
+endfunction
+
+nnoremap + :call EditNextNumberedFile()<CR>
 """ END REMAPS
 
 " Only for regular vim:
@@ -341,21 +443,3 @@ runtime ftplugin/man.vim
 autocmd FileType php setlocal commentstring=//\ %s
 """"END AUTOCOMMANDS
 
-""" DEBUGPRINT for filetypes
-function! DebugPrintLP()
-    let line = getline('.')
-    let word = expand('<cword>')
-    
-    echo 'filetype is ' . &filetype
-    if &filetype == 'php'
-        execute "normal! oerror_log('" . word . ": ' . print_r($" . word . ", true));"
-    elseif &filetype =~ '\v^(javascript|typescript|javascriptreact|typescriptreact)$'
-        execute "normal! oconsole.log('" . word . ": ', " . word . ");"
-    elseif &filetype == 'python'
-        execute "normal! oprint('" . word . ": ', " . word . ")"
-    else
-        echo "Debug print not supported for filetype: " . &filetype . ". Add it to your .vimrc!"
-    endif
-endfunction
-
-nnoremap <leader>ld :call DebugPrintLP()<CR>
