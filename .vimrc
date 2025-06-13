@@ -212,7 +212,9 @@ nnoremap <leader>ld :call DebugPrintLP()<CR>
 
 " edits next file in rustlings (next number filename var4.rs -> var5.rs)
 " Remap + to edit the next numbered file in sequence
-nnoremap + :call EditNextNumberedFile()<CR>
+if expand('%:p') =~ '/rustlings/'
+    nnoremap + :call EditNextNumberedFile()<CR>
+endif
 
 function! EditNextNumberedFile()
     let current_file = expand('%:t')
@@ -290,8 +292,6 @@ function! EditNextDirectoryFile(extension)
     execute 'edit ' . fnameescape(next_path)
     echo "Editing: " . next_dir_name . '/' . next_file
 endfunction
-
-nnoremap + :call EditNextNumberedFile()<CR>
 """ END REMAPS
 
 " Only for regular vim:
@@ -442,4 +442,3 @@ runtime ftplugin/man.vim
 " Set php commenstring from default /* */ to //
 autocmd FileType php setlocal commentstring=//\ %s
 """"END AUTOCOMMANDS
-

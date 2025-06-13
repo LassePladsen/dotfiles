@@ -251,7 +251,6 @@ export WPH_REMOTES="dev,wp3,wp4,bastion,wafmaster,wph,tripletex,afk,avvir,kleins
 if cmd_exists nvim; then 
     # Default editor. Use nvim if installed, else vim if installed
     export EDITOR="nvim"
-
     # Vim alias.. yolo
     alias vim="nvim"
     alias vvim="/usr/bin/vim"
