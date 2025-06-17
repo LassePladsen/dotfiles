@@ -100,12 +100,12 @@ nnoremap ][ /}<CR>b99]}
 nnoremap ]] j0[[%/{<CR>
 nnoremap [] k$][%?}<CR>
 
-" Save on ctrl s
-nnoremap <C-s> :w<enter>
-
-" Enter normal mode and save on ctrl s
-inoremap <C-s> <ESC>:w<enter>
-vnoremap <C-s> <ESC>:w<enter>
+" " Save on ctrl s. Disabled becaused ctrl-s is freeze terminal... This can be
+" " disabled https://edmondscommerce.github.io/linux/prevent-ctrl-plus-s-freezing-your-terminal.html. 
+" nnoremap <C-s> :w<enter>
+" " Enter normal mode and save on ctrl s
+" inoremap <C-s> <ESC>:w<enter>
+" vnoremap <C-s> <ESC>:w<enter>
 
 " J (append below line to end of current line) keeps cursor at same position
 nnoremap J mzJ`z
