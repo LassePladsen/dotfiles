@@ -409,7 +409,7 @@ if !has('nvim')
         highlight lspReference guibg=darkgrey guifg=white
 
         " diagnostic higlight
-        let g:lsp_diagnostics_virtual_text_enabled = 0 " disable virtual text for diagnostics (only worked on warnings, seems like no way to enable only for errors)
+        " let g:lsp_diagnostics_virtual_text_enabled = 0 " disable virtual text for diagnostics (only worked on warnings, seems like no way to enable only for errors)
 
 
         " refer to doc to add more commands
