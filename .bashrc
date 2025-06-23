@@ -246,6 +246,8 @@ export PATH=$PATH:$ANDROID_HOME/platform-tools
 # Remote list for scripts
 export WPH_REMOTES="dev,wp3,wp4,bastion,wafmaster,wph,tripletex,afk,avvir,kleins,krydra,upk,bfkstats,flightpark,entercard"
 
+# Composer global tools
+export PATH="$PATH:$HOME/.config/composer/vendor/bin"
 
 # only if nvim exists
 if cmd_exists nvim; then 
@@ -286,6 +288,5 @@ bind -x '"\C-x\C-e":_edit_wo_executing'
 #     alias ll='eza -laah --icons=always --group-directories-first'
 # fi
 ### END OPTIONS ###
-
 
 [[ -f "$HOME/.cargo/env" ]] &&  . "$HOME/.cargo/env"
