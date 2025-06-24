@@ -442,4 +442,5 @@ runtime ftplugin/man.vim
 """ AUTOCOMMANDS
 " Set php commenstring from default /* */ to //
 autocmd FileType php setlocal commentstring=//\ %s
+autocmd FileType smarty setlocal filetype=html
 """"END AUTOCOMMANDS
