@@ -52,7 +52,7 @@ make_symlinks() {
 if command -v stow >/dev/null 2>&1; then 
     # git stash 
     stow . -t ~ --adopt
-    ##git restore .
+    # git restore .
 else
     make_symlinks
 fi
