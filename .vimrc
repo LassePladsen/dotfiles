@@ -423,9 +423,9 @@ if !has('nvim')
     augroup END
 
     " Autocomplete maps
-    inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
-    inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-    inoremap <expr> <cr>    pumvisible() ? asyncomplete#close_popup() : "\<cr>"
+    " inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
+    " inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+    inoremap <expr> <Tab>    pumvisible() ? asyncomplete#close_popup() : "\<cr>"
 
     " Git files fuzzy search
     nnoremap <leader>st :Git<CR>
