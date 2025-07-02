@@ -36,7 +36,8 @@ if [ -z "${debian_chroot:-}" ] && [ -r /etc/debian_chroot ]; then
 fi
 
 # Set term to xterm so that vim has syntax highlighting in tmux when used tmux from root on remote via ssh
-export TERM="xterm-256color"
+# export TERM="xterm-256color"
+# export TERM="tmux-256color" # test fix undercurl nvim in tmux. 2025-07-02
 
 # set a fancy prompt (non-color, unless we know we "want" color)
 case "$TERM" in
