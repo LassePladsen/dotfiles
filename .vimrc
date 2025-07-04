@@ -212,6 +212,10 @@ endfunction
 nnoremap <leader>ld :call DebugPrintLP()<CR>
 nnoremap <leader>dp :call DebugPrintLP()<CR>
 
+" quickfix
+nnoremap <M-;> :cnext<CR>
+nnoremap <M-,> :cprev<CR>
+
 " edits next file in rustlings (next number filename var4.rs -> var5.rs)
 " Remap + to edit the next numbered file in sequence
 if expand('%:p') =~ '/rustlings/'
