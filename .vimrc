@@ -332,6 +332,7 @@ if !has('nvim')
     call plug#begin()
     Plug 'mg979/vim-visual-multi', {'branch': 'master'}
     Plug 'tpope/vim-sensible'
+    Plug 'tpope/vim-sleuth'
     Plug 'tpope/vim-commentary'
     Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
     Plug 'junegunn/fzf.vim'
