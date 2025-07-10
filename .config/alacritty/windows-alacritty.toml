@@ -26,6 +26,6 @@ args = ["--cd", "/home/lasse"]
 
 [keyboard]
 bindings = [
-{ key = "N", mods = "Control|Shift", action = "CreateNewWindow" },
-{key = "Space", mods = "Control", chars = "\u0000"},
+    { key = "N", mods = "Control|Shift", action = "CreateNewWindow" },
+    { key = "Space", mods = "Control", chars = "\u0000" }, # Enable ctrl-space for tmux prefix
 ]
