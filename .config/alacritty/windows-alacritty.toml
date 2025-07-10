@@ -1,5 +1,4 @@
 [window]
-
 opacity = 0.9
 
 padding.x = 10
@@ -11,16 +10,25 @@ decorations_theme_variant = "Dark"
 startup_mode = "Maximized"
 
 [font]
-
 normal.family = "DejaVuSansM Nerd Font Mono"
 bold.family = "DejaVuSansM Nerd Font Mono"
 italic.family = "DejaVuSansM Nerd Font Mono"
 bold_italic.family = "DejaVuSansM Nerd Font Mono"
 
+# normal.family = "DroidSansM Nerd Font Mono"
+# bold.family = "DroidSansM Nerd Font Mono"
+# italic.family = "DroidSansM Nerd Font Mono"
+# bold_italic.family = "DroidSansM Nerd Font Mono"
+
+# # normal.family = "0xProto Regular"
+# bold.family = "0xProto Bold"
+# italic.family = "0xProto Italic"
+# # bold_italic.family = "0xProto Regular"
+
+
 size = 24.0
 
 [terminal.shell]
-
 program = "wsl"
 args = ["--cd", "/home/lasse"]
 
@@ -28,4 +36,5 @@ args = ["--cd", "/home/lasse"]
 bindings = [
     { key = "N", mods = "Control|Shift", action = "CreateNewWindow" },
     { key = "Space", mods = "Control", chars = "\u0000" }, # Enable ctrl-space for tmux prefix
+    { key = "Backspace", mods = "Control", chars = "\u0008" }, # Enable ctrl-backspace for tmux binds
 ]
