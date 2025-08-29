@@ -175,6 +175,8 @@ alias {vipps,woo-vipps}="cd ~/work/local/sites/lassevippsdev/wp-content/plugins/
 alias {ea,eaccounting}="cd ~/work/local/tripletex/eaccounting/"
 alias {tt,tripletex}="cd ~/work/local/tripletex/"
 alias {nvimhome,homenvim,nvimconf,nvimplugins}="cd ~/.config/nvim/lua/plugins/"
+alias {nxtapp,nxtapps,nextcloudapp,nextcloudapps}="cd ~/work/local/nextcloud/apps/"
+
 # git aliases and functions
 alias gs="git status"
 alias gss='git status -s -b' # git status short with branch
@@ -288,6 +290,8 @@ bind -x '"\C-x\C-e":_edit_wo_executing'
 #     alias ls='eza --icons=always --group-directories-first'
 #     alias ll='eza -laah --icons=always --group-directories-first'
 # fi
+
+setxkbmap -option "nbsp:none" # disable horrible 'non-breakable' space that causes compiler errors and such on alt-gr + space. 
 ### END OPTIONS ###
 
 [[ -f "$HOME/.cargo/env" ]] &&  . "$HOME/.cargo/env"

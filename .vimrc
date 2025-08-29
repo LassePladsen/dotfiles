@@ -6,6 +6,8 @@ set mouse=a
 " So :find can search recursively
 set path+=**
 
+set list " show trailing spaces as '-' and non-breakable space as '+' (idk)
+
 " Case insensitive file and dir completions
 set wildignorecase
 
@@ -199,11 +201,11 @@ function! DebugPrintLP()
     
     echo 'filetype is ' . &filetype
     if &filetype == 'php'
-        execute "normal! oerror_log('" . word . ": ' . print_r($" . word . ", true));"
+        execute "normal! oerror_log('LP " . word . ": ' . print_r($" . word . ", true));"
     elseif &filetype =~ '\v^(javascript|typescript|javascriptreact|typescriptreact)$'
-        execute "normal! oconsole.log('" . word . ": ', " . word . ");"
+        execute "normal! oconsole.log('LP " . word . ": ', " . word . ");"
     elseif &filetype == 'python'
-        execute "normal! oprint('" . word . ": ', " . word . ")"
+        execute "normal! oprint('LP " . word . ": ', " . word . ")"
     else
         echo "Debug print not supported for filetype: " . &filetype . ". Add it to your .vimrc!"
     endif
