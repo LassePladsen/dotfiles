@@ -26,5 +26,10 @@ if (window_name == "Mozilla Thunderbird") then
     pin_window() -- show on all workspaces
 end
 
+if (string.match(window_name, "Nextcloud Talk")) then
+    pin_window() -- show on all workspaces
+end
 
-
+if (string.match(window_name, "Slack")) then
+    pin_window() -- show on all workspaces
+end

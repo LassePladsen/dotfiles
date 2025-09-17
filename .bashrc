@@ -141,6 +141,16 @@ cmd_exists() {
     return $?
 }
 
+# Recursive search and replace excluding .git directories, using find + sed
+sed_recursive() {
+    if [ -z "$1" ]; then
+	echo "Usage: sed_replace <replace_string>"
+	echo "Example: sed_replace 's/wph/WPH/g"
+    else
+	find . \( -type d -name '.git*' -prune \) -o -type f -exec sed -i "$1" {} \;
+    fi
+}
+
 # fzf
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 if [ -f ~/.fzfrc ]; then
