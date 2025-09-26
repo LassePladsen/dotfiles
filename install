@@ -15,8 +15,6 @@ while getopts "fm" opt; do
         m) symlink_targets=(".bashrc" ".vimrc" ".inputrc" ".tmux.conf" ".gitignore_global");;
     esac
 done
-echo "${symlink_targets[@]}"
-exit
 
 make_symlink()  {
     echo "ln -s $repo_path/$target ~/"
