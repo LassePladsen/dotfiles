@@ -1,18 +1,22 @@
 #!/bin/bash
-symlink_targets=(".bashrc" ".vimrc" ".inputrc" ".fzfrc" ".tmux.conf" ".fzf" ".tmux" ".config/nvim" ".config/espanso" ".config/devilspie2" ".gitignore_global")
 
 repo_path=$( cd "$(dirname "${BASH_SOURCE[0]}")" ; pwd -P )
 cd $repo_path
 
-# -f force flag: dont ask to backup & replace files
-force=0
+symlink_targets=(".bashrc" ".vimrc" ".inputrc" ".fzfrc" ".tmux.conf" ".fzf" ".tmux" ".config/nvim" ".config/espanso" ".config/devilspie2" ".gitignore_global")
 
 # Parse command line options
-while getopts "f" opt; do
+force=0
+while getopts "fm" opt; do
     case $opt in
+        # -f force flag: dont ask to backup & replace files
         f) force=1 ;;
+        # -m = minimum install size wise
+        m) symlink_targets=(".bashrc" ".vimrc" ".inputrc" ".tmux.conf" ".gitignore_global");;
     esac
 done
+echo "${symlink_targets[@]}"
+exit
 
 make_symlink()  {
     echo "ln -s $repo_path/$target ~/"
