@@ -1,5 +1,4 @@
 #!/bin/bash
-
 repo_path=$( cd "$(dirname "${BASH_SOURCE[0]}")" ; pwd -P )
 cd $repo_path
 
@@ -51,7 +50,8 @@ make_symlinks() {
 }
 
 # use stow if installed, else fallback to manually creating symlinks
-if command -v stow >/dev/null 2>&1; then 
+# disable stow for no..
+if false && command -v stow >/dev/null 2>&1; then 
     # git stash 
     stow . -t ~ --adopt
     # git restore .
