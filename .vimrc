@@ -1,4 +1,4 @@
-let g:remoteSession = ($SSH_CLIENT != "") " For some settings that should not activate on remotes (ssh)
+let g:remoteSession = ($SSH_CLIENT != "" || $SSH_TTY != "" || system("hostname") == "lasse-T14s-Gen3" ) " For some settings that should not activate on remotes (ssh)
 
 """ SETTINGS 
 set mouse=a
