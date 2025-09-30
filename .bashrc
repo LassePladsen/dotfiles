@@ -134,7 +134,7 @@ fi
 
 
 ############# CUSTOM #####################
-### ALIAS AND FUNCTIONS ###
+### FUNCTIONS ###
 # Returns 1 if command exists
 cmd_exists() {
     command -v $1 >/dev/null 2>&1
@@ -151,66 +151,7 @@ sed_recursive() {
     fi
 }
 
-# fzf
-if [ -d ~/.fzf ]; then
-    [ -e ~/.fzf.bash ] && source ~/.fzf.bash
-    if [ -e ~/.fzfrc ]; then
-	export FZF_DEFAULT_OPTS_FILE="$HOME/.fzfrc"
-	export FZF_COMPLETION_PATH_OPTS='--walker file,dir,follow,hidden' # add dirs to search
-    fi
-
-# Advanced customization of fzf options via _fzf_comprun function
-# - The first argument to the function is the name of the command.
-# - You should make sure to pass the rest of the arguments ($@) to fzf.
-_fzf_comprun() {
-    local command=$1
-    shift
-
-    case "$command" in
-	cd)           fzf --preview 'tree -C {} | head -200'   "$@" ;;
-	export|unset) fzf --preview "eval 'echo \$'{}"         "$@" ;;
-	ssh)          fzf --preview 'dig {}'                   "$@" ;;
-	*)            fzf --preview 'bat -n --color=always {}' "$@" ;;
-    esac
-}
-
-fi
-
-#### ALIASES
-alias ffind="find -type f -name "
-alias lg="lazygit"
-
-# projects 
-alias {fp,flightpark}="cd ~/work/local/flightpark/"
-alias fpapp="cd ~/work/local/flightpark/flightparkapp/"
-alias nsb="cd ~/work/local/nsb/"
-alias {vipps,woo-vipps}="cd ~/work/local/sites/lassevippsdev/wp-content/plugins/woo-vipps/payment"
-alias {ea,eaccounting}="cd ~/work/local/tripletex/eaccounting/"
-alias {tt,tripletex}="cd ~/work/local/tripletex/"
-alias {nvimhome,homenvim,nvimconf,nvimplugins}="cd ~/.config/nvim/lua/plugins/"
-alias {nxtapp,nxtapps,nextcloudapp,nextcloudapps}="cd ~/work/local/nextcloud/apps/"
-
-# git aliases and functions
-alias gs="git status"
-alias gss='git status -s -b' # git status short with branch
-alias gl="git log"
-alias gls="git log --oneline" # think "git log short"
-alias glg="git log --graph"
-alias gc="git commit -m"
-alias gca="git commit --amend"
-
-# Home dir git alias
-# alias {dotfiles,dot}='/usr/bin/git --git-dir=$HOME/repos/dotfiles.git --work-tree=$HOME -C $HOME'
-alias {dotfiles,dot}='/usr/bin/git -C ~/repos/dotfiles'
-alias {dotnvim,dot-nvim}='/usr/bin/git -C ~/.config/nvim'
-alias ds='/usr/bin/git -C ~/repos/dotfiles status'
-alias dss='/usr/bin/git -C ~/repos/dotfiles status -s -b'
-alias dl='/usr/bin/git -C ~/repos/dotfiles log'
-alias dls="/usr/bin/git -C ~/repos/dotfiles log --oneline" # think "git log short"
-alias dlg="/usr/bin/git -C ~/repos/dotfiles log --graph"
-alias dc="/usr/bin/git -C ~/repos/dotfiles commit -m"
-alias dca="/usr/bin/git -C ~/repos/dotfiles commit --amend"
-
+# GIT FUNCTIONS
 # Think "git previous". does git show with input parameter of the target number commit back from HEAD. Defaults to 0, and accepts arguments if and only if the target number is given.
 gp() {
     target=${1-0} # if arg 1 not given; default to 0.
@@ -235,17 +176,78 @@ gr() {
     shift 1
     git restore "*$pattern*" $@
 }
-### END ALIAS AND FUNCTIONS ###
 
+# FZF
+if [ -d ~/.fzf ]; then
+    [ -e ~/.fzf.bash ] && source ~/.fzf.bash
+    if [ -e ~/.fzfrc ]; then
+	export FZF_DEFAULT_OPTS_FILE="$HOME/.fzfrc"
+	export FZF_COMPLETION_PATH_OPTS='--walker file,dir,follow,hidden' # add dirs to search
+    fi
+
+# Advanced customization of fzf options via _fzf_comprun function
+# - The first argument to the function is the name of the command.
+# - You should make sure to pass the rest of the arguments ($@) to fzf.
+_fzf_comprun() {
+    local command=$1
+    shift
+
+    case "$command" in
+	cd)           fzf --preview 'tree -C {} | head -200'   "$@" ;;
+	export|unset) fzf --preview "eval 'echo \$'{}"         "$@" ;;
+	ssh)          fzf --preview 'dig {}'                   "$@" ;;
+	*)            fzf --preview 'bat -n --color=always {}' "$@" ;;
+    esac
+}
+
+fi
+### END FUNCTIONS ###
+
+### ALIASES ###
+alias ffind="find -type f -name "
+alias lg="lazygit"
+alias htop="btop"
+alias {hhtop,oldhtop}="/usr/bin/htop"
+
+# PROJECTS 
+alias {fp,flightpark}="cd ~/work/local/flightpark/"
+alias fpapp="cd ~/work/local/flightpark/flightparkapp/"
+alias nsb="cd ~/work/local/nsb/"
+alias {vipps,woo-vipps}="cd ~/work/local/sites/lassevippsdev/wp-content/plugins/woo-vipps/payment"
+alias {ea,eaccounting}="cd ~/work/local/tripletex/eaccounting/"
+alias {tt,tripletex}="cd ~/work/local/tripletex/"
+alias {nvimhome,homenvim,nvimconf,nvimplugins}="cd ~/.config/nvim/lua/plugins/"
+alias {nxtapp,nxtapps,nextcloudapp,nextcloudapps}="cd ~/work/local/nextcloud/apps/"
+
+# GIT ALIASES
+alias gs="git status"
+alias gss='git status -s -b' # git status short with branch
+alias gl="git log"
+alias gls="git log --oneline" # think "git log short"
+alias glg="git log --graph"
+alias gc="git commit -m"
+alias gca="git commit --amend"
+
+# DOTFILES GIT ALIASES
+# alias {dotfiles,dot}='/usr/bin/git --git-dir=$HOME/repos/dotfiles.git --work-tree=$HOME -C $HOME'
+alias {dotfiles,dot}='/usr/bin/git -C ~/repos/dotfiles'
+alias {dotnvim,dot-nvim}='/usr/bin/git -C ~/.config/nvim'
+alias ds='/usr/bin/git -C ~/repos/dotfiles status'
+alias dss='/usr/bin/git -C ~/repos/dotfiles status -s -b'
+alias dl='/usr/bin/git -C ~/repos/dotfiles log'
+alias dls="/usr/bin/git -C ~/repos/dotfiles log --oneline" # think "git log short"
+alias dlg="/usr/bin/git -C ~/repos/dotfiles log --graph"
+alias dc="/usr/bin/git -C ~/repos/dotfiles commit -m"
+alias dca="/usr/bin/git -C ~/repos/dotfiles commit --amend"
+### END ALIASES ###
+
+### PATHS AND ENVIRONMENT VARIABLES ### 
 parse_git_dirty() {
   [[ $(git status --porcelain 2> /dev/null) ]] && echo "*"
 }
 parse_git_branch() {
   git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e "s/* \(.*\)/ (\1$(parse_git_dirty))/"
 }
-
-
-### PATHS AND ENVIRONMENT VARIABLES ### 
 export OLD_PS1=$PS1
 # export PS1='\[\e]0;\u@\h: \w\a\]${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\[\033[01;31m\]$(__git_ps1)\[\e[m\]\$ '
 # export PS1='\[\e]0;\u@\h: \w\a\]${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\[\033[01;31m\]$(parse_git_branch)\[\e[m\]\n\$ ' # remove \n to remove new line after path
@@ -274,7 +276,7 @@ if cmd_exists nvim; then
     export EDITOR="nvim"
     # Vim alias.. yolo
     alias vim="nvim"
-    alias vvim="/usr/bin/vim"
+    alias {vvim,oldvim}="/usr/bin/vim"
 
 # Command for man help pages. Use nvim if installed, else vim if installed
     export MANPAGER="nvim +Man!"
