@@ -1,4 +1,4 @@
-let g:remoteSession = ($SSH_CLIENT != "" || $SSH_TTY != "" || system("hostname") != "lasse-T14s-Gen3" ) " For some settings that should not activate on remotes (ssh)
+let g:remoteSession = ($SSH_CLIENT != "" || $SSH_TTY != "" || match(system("hostname"), "lasse" ) == -1) " For some settings that should not activate on remotes (ssh)
 
 """ SETTINGS 
 set mouse=a
@@ -41,11 +41,10 @@ set updatetime=250
 set ignorecase
 set smartcase " only case insensitive when searching with only lowercase. using upper case makes it case sensitive
 
-set undofile
-if g:remoteSession
+if g:remoteSession 
     set noundofile
-
-else " only on local
+else 
+    set undofile
     " Save on ctrl s. Disabled on remote because ctrl-s is freeze terminal... This can be
     " disabled https://edmondscommerce.github.io/linux/prevent-ctrl-plus-s-freezing-your-terminal.html. 
     nnoremap <C-s> :w<enter>
