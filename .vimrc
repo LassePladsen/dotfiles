@@ -73,7 +73,7 @@ highlight CursorLine term=underline ctermbg=235 guibg=#112630
 
 " Netrw file explorer
 let g:netrw_banner=0 " disable help banner
-let netrw_liststyle=3 " tree view
+let netrw_liststyle=0 
 
 " Uncomment the following to have Vim jump to the last position when
 " reopening a file
