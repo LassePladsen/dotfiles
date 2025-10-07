@@ -193,6 +193,44 @@ nnoremap <leader><C-a> ggVG
 " Outputs comment signature with date in unix format like: LP 2025-04-10
 nnoremap <leader># :execute "normal! aLP " . strftime("%Y-%m-%d")<CR>
 
+" Replace inside/outside next bracket/paranthesis only on current line (to the
+" right of cursor). This is to fix
+" replacing the parent bracket when trying to target current line.
+" Replace inside brackets (current line only)
+" Replace inside brackets (current line only)
+" Replace inside brackets (current line only)
+nnoremap <leader>ci( :call FindAndChange('(', 'ci(')<CR>
+nnoremap <leader>ci[ :call FindAndChange('[', 'ci[')<CR>
+nnoremap <leader>ci{ :call FindAndChange('{', 'ci{')<CR>
+
+" Replace around brackets (current line only)
+nnoremap <leader>ca( :call FindAndChange('(', 'ca(')<CR>
+nnoremap <leader>ca[ :call FindAndChange('[', 'ca[')<CR>
+nnoremap <leader>ca{ :call FindAndChange('{', 'ca{')<CR>
+
+function! FindAndChange(bracket, command)
+    let line = getline('.')
+    let col = col('.')
+    
+    " Search for the bracket to the right of cursor on current line
+    let found_pos = -1
+    for i in range(col - 1, len(line) - 1)
+        if line[i] == a:bracket
+            let found_pos = i + 1  " Convert to 1-indexed column
+            break
+        endif
+    endfor
+    
+    " If found, move to it and execute the command
+    if found_pos > 0
+        call cursor(line('.'), found_pos)
+        execute 'normal! ' . a:command
+    else
+        echo 'No ' . a:bracket . ' found to the right on current line'
+    endif
+endfunction
+
+
 """ DEBUGPRINT for filetypes
 function! DebugPrintLP()
     let line = getline('.')
