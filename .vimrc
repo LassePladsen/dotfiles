@@ -196,17 +196,22 @@ nnoremap <leader># :execute "normal! aLP " . strftime("%Y-%m-%d")<CR>
 " Replace inside/outside next bracket/paranthesis only on current line (to the
 " right of cursor). This is to fix
 " replacing the parent bracket when trying to target current line.
-" Replace inside brackets (current line only)
-" Replace inside brackets (current line only)
-" Replace inside brackets (current line only)
+
+" Replace inside/around brackets (current line only)
 nnoremap <leader>ci( :call FindAndChange('(', 'ci(')<CR>
 nnoremap <leader>ci[ :call FindAndChange('[', 'ci[')<CR>
 nnoremap <leader>ci{ :call FindAndChange('{', 'ci{')<CR>
-
-" Replace around brackets (current line only)
 nnoremap <leader>ca( :call FindAndChange('(', 'ca(')<CR>
 nnoremap <leader>ca[ :call FindAndChange('[', 'ca[')<CR>
 nnoremap <leader>ca{ :call FindAndChange('{', 'ca{')<CR>
+
+" Visual select inside/around brackets (current line only)
+nnoremap <leader>vi( :call FindAndChange('(', 'vi(')<CR>
+nnoremap <leader>vi[ :call FindAndChange('[', 'vi[')<CR>
+nnoremap <leader>vi{ :call FindAndChange('{', 'vi{')<CR>
+nnoremap <leader>va( :call FindAndChange('(', 'va(')<CR>
+nnoremap <leader>va[ :call FindAndChange('[', 'va[')<CR>
+nnoremap <leader>va{ :call FindAndChange('{', 'va{')<CR>
 
 function! FindAndChange(bracket, command)
     let line = getline('.')
