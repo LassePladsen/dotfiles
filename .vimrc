@@ -17,12 +17,14 @@ set rnu
 
 " set foldmethod=syntax
 
-set softtabstop=4
-set tabstop=4
-set shiftwidth=4
+" set tabstop=4 " apparently recommended leaving this default (8) and instead using the other settings correctly
 set expandtab
+set shiftwidth=4
+set softtabstop=-1 " use value of shiftwidth
+set smarttab " always use shiftwidth
 set smartindent
 set autoindent
+
 set wrap
 set breakindent " wrap starts at same indentation
 set scrolloff=10
