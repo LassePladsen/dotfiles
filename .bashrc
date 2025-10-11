@@ -216,7 +216,7 @@ alias nsb="cd ~/work/local/nsb/"
 alias {vipps,woo-vipps}="cd ~/work/local/sites/lassevippsdev/wp-content/plugins/woo-vipps/payment"
 alias {ea,eaccounting}="cd ~/work/local/tripletex/eaccounting/"
 alias {tt,tripletex}="cd ~/work/local/tripletex/"
-alias {nvimhome,homenvim,nvimconf,nvimplugins}="cd ~/.config/nvim/lua/plugins/"
+alias {nvimhome,homenvim,nvimconf,nvimplugins}="cd ~/.config/nvim/lua/"
 alias {nxtapp,nxtapps,nextcloudapp,nextcloudapps}="cd ~/work/local/nextcloud/apps/"
 
 # GIT ALIASES
