@@ -401,6 +401,8 @@ if !has('nvim')
     if has('vim9script') && v:version >= 901 && has('patch-9.1.0646')
         Plug 'girishji/vimcomplete'
     endif
+    Plug 'luochen1990/rainbow'
+    let g:rainbow_active = 1 "set to 0 if you want to enable it later via :RainbowToggle
     call plug#end()
 
     " Timeout for yank hightlight
