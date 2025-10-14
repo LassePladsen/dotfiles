@@ -1,3 +1,3 @@
 .tmux/*
 !.tmux/tmp
-.config/espanso/private.yaml
+.config/espanso/**/private.yml
