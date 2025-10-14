@@ -205,9 +205,19 @@ fi
 
 ### ALIASES ###
 alias ffind="find -type f -name "
-alias lg="lazygit"
-alias htop="btop"
-alias {hhtop,oldhtop}="/usr/bin/htop"
+cmd_exists lazygit && alias lg="lazygit"
+if cmd_exists btop; then 
+    alias htop="btop"
+    alias {hhtop,oldhtop}="/usr/bin/htop"
+fi
+if cmd_exists bat; then 
+    alias cat="bat"
+    alias {oldcat,ccat}="/usr/bin/cat"
+fi
+if cmd_exists duf; then 
+    alias df="duf"
+    alias {olddf,ddf}="/usr/bin/df"
+fi
 
 # PROJECTS 
 alias {fp,flightpark}="cd ~/work/local/flightpark/"
