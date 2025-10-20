@@ -222,6 +222,7 @@ fi
 # PROJECTS 
 alias {fp,flightpark}="cd ~/work/local/flightpark/"
 alias fpapp="cd ~/work/local/flightpark/flightparkapp/"
+alias {fpappreset,fpappreinstall}="~/work/local/flightpark/flightparkapp/scripts/android/uninstall-on-physical.sh; ~/work/local/flightpark/flightparkapp/scripts/android/install-apk-physical.sh"
 alias nsb="cd ~/work/local/nsb/"
 alias {vipps,woo-vipps}="cd ~/work/local/sites/lassevippsdev/wp-content/plugins/woo-vipps/payment"
 alias {ea,eaccounting}="cd ~/work/local/tripletex/eaccounting/"
