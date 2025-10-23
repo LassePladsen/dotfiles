@@ -380,6 +380,7 @@ if !has('nvim')
     endif
 
     call plug#begin()
+    Plug 'ojroques/vim-oscyank', {'branch': 'main'}
     Plug 'mg979/vim-visual-multi', {'branch': 'master'}
     Plug 'tpope/vim-sensible'
     Plug 'tpope/vim-sleuth'
