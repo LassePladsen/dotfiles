@@ -250,7 +250,7 @@ fi
 ### END PATHS ### 
 
 ### ALIASES ###
-cmd_exists kitty && alias ssh="TERM=xterm-256color ssh"
+cmd_exists kitty && cmd_exists kitten && [ "xterm-kitty" = "$TERM" ] && alias ssh="kitten ssh"
 alias ffind="find -type f -name "
 cmd_exists lazygit && alias lg="lazygit"
 if cmd_exists btop; then 
