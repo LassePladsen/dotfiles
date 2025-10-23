@@ -146,9 +146,12 @@ vnoremap <leader>p "_dP
 nnoremap <leader>p "_ddP 
 
 " Yank to system clipboard
-nnoremap <leader>y "+y
-vnoremap <leader>y "+y
-nnoremap <leader>Y "+y$
+nmap <leader>c <Plug>OSCYankOperator
+nmap <leader>cc <leader>c_
+vmap <leader>c <Plug>OSCYankVisual
+" nnoremap <leader>y "+y
+" vnoremap <leader>y "+y
+" nnoremap <leader>Y "+y$
 
 " Delete to system clipboard
 nnoremap <leader>d "+d
@@ -380,7 +383,6 @@ if !has('nvim')
     endif
 
     call plug#begin()
-    Plug 'ojroques/vim-oscyank', {'branch': 'main'}
     Plug 'mg979/vim-visual-multi', {'branch': 'master'}
     Plug 'tpope/vim-sensible'
     Plug 'tpope/vim-sleuth'
@@ -404,6 +406,8 @@ if !has('nvim')
     endif
     Plug 'luochen1990/rainbow'
     let g:rainbow_active = 1 "set to 0 if you want to enable it later via :RainbowToggle
+    Plug 'ojroques/vim-oscyank', {'branch': 'main'}
+
     call plug#end()
 
     " Timeout for yank hightlight
