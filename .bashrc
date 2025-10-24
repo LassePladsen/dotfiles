@@ -252,7 +252,9 @@ fi
 ### ALIASES ###
 if cmd_exists kitty && cmd_exists kitten && [ "xterm-kitty" = "$TERM" ]; then
     alias ssh="kitten ssh"
+    alias {oldssh,sssh}="/usr/bin/ssh"
     alias diff="kitten diff"
+    alias {olddiff,ddiff}="/usr/bin/diff"
 fi
 alias ffind="find -type f -name "
 cmd_exists lazygit && alias lg="lazygit"
