@@ -39,3 +39,10 @@
 
 # For a list of all the available options, visit the official docs at: https://espanso.org/docs/
 key_delay: 0
+inject_delay: 0
+
+# Fix replacement being in lowercase when using Kitty terminal!
+disable_x11_fast_inject: true
+# inject_delay: 15
+# backend: Clipboard
+# key_delay: 10
