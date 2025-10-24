@@ -309,8 +309,11 @@ alias dca="/usr/bin/git -C ~/repos/dotfiles commit --amend"
 
 ### OPTIONS ###
 # set -o vi # vi motions in bash...
-cmd_exists xset && xset r rate 200 33 # keyboard repeat delay and rate
-cmd_exists zoxide && eval "$(zoxide init --cmd cd bash)"
+if [[ "$HOSTNAME" == *"lasse"* ]]; then
+    xset r rate 200 33 # keyboard repeat delay and rate
+    cmd_exists zoxide && eval "$(zoxide init --cmd cd bash)"
+fi
+
 
 # make command edit (ctrl-x + ctrl-e) not auto execute on quit
 _edit_wo_executing() {
