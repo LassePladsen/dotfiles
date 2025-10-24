@@ -146,12 +146,16 @@ vnoremap <leader>p "_dP
 nnoremap <leader>p "_ddP 
 
 " Yank to system clipboard
-nmap <leader>c <Plug>OSCYankOperator
-nmap <leader>cc <leader>c_
-vmap <leader>c <Plug>OSCYankVisual
-" nnoremap <leader>y "+y
-" vnoremap <leader>y "+y
-" nnoremap <leader>Y "+y$
+if g:remoteSession 
+    nmap <leader>y <Plug>OSCYankOperator
+    nmap <leader>yy <leader>y_
+    nmap <leader>Y <leader>y$
+    vmap <leader>y <Plug>OSCYankVisual
+else 
+    nnoremap <leader>y "+y
+    vnoremap <leader>y "+y
+    nnoremap <leader>Y "+y$
+endif
 
 " Delete to system clipboard
 nnoremap <leader>d "+d
