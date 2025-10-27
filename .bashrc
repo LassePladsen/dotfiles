@@ -256,8 +256,14 @@ if cmd_exists kitty && cmd_exists kitten && [ "xterm-kitty" = "$TERM" ]; then
     }
     alias ssh="kitten_ssh_with_fallback"
     alias {oldssh,sssh}="/usr/bin/ssh"
-    alias diff="kitten diff"
-    alias {olddiff,ddiff}="/usr/bin/diff"
+
+    # Kitten diff does not work in tmux
+    if [[ -z "$TMUX" ]]; then
+	alias diff="kitten diff"
+	alias {olddiff,ddiff}="/usr/bin/diff --color"
+    else 
+	alias diff="diff --color"
+    fi
 fi
 alias ffind="find -type f -name "
 cmd_exists lazygit && alias lg="lazygit"
