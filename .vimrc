@@ -160,7 +160,7 @@ endif
 " Delete to system clipboard
 nnoremap <leader>d "+d
 vnoremap <leader>d "+d
-nnoremap <leader>D "+d$
+" nnoremap <leader>D "+d$
 
 " Do search for word you're on
 " Disable:  this is default on *. upwards is #
