@@ -315,7 +315,7 @@ alias dca="/usr/bin/git -C ~/repos/dotfiles commit --amend"
 
 ### OPTIONS ###
 # set -o vi # vi motions in bash...
-if [[ "$HOSTNAME" == *"lasse"* ]]; then
+if [[ "${HOSTNAME,,}" == *"lasse"* ]]; then
     xset r rate 200 33 # keyboard repeat delay and rate
     cmd_exists zoxide && eval "$(zoxide init --cmd cd bash)"
 fi

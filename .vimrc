@@ -1,3 +1,6 @@
+set ignorecase
+set smartcase " only case insensitive when searching with only lowercase. using upper case makes it case sensitive
+
 let g:remoteSession = ($SSH_CLIENT != "" || $SSH_TTY != "" || system("hostname") !~ "lasse") " For some settings that should not activate on remotes (ssh)
 
 """ SETTINGS 
@@ -39,9 +42,6 @@ if exists('+termguicolors')
 endif
 
 set updatetime=250
-
-set ignorecase
-set smartcase " only case insensitive when searching with only lowercase. using upper case makes it case sensitive
 
 if g:remoteSession 
     set noundofile
