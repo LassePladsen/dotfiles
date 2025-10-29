@@ -252,7 +252,10 @@ fi
 ### ALIASES ###
 if cmd_exists kitty && cmd_exists kitten && [ "xterm-kitty" = "$TERM" ]; then
     kitten_ssh_with_fallback() {
-	kitten ssh "$@" || (echo "Kitten ssh failed, falling back to regular ssh... " && /usr/bin/ssh "$@")
+	if kitten ssh "$@" 
+	    [ "$?" == "255" ]; then 
+	    echo "Kitten ssh failed, falling back to regular ssh... " && /usr/bin/ssh "$@"
+	fi
     }
     alias ssh="kitten_ssh_with_fallback"
     alias {oldssh,sssh}="/usr/bin/ssh"
