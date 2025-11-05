@@ -68,7 +68,7 @@ set splitbelow
 " disable new line continuing comments
 " set formatoptions-=r formatoptions-=o " this will be overwritten... do
 " :verbose set formatoptions?
-autocmd BufNewFile,BufRead * setlocal formatoptions-=ro " workaround
+" autocmd BufNewFile,BufRead * setlocal formatoptions-=ro " workaround
 
 set cursorline
 highlight CursorLine term=underline ctermbg=235 guibg=#112630
