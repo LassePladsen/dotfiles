@@ -235,13 +235,13 @@ export PATH="$PATH:$HOME/.config/composer/vendor/bin"
 
 # only if nvim exists
 if cmd_exists nvim; then 
-    # Default editor. Use nvim if installed, else vim if installed
-    export EDITOR="nvim"
     # Vim alias.. yolo
     alias vim="nvim"
     alias {vvim,oldvim}="/usr/bin/vim"
 
-# Command for man help pages. Use nvim if installed, else vim if installed
+    # Default editor. Use nvim if installed, else vim if installed
+    export EDITOR="nvim"
+    # Command for man help pages. Use nvim if installed, else vim if installed
     export MANPAGER="nvim +Man!"
 elif cmd_exists vim; then 
     export EDITOR="vim"
