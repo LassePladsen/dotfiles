@@ -135,6 +135,12 @@ fi
 
 ############# CUSTOM #####################
 ### FUNCTIONS ###
+# Ssh into a specific directory (note: this can also be configured in the ssh config)
+function ssh-cd() {
+    ssh -t $1 "cd $2 ; bash --login"
+}
+alias sshcd="ssh-cd"
+
 # Returns 1 if command exists
 function cmd-exists() {
     command -v $1 >/dev/null 2>&1
