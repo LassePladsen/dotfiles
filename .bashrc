@@ -136,13 +136,13 @@ fi
 ############# CUSTOM #####################
 ### FUNCTIONS ###
 # Returns 1 if command exists
-cmd-exists() {
+function cmd-exists() {
     command -v $1 >/dev/null 2>&1
     return $?
 }
 
 # Recursive search and replace excluding .git directories, using find + sed
-sed-recursive() {
+function sed-recursive() {
     if [ -z "$1" ]; then
 	echo "Usage: sed_replace <replace_string>"
 	echo "Example: sed_replace 's/wph/WPH/g"
@@ -153,25 +153,25 @@ sed-recursive() {
 
 # GIT FUNCTIONS
 # Think "git previous". does git show with input parameter of the target number commit back from HEAD. Defaults to 0, and accepts arguments if and only if the target number is given.
-gp() {
+function gp() {
     target=${1-0} # if arg 1 not given; default to 0.
     shift 1
     git show HEAD~$target $@
 }
 # Git diff with fuzzy file search
-gd() {
+function gd() {
     pattern=$1
     shift 1
     git diff "*$pattern*" $@
 }
 # Git add with fuzzy file search
-ga() {
+function ga() {
     pattern=$1
     shift 1
     git add "*$pattern*" $@
 }
 # Git restore with fuzzy file search
-gr() {
+function gr() {
     pattern=$1
     shift 1
     git restore "*$pattern*" $@
