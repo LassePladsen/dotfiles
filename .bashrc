@@ -136,13 +136,13 @@ fi
 ############# CUSTOM #####################
 ### FUNCTIONS ###
 # Returns 1 if command exists
-cmd_exists() {
+cmd-exists() {
     command -v $1 >/dev/null 2>&1
     return $?
 }
 
 # Recursive search and replace excluding .git directories, using find + sed
-sed_recursive() {
+sed-recursive() {
     if [ -z "$1" ]; then
 	echo "Usage: sed_replace <replace_string>"
 	echo "Example: sed_replace 's/wph/WPH/g"
@@ -234,7 +234,7 @@ export WPH_REMOTES="dev,wp3,wp4,bastion,wafmaster,wph,tripletex,afk,avvir,kleins
 export PATH="$PATH:$HOME/.config/composer/vendor/bin"
 
 # only if nvim exists
-if cmd_exists nvim; then 
+if cmd-exists nvim; then 
     # Vim alias.. yolo
     alias vim="nvim"
     alias {vvim,oldvim}="/usr/bin/vim"
@@ -243,14 +243,14 @@ if cmd_exists nvim; then
     export EDITOR="nvim"
     # Command for man help pages. Use nvim if installed, else vim if installed
     export MANPAGER="nvim +Man!"
-elif cmd_exists vim; then 
+elif cmd-exists vim; then 
     export EDITOR="vim"
     export MANPAGER="vim -M +MANPAGER - "
 fi
 ### END PATHS ### 
 
 ### ALIASES ###
-if cmd_exists kitty && cmd_exists kitten && [ "xterm-kitty" = "$TERM" ]; then
+if cmd-exists kitty && cmd-exists kitten && [ "xterm-kitty" = "$TERM" ]; then
     kitten_ssh_with_fallback() {
 	if kitten ssh "$@" 
 	    [ "$?" == "255" ]; then 
@@ -269,16 +269,16 @@ if cmd_exists kitty && cmd_exists kitten && [ "xterm-kitty" = "$TERM" ]; then
     fi
 fi
 alias ffind="find -type f -name "
-cmd_exists lazygit && alias lg="lazygit"
-if cmd_exists btop; then 
+cmd-exists lazygit && alias lg="lazygit"
+if cmd-exists btop; then 
     alias htop="btop"
     alias {hhtop,oldhtop}="/usr/bin/htop"
 fi
-if cmd_exists bat; then 
+if cmd-exists bat; then 
     alias cat="bat"
     alias {oldcat,ccat}="/usr/bin/cat"
 fi
-if cmd_exists duf; then 
+if cmd-exists duf; then 
     alias df="duf"
     alias {olddf,ddf}="/usr/bin/df"
 fi
@@ -293,6 +293,7 @@ alias {remotevipps,sshvipps,vippsremote,vippsssh}="cd ~/work/remote/area51-woo-v
 alias {ea,eaccounting}="cd ~/work/local/tripletex/eaccounting/"
 alias {tt,tripletex}="cd ~/work/local/tripletex/"
 alias {nvimhome,homenvim,nvimconf,nvimplugins}="cd ~/.config/nvim/lua/"
+alias {nvimlsp,vimlsp}="vim ~/.config/nvim/lua/plugins/novscode/lsp/nvim-lspconfig.lua"
 alias {nxtapp,nxtapps,nextcloudapp,nextcloudapps}="cd ~/work/local/nextcloud/apps/"
 
 # GIT ALIASES
@@ -321,7 +322,7 @@ alias dca="/usr/bin/git -C ~/repos/dotfiles commit --amend"
 # set -o vi # vi motions in bash...
 if [[ "${HOSTNAME,,}" == *"lasse"* ]]; then
     xset r rate 200 33 # keyboard repeat delay and rate
-    cmd_exists zoxide && eval "$(zoxide init --cmd cd bash)"
+    cmd-exists zoxide && eval "$(zoxide init --cmd cd bash)"
 fi
 
 
@@ -338,12 +339,12 @@ _edit_wo_executing() {
 
 bind -x '"\C-x\C-e":_edit_wo_executing'
 
-# if cmd_exists eza; then
+# if cmd-exists eza; then
 #     alias ls='eza --icons=always --group-directories-first'
 #     alias ll='eza -laah --icons=always --group-directories-first'
 # fi
 
-cmd_exists setxkbmap && setxkbmap -option "nbsp:none" # disable horrible 'non-breakable' space that causes compiler errors and such on alt-gr + space. 
+cmd-exists setxkbmap && setxkbmap -option "nbsp:none" # disable horrible 'non-breakable' space that causes compiler errors and such on alt-gr + space. 
 ### END OPTIONS ###
 
 [[ -f "$HOME/.cargo/env" ]] &&  . "$HOME/.cargo/env"
