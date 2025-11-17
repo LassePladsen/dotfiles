@@ -256,6 +256,7 @@ fi
 ### END PATHS ### 
 
 ### ALIASES ###
+alias session-init="~/scripts/session-init.sh"
 alias ffind="find -type f -name "
 cmd-exists lazygit && alias lg="lazygit"
 
