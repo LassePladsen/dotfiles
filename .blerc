@@ -21,4 +21,5 @@ ble-import -d integration/fzf-completion
 ble-import -d integration/fzf-key-bindings
 
 # Key bindings
-ble-bind -f M-DEL 'kill-region-or kill-backward-uword'
+ble-bind -f M-DEL 'kill-region-or kill-backward-cword' # delte backword word (stops at noncharacter like '/')
+ble-bind -f M-S-DEL 'kill-region-or kill-backward-uword' # delete backword WORD (stops at whitespace)
