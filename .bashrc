@@ -256,6 +256,7 @@ fi
 ### END PATHS ### 
 
 ### ALIASES ###
+alias {gdt,dt,gitdiff,gitdifftool,diffgit,difftool,difftoolgit}="git difftool"
 alias {initsession,initsesh,sessioninit,seshinit,init-session,session-init}="~/scripts/session-init.sh"
 alias ffind="find -type f -name "
 cmd-exists lazygit && alias lg="lazygit"
@@ -274,6 +275,7 @@ if cmd-exists kitty && cmd-exists kitten && [ "xterm-kitty" = "$TERM" ]; then
     if [[ -z "$TMUX" ]]; then
 	alias diff="kitten diff"
 	alias {olddiff,ddiff}="/usr/bin/diff --color"
+	alias {gdt,dt,gitdiff,gitdifftool,diffgit,difftool,difftoolgit}="git difftool --no-symlinks --dir-diff --tool=kitty"
     else 
 	alias diff="diff --color"
     fi
