@@ -256,6 +256,10 @@ fi
 ### END PATHS ### 
 
 ### ALIASES ###
+# Typo aliases
+alias {chomd,chodm,chmdo,chdmo,cmhod}="chmod"
+alias {chwon,chonw,cwhon,cwohn}="chown"
+
 alias {gdt,dt,gitdiff,gitdifftool,diffgit,difftool,difftoolgit}="git difftool"
 alias {initsession,initsesh,sessioninit,seshinit,init-session,session-init}="~/scripts/session-init.sh"
 alias ffind="find -type f -name "
