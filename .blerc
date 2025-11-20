@@ -1,0 +1,1 @@
+ble-bind -f M-DEL 'kill-region-or kill-backward-uword'
