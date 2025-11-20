@@ -1,1 +1,22 @@
+# blerc
+
+# If ble/contrib/integration/fzf cannot find the fzf directory, please set the
+# following variable "_ble_contrib_fzf_base" manually.  The value
+# "/path/to/fzf-directory" should be replaced by a path to the fzf directory
+# such as "$HOME/.fzf" or "/usr/share/fzf" that contain
+# "shell/{completion,key-bindings}.bash" or "{completion,key-bindings}.bash".
+
+_ble_contrib_fzf_base=$HOME/.fzf
+
+
+# Note: If you would like to combine fzf-completion with bash_completion, you
+# need to load bash_completion earlier than fzf-completion.
+
+source -- /usr/share/bash-completion/bash_completion
+
+
+# Set up fzf
+ble-import -d integration/fzf-completion
+ble-import -d integration/fzf-key-bindings
+
 ble-bind -f M-DEL 'kill-region-or kill-backward-uword'
