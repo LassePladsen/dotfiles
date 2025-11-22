@@ -5,7 +5,7 @@
 
 # bash syntax highlight, autocompletion, QoL, and much more: https://github.com/akinomyoga/ble.sh
 # also see bottom of this file for part 2
- [[ $- == *i* ]] && source -- ~/.local/share/blesh/ble.sh --attach=none
+[[ -f "~/.local/share/blesh/ble.sh" ]] && [[ $- == *i* ]] && source -- ~/.local/share/blesh/ble.sh --attach=none
 
 # If not running interactively, don't do anything
 case $- in
@@ -371,4 +371,4 @@ cmd-exists setxkbmap && setxkbmap -option "nbsp:none" # disable horrible 'non-br
 # bash syntax highlight, autocompletion, QoL, and much more: https://github.com/akinomyoga/ble.sh
 # source ~/.local/share/blesh/ble.sh # OLD VER
 # also see top of this file for part 1 sourcing
-[[ ! ${BLE_VERSION-} ]] || ble-attach
+[[ -f "~/.local/share/blesh/ble.sh" ]] && ([[ ! ${BLE_VERSION-} ]] || ble-attach)
