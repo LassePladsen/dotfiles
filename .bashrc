@@ -369,5 +369,6 @@ cmd-exists setxkbmap && setxkbmap -option "nbsp:none" # disable horrible 'non-br
 [[ -f "$HOME/.cargo/env" ]] &&  . "$HOME/.cargo/env"
 
 # bash syntax highlight, autocompletion, QoL, and much more: https://github.com/akinomyoga/ble.sh
+# source ~/.local/share/blesh/ble.sh # OLD VER
 # also see top of this file for part 1 sourcing
 [[ ! ${BLE_VERSION-} ]] || ble-attach
