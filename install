@@ -2,7 +2,7 @@
 repo_path=$( cd "$(dirname "${BASH_SOURCE[0]}")" ; pwd -P )
 cd $repo_path
 
-symlink_targets=(".bashrc" ".vimrc" ".inputrc" ".fzfrc" ".tmux.conf" ".fzf" ".tmux" ".config/nvim" ".config/espanso" ".config/devilspie2" ".gitignore_global")
+symlink_targets=(".bashrc" ".vimrc" ".inputrc" ".fzfrc" ".tmux.conf" ".fzf" ".tmux" ".config/nvim" ".config/espanso" ".config/devilspie2" ".gitignore_global" ".gitconfig" ".blerc")
 
 # Parse command line options
 force=0
