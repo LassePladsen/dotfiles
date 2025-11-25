@@ -3,15 +3,15 @@
 # for examples
 #
 
-# bash syntax highlight, autocompletion, QoL, and much more: https://github.com/akinomyoga/ble.sh
-# also see bottom of this file for part 2
-[[ -f "~/.local/share/blesh/ble.sh" ]] && [[ $- == *i* ]] && source -- ~/.local/share/blesh/ble.sh --attach=none
-
 # If not running interactively, don't do anything
 case $- in
     *i*) ;;
       *) return;;
 esac
+
+# bash syntax highlight, autocompletion, QoL, and much more: https://github.com/akinomyoga/ble.sh
+# also see bottom of this file for part 2
+[[ -f "~/.local/share/blesh/ble.sh" ]] && [[ $- == *i* ]] && source -- ~/.local/share/blesh/ble.sh --attach=none
 
 # don't put duplicate lines or lines starting with space in the history.
 # See bash(1) for more options
@@ -265,7 +265,7 @@ fi
 alias {chomd,chodm,chmdo,chdmo,cmhod}="chmod"
 alias {chwon,chonw,cwhon,cwohn}="chown"
 
-alias {gdt,dt,gitdiff,gitdifftool,diffgit,difftool,difftoolgit}="git difftool"
+
 alias {initsession,initsesh,sessioninit,seshinit,init-session,session-init}="~/scripts/session-init.sh"
 alias ffind="find -type f -name "
 cmd-exists lazygit && alias lg="lazygit"
@@ -274,10 +274,13 @@ cmd-exists lazygit && alias lg="lazygit"
 alias {olddiff,ddiff}="/usr/bin/diff --color"
 cmd-exists kitty && alias diff="delta"
 
+# Force Delta to use side-by-side, for use in git diff to not have to edit gitconfig every time
+alias side-by-side="DELTA_FEATURES=+side-by-side"
+
 if cmd-exists kitty && cmd-exists kitten && [ "xterm-kitty" = "$TERM" ]; then
     kitten_ssh_with_fallback() {
-	if kitten ssh "$@" 
-	    [ "$?" == "255" ]; then 
+	kitten ssh "$@" 
+	if [ "$?" == "255" ]; then 
 	    echo "Kitten ssh failed, falling back to regular ssh... " && /usr/bin/ssh "$@"
 	fi
     }
@@ -319,6 +322,7 @@ alias {nvimlsp,vimlsp}="vim ~/.config/nvim/lua/plugins/novscode/lsp/nvim-lspconf
 alias {nxtapp,nxtapps,nextcloudapp,nextcloudapps}="cd ~/work/local/nextcloud/apps/"
 
 # GIT ALIASES
+alias {gdt,dt,gitdifftool,difftool,difftoolgit}="git difftool"
 alias gs="git status"
 alias gss='git status -s -b' # git status short with branch
 alias gl="git log"

@@ -29,12 +29,16 @@
 	cmd = kitten diff $LOCAL $REMOTE
 [difftool]
 	prompt = false
+	trustExitCode = true
 [init]
 	defaultBranch = master
 
 # Mergetool
 [merge]
 	tool = nvimdiff
+[mergetool]
+	trustExitCode = true
+
 
 # Delta stuff https://github.com/dandavison/delta
 [core]
