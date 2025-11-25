@@ -1,0 +1,46 @@
+[safe]
+	directory = /home/lasse/work/local/nsb
+	directory = /home/lasse/work/remote/dev-lassevippsdev/wp/wp-content/plugins/woo-vipps
+	directory = /home/devsites/wp/l/lassevippsdev/wp/wp-content/plugins/woo-vipps/.git
+	directory = /usr/Mu/src/woo-vipps-experimental
+	directory = /home/lasse/work/local/sites/lassevippsdev/wp-content/plugins/wph-product-slider
+	directory = /home/lasse/work/local/sites/lassevippsdev/wp-content/plugins/woo-vipps
+	directory = /home/lasse/work/local/sites/lassevippsdev/wp-content/plugins/login-with-vipps
+	directory = /home/lasse/work/local/vipps/lassevippsdev-woo-vipps
+	directory = /home/lasse/work/local/tools/plugvulns/nsb-plugvulns
+	directory = /home/lasse/work/local/sites/nsb
+	directory = /home/lasse/work/local/sites/pluginvulns
+	directory = /home/lasse/work/remote/dev-lassevippsdev
+	directory = /home/lasse/work/local/nextcloud/apps/wphkontrollpanel
+	directory = /home/lasse/work/local/nextcloud/apps/wphcontrolpanel
+	directory = /home/lasse/work/local/tools/plugin-vulns
+[user]
+	email = lasse.pladsen@hotmail.com
+	name = Lasse Pladsen
+[core]
+	excludesFile = ~/.gitignore_global
+[diff]
+	tool = nvimdiff
+[merge]
+	tool = nvimdiff
+[difftool]
+	prompt = false
+[init]
+	defaultBranch = master
+[difftool "kitty"]
+	cmd = kitten diff $LOCAL $REMOTE
+[difftool "kitty.gui"]
+	cmd = kitten diff $LOCAL $REMOTE
+
+[core]
+    pager = delta
+
+[interactive]
+    diffFilter = delta --color-only
+
+[delta]
+    navigate = true  # use n and N to move between diff sections
+    dark = true      # or light = true, or omit for auto-detection
+
+[merge]
+    conflictStyle = zdiff3
