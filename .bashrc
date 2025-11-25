@@ -11,7 +11,7 @@ esac
 
 # bash syntax highlight, autocompletion, QoL, and much more: https://github.com/akinomyoga/ble.sh
 # also see bottom of this file for part 2
-[[ -f "~/.local/share/blesh/ble.sh" ]] && [[ $- == *i* ]] && source -- ~/.local/share/blesh/ble.sh --attach=none
+[[ -e "/home/lasse/.local/share/blesh/ble.sh" ]] && [[ $- == *i* ]] && source -- /home/lasse/.local/share/blesh/ble.sh --attach=none
 
 # don't put duplicate lines or lines starting with space in the history.
 # See bash(1) for more options
@@ -378,4 +378,4 @@ cmd-exists setxkbmap && setxkbmap -option "nbsp:none" # disable horrible 'non-br
 # bash syntax highlight, autocompletion, QoL, and much more: https://github.com/akinomyoga/ble.sh
 # source ~/.local/share/blesh/ble.sh # OLD VER
 # also see top of this file for part 1 sourcing
-[[ -f "~/.local/share/blesh/ble.sh" ]] && ([[ ! ${BLE_VERSION-} ]] || ble-attach)
+[[ -e "/home/lasse/.local/share/blesh/ble.sh" ]] && [[ ! ${BLE_VERSION-} ]] || ble-attach
