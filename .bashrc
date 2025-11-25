@@ -270,6 +270,10 @@ alias {initsession,initsesh,sessioninit,seshinit,init-session,session-init}="~/s
 alias ffind="find -type f -name "
 cmd-exists lazygit && alias lg="lazygit"
 
+# diff using delta
+alias {olddiff,ddiff}="/usr/bin/diff --color"
+cmd-exists kitty && alias diff="delta"
+
 if cmd-exists kitty && cmd-exists kitten && [ "xterm-kitty" = "$TERM" ]; then
     kitten_ssh_with_fallback() {
 	if kitten ssh "$@" 
@@ -282,11 +286,10 @@ if cmd-exists kitty && cmd-exists kitten && [ "xterm-kitty" = "$TERM" ]; then
 
     # Kitten diff does not work in tmux
     if [[ -z "$TMUX" ]]; then
-	alias diff="kitten diff"
-	alias {olddiff,ddiff}="/usr/bin/diff --color"
-	alias {gdt,dt,gitdiff,gitdifftool,diffgit,difftool,difftoolgit}="git difftool --no-symlinks --dir-diff --tool=kitty"
-    else 
-	alias diff="diff --color"
+	# alias diff="kitten diff"
+	alias {diffkitty,diffkitten,difftoolkitty,difftoolkitten,kittendiff,kittydiff,kittydifftool,kittendifftool}="git difftool --no-symlinks --dir-diff --tool=kitty"
+    # else 
+	# alias diff="diff --color"
     fi
 fi
 if cmd-exists btop; then 
