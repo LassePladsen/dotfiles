@@ -32,6 +32,9 @@ set wrap
 set breakindent " wrap starts at same indentation
 set scrolloff=10
 
+" Fix wrap in diffmode
+set diffopt+=followwrap
+
 set nohlsearch
 set incsearch
 
