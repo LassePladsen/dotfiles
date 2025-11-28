@@ -375,6 +375,12 @@ cmd-exists setxkbmap && setxkbmap -option "nbsp:none" # disable horrible 'non-br
 
 [[ -f "$HOME/.cargo/env" ]] &&  . "$HOME/.cargo/env"
 
+# if in wsl, need to start ssh-agent and add keys. Workaround for weirdness
+if [[ $(uname -r) =~ WSL ]]; then
+    eval `ssh-agent -s`
+    ssh-add 
+fi
+
 # bash syntax highlight, autocompletion, QoL, and much more: https://github.com/akinomyoga/ble.sh
 # source ~/.local/share/blesh/ble.sh # OLD VER
 # also see top of this file for part 1 sourcing
