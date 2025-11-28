@@ -140,6 +140,17 @@ fi
 
 ############# CUSTOM #####################
 ### FUNCTIONS ###
+# Shorthand version of printing columns using awk
+# Usage: print-cols "input string" column1 [column2 ...]
+function print-cols() {
+    local input="$1"
+    shift
+    echo "$input" | awk -v cols="$*" '{
+        split(cols, a);
+        for (i in a) printf "%s%s", $a[i], (i < length(a) ? OFS : ORS)
+    }'
+}
+
 # Ssh into a specific directory (note: this can also be configured in the ssh config)
 function ssh-cd() {
     ssh -t $1 "cd $2 ; bash --login"
