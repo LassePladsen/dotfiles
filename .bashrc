@@ -140,6 +140,23 @@ fi
 
 ############# CUSTOM #####################
 ### FUNCTIONS ###
+# Execute file whenever it changes. Requires entr
+function file-watch() {
+    cmd-exists entr
+    if [[ "0" != "$?" ]]; then
+	echo "Requires 'entr'"
+	return 1
+    fi
+
+    filepath=$1
+    if [[ -z "$filepath" ]]; then
+	echo "Enter file path to watch"
+	return 1
+    fi
+
+    ls "$filepath" | entr -p sh -c "./$filepath"
+}
+
 # Shorthand of awk column printing.
 # Usage: echo 'test col2 hello' | print-cols column1 [column2 ...]
 function print-cols() {
