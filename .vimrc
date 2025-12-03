@@ -264,7 +264,7 @@ function! DebugPrintLP()
     elseif &filetype == 'python'
         execute "normal! oprint(f\"LP {" . word . "=}\")"
     elseif &filetype == 'rust'
-        execute "normal! oprintln!(\"LP " . word . ": {:?}\", " . word . ");"
+        execute "normal! oprintln!(\"LP " . word . ": {". word  . ":?}\");"
     else
         echo "Debug print not supported for filetype: " . &filetype . ". Add it to your .vimrc!"
     endif
