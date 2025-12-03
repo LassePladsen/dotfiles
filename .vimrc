@@ -262,7 +262,7 @@ function! DebugPrintLP()
     elseif &filetype =~ '\v^(javascript|typescript|javascriptreact|typescriptreact)$'
         execute "normal! oconsole.log('LP " . word . ": ', " . word . ");"
     elseif &filetype == 'python'
-        execute "normal! oprint('LP " . word . ": ', " . word . ")"
+        execute "normal! oprint(f\"LP {" . word . "=}\")"
     elseif &filetype == 'rust'
         execute "normal! oprintln!(\"LP " . word . ": {:?}\", " . word . ")"
     else
