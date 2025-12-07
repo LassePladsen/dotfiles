@@ -306,7 +306,7 @@ alias {olddiff,ddiff}="/usr/bin/diff --color"
 cmd-exists kitty && alias diff="delta"
 
 # Force Delta to use side-by-side, for use in git diff to not have to edit gitconfig every time
-alias side-by-side="DELTA_FEATURES=+side-by-side"
+alias {sidebyside,side-by-side}="DELTA_FEATURES=+side-by-side"
 
 if cmd-exists kitty && cmd-exists kitten && [ "xterm-kitty" = "$TERM" ]; then
     kitten_ssh_with_fallback() {
