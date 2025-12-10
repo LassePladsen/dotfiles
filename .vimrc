@@ -219,6 +219,22 @@ nnoremap <leader>ci{ :call FindAndChange('{', 'ci{')<CR>
 nnoremap <leader>ca( :call FindAndChange('(', 'ca(')<CR>
 nnoremap <leader>ca[ :call FindAndChange('[', 'ca[')<CR>
 nnoremap <leader>ca{ :call FindAndChange('{', 'ca{')<CR>
+nnoremap <leader>cab :call FindAndChange('b', 'cab')<CR>
+nnoremap <leader>ca< :call FindAndChange('<', 'ca<')<CR>
+nnoremap <leader>cat :call FindAndChange('t', 'cat')<CR>
+nnoremap <leader>ca" :call FindAndChange('"', 'ca"')<CR>
+
+" Delete
+nnoremap <leader>di( :call FindAndChange('(', 'di(')<CR>
+nnoremap <leader>di[ :call FindAndChange('[', 'di[')<CR>
+nnoremap <leader>di{ :call FindAndChange('{', 'di{')<CR>
+nnoremap <leader>da( :call FindAndChange('(', 'da(')<CR>
+nnoremap <leader>da[ :call FindAndChange('[', 'da[')<CR>
+nnoremap <leader>da{ :call FindAndChange('{', 'da{')<CR>
+nnoremap <leader>dab :call FindAndChange('b', 'dab')<CR>
+nnoremap <leader>da< :call FindAndChange('<', 'da<')<CR>
+nnoremap <leader>dat :call FindAndChange('t', 'dat')<CR>
+nnoremap <leader>da" :call FindAndChange('"', 'da"')<CR>
 
 " Visual select inside/around brackets (current line only)
 nnoremap <leader>vi( :call FindAndChange('(', 'vi(')<CR>
@@ -227,6 +243,10 @@ nnoremap <leader>vi{ :call FindAndChange('{', 'vi{')<CR>
 nnoremap <leader>va( :call FindAndChange('(', 'va(')<CR>
 nnoremap <leader>va[ :call FindAndChange('[', 'va[')<CR>
 nnoremap <leader>va{ :call FindAndChange('{', 'va{')<CR>
+nnoremap <leader>vab :call FindAndChange('b', 'vab')<CR>
+nnoremap <leader>va< :call FindAndChange('<', 'va<')<CR>
+nnoremap <leader>vat :call FindAndChange('t', 'vat')<CR>
+nnoremap <leader>va" :call FindAndChange('"', 'va"')<CR>
 
 function! FindAndChange(bracket, command)
     let line = getline('.')
