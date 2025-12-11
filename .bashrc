@@ -297,7 +297,7 @@ alias {chomd,chodm,chmdo,chdmo,cmhod}="chmod"
 alias {chwon,chonw,cwhon,cwohn}="chown"
 
 
-alias {initsession,initsesh,sessioninit,seshinit,init-session,session-init}="~/scripts/session-init.sh"
+alias {initsession,initsesh,sessioninit,seshinit,init-session,session-init}="~/scripts/session-initializers/session-init.sh"
 alias ffind="find -type f -name "
 cmd-exists lazygit && alias lg="lazygit"
 
