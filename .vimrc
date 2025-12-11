@@ -173,7 +173,7 @@ vnoremap <leader>d "+d
 noremap <leader>* :%s/\<<C-r><C-w>\>//gI<Left><Left><Left>
 
 " Execute file (fails if not executable)
-nnoremap <leader>x <cmd>!./%<CR>
+" nnoremap <leader>x <cmd>!./%<CR>
 " Make file executable
 " nnoremap <leader>x <cmd>silent exec "!chmod +x %"<CR><C-l>
 
