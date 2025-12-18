@@ -272,26 +272,29 @@ endfunction
 
 
 """ DEBUGPRINT for filetypes
-function! DebugPrintLP()
+function! DebugPrintLP(above)
     let line = getline('.')
     let word = expand('<cword>')
     
-    echo 'filetype is ' . &filetype
+    let start = a:above ? "O" : "o"
+
     if &filetype == 'php'
-        execute "normal! oerror_log('LP " . word . ": ' . print_r($" . word . ", true));"
+        execute "normal! " . start . "error_log('LP " . word . ": ' . print_r($" . word . ", true));"
     elseif &filetype =~ '\v^(javascript|typescript|javascriptreact|typescriptreact)$'
-        execute "normal! oconsole.log('LP " . word . ": ', " . word . ");"
+        execute "normal! " . start . "console.log('LP " . word . ": ', " . word . ");"
     elseif &filetype == 'python'
-        execute "normal! oprint(f\"LP {" . word . "=}\")"
+        execute "normal! " . start . "print(f\"LP {" . word . "=}\")"
     elseif &filetype == 'rust'
-        execute "normal! oprintln!(\"LP " . word . ": {". word  . ":?}\");"
+        execute "normal! " . start . "println!(\"LP " . word . ": {". word  . ":?}\");"
     else
         echo "Debug print not supported for filetype: " . &filetype . ". Add it to your .vimrc!"
     endif
 endfunction
 
-nnoremap <leader>ld :call DebugPrintLP()<CR>
-nnoremap <leader>dp :call DebugPrintLP()<CR>
+nnoremap <leader>ld :call DebugPrintLP(0)<CR>
+nnoremap <leader>lD :call DebugPrintLP(1)<CR>
+nnoremap <leader>dp :call DebugPrintLP(0)<CR>
+nnoremap <leader>dP :call DebugPrintLP(1)<CR>
 
 " edits next file in rustlings (next number filename var4.rs -> var5.rs)
 " Remap + to edit the next numbered file in sequence
