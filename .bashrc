@@ -303,7 +303,7 @@ cmd-exists lazygit && alias lg="lazygit"
 
 # diff using delta
 alias {olddiff,ddiff}="/usr/bin/diff --color"
-cmd-exists kitty && alias diff="delta"
+cmd-exists delta && alias diff="delta"
 
 # Force Delta to use side-by-side, for use in git diff to not have to edit gitconfig every time
 alias {sidebyside,side-by-side}="DELTA_FEATURES=+side-by-side"
@@ -340,6 +340,7 @@ if cmd-exists duf; then
 fi
 
 # PROJECTS 
+alias fpremote="cd ~/work/remote/flightpark"
 alias {fp,flightpark}="cd ~/work/local/flightpark/"
 alias fpapp="cd ~/work/local/flightpark/flightparkapp/"
 alias {fpappreset,fpappreinstall}="~/work/local/flightpark/flightparkapp/scripts/android/uninstall-on-physical.sh; ~/work/local/flightpark/flightparkapp/scripts/android/install-apk-physical.sh"
