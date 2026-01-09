@@ -15,7 +15,7 @@ xkb_symbols "basic" {
     key <AE05>	{ [         5,    percent,      onehalf,    0x1002030 ]	};
 
     key <AE11>	{ [      plus,   question,    plusminus, questiondown ]	};
-    key <AE12>	{ [ backslash, dead_grave,   dead_acute,      notsign ]	};
+    key <AE12>	{ [ backslash, grave,   dead_acute,      dead_grave ]	};
 
 
     key <AC10>	{ [    oslash,   Ooblique,   dead_acute, dead_doubleacute ] };
