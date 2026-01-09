@@ -11,11 +11,11 @@ xkb_symbols "basic" {
     name[Group1]="Norwegian";
 
     key <AB09>	{ [    period,      colon,   ellipsis, periodcentered ]	};
-    key <AB10>	{ [     minus, underscore,       endash,       emdash ]	};
+    key <AB10>	{ [     VoidSymbol, VoidSymbol,       endash,       emdash ]	};
     key <AE05>	{ [         5,    percent,      onehalf,    0x1002030 ]	};
 
     key <AE11>	{ [      plus,   question,    plusminus, questiondown ]	};
-    key <AE12>	{ [ backslash, dead_grave,   dead_acute,      notsign ]	};
+    key <AE12>	{ [ backslash, grave,   dead_acute,      dead_grave ]	};
 
 
     key <AC10>	{ [    oslash,   Ooblique,   dead_acute, dead_doubleacute ] };
@@ -63,6 +63,7 @@ xkb_symbols "basic" {
 
 	// For ø (oslash)
 	key <AC10>  { [      oslash,    Oslash, oslash, Oslash ]  };
+
 
     include "nbsp(level3n)"
     include "keypad(ossmath)"
@@ -140,12 +141,13 @@ xkb_symbols "dvorak" {
     key <AB07> { [	    m,	M,	mu			 ] };
     key <BKSL> { [	 less,	greater, guillemotleft, guillemotright	] };
 
-    key <SPCE> { [	 space,	space, noop, noop ] };
 
     key <LSGT> { [	oslash,	Ooblique,  bar,	backslash	 ] };
 
     // fixed https://bugs.freedesktop.org/show_bug.cgi?id=4397
     include "level3(ralt_switch)"
+
+    key <SPCE> { [	 space,	space, VoidSymbol, VoidSymbol ] };
 };
 
 partial alphanumeric_keys
