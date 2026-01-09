@@ -16,9 +16,9 @@ xkb_symbols "basic"  {
         key <AE07> { [              7,         ampersand,       dead_abovering,          dead_macron ] };
         key <AE08> { [              8,          parenleft,   doublelowquotemark,   singlelowquotemark ] };
         key <AE09> { [              9,         parenright,  leftdoublequotemark,  leftsinglequotemark ] };
-        key <AE10> { [              0,        asterisk, rightdoublequotemark, rightsinglequotemark ] };
-        key <AE11> { [          minus,        underscore,               endash,               emdash ] };
-        key <AE12> { [          equal,              plus,             multiply,             division ] };
+        key <AE10> { [              0,        equal, rightdoublequotemark, rightsinglequotemark ] };
+        key <AE11> { [          plus,        asterisk,               endash,               emdash ] };
+        key <AE12> { [          minus,              underscore,             multiply,             division ] };
 
         key <AD01> { [              q,                 Q,                   ae,                   AE ] };
         key <AD02> { [              w,                 W,                oslash,                Oslash ] };
