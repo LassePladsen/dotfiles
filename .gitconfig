@@ -14,6 +14,8 @@
 	directory = /home/lasse/work/local/nextcloud/apps/wphkontrollpanel
 	directory = /home/lasse/work/local/nextcloud/apps/wphcontrolpanel
 	directory = /home/lasse/work/local/tools/plugin-vulns
+	directory = /home/lasse/work/local/sites/fpbooking
+	directory = /home/lasse/work/local/sites/fpbooking/booking
 [user]
 	email = lasse.pladsen@hotmail.com
 	name = Lasse Pladsen
