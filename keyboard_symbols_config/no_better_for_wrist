@@ -11,7 +11,7 @@ xkb_symbols "basic" {
     name[Group1]="Norwegian";
 
     key <AB09>	{ [    period,      colon,   ellipsis, periodcentered ]	};
-    key <AB10>	{ [     VoidSymbol, VoidSymbol,       endash,       emdash ]	};
+    key <AB10>	{ [     minus, underscore,       endash,       emdash ]	};
     key <AE05>	{ [         5,    percent,      onehalf,    0x1002030 ]	};
 
     key <AE11>	{ [      plus,   question,    plusminus, questiondown ]	};
@@ -29,7 +29,7 @@ xkb_symbols "basic" {
 	key <AD01>  { [         q,          Q,   bracketleft,    bracketleft]  };
 	key <AD02>  { [         w,          W,   bracketright,    bracketright ]  };
 	key <AD03>  { [         e,          E,   minus,    minus ]  };
-	key <AD04>  { [         r,          R,   underscore,    underscore ]  };
+	key <AD04>  { [         r,          R,   r,    R ]  };
 	key <AD05>  { [         t,          T,   t,    T ]  };
 	key <AD06>  { [         y,          Y,   y,    Y ]  };
 	key <AD07>  { [         u,          U,   u,    U ]  };
@@ -40,13 +40,13 @@ xkb_symbols "basic" {
 	// Home/middle row
 	key <AC01>  { [         a,          A,  braceleft,    braceleft ]  };
 	key <AC02>  { [         s,          S,   braceright,    braceright ]  };
-	key <AC03>  { [         d,          D,   d,    D ]  };
+	key <AC03>  { [         d,          D,   underscore,    underscore ]  };
 	key <AC04>  { [         f,          F,   f,    F ]  };
 	key <AC05>  { [         g,          G,   g,    G ]  };
-	key <AC06>  { [         h,          H,   h,    H ]  };
-	key <AC07>  { [         j,          J,   j,    J ]  };
-	key <AC08>  { [         k,          K,   k,    K ]  };
-	key <AC09>  { [         l,          L,   l,    L ]  };
+	key <AC06>  { [         h,          H,   Left,    Left ]  };
+	key <AC07>  { [         j,          J,   Down,    Down ]  };
+	key <AC08>  { [         k,          K,   Up,    Up ]  };
+	key <AC09>  { [         l,          L,   Right,    Right ]  };
 	key <AC10>  { [ semicolon,      colon, semicolon, colon ] };
 
 	// Bottom row
