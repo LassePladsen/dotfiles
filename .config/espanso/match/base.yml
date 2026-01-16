@@ -15,21 +15,21 @@ matches:
 
   # Print the current date
   - regex: "(?i):date:"
-    replace: "{{mydate}}"
+    replace: "{{date}}"
     vars:
-      - name: mydate
+      - name: date
         type: date
         params:
           format: "%Y-%m-%d"
 
   # Print comment signature with date
   - regex: "(?i):lp:"
-    replace: "{{signature}}"
+    replace: "LP {{date}}"
     vars:
-      - name: signature
+      - name: date
         type: date
         params:
-          format: "LP %Y-%m-%d"
+          format: "%Y-%m-%d"
 
   # Php error_log with print_r
   - triggers: 

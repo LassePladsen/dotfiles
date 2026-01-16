@@ -29,7 +29,7 @@ xkb_symbols "basic" {
 	key <AD01>  { [         q,          Q,   bracketleft,    bracketleft]  };
 	key <AD02>  { [         w,          W,   bracketright,    bracketright ]  };
 	key <AD03>  { [         e,          E,   minus,    minus ]  };
-	key <AD04>  { [         r,          R,   r,    R ]  };
+	key <AD04>  { [         r,          R,   slash,    slash ]  };
 	key <AD05>  { [         t,          T,   t,    T ]  };
 	key <AD06>  { [         y,          Y,   y,    Y ]  };
 	key <AD07>  { [         u,          U,   u,    U ]  };
