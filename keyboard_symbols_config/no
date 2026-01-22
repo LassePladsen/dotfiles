@@ -302,4 +302,53 @@ xkb_symbols "cmk_ed_us" {
     key <LSGT> { [        oslash,      Ooblique,                  oe,                  OE ] }; // from <AC10>
 //  NOTE: The Scandinavian layouts (dk/fi/no/se) have been harmonized. This shouldn't affect typing efficiency.
 };
+//  Tarmak-DH symbols for Norwegian, based on US Tarmak-DH layouts
+//  2006-01-01  Shai Coleman  http://colemak.com/  (Public Domain)  : The Colemak keyboard layout.
+//  2012-01-01  OEystein "DreymaR" Bech-Aase, formerly Bech Gadmar  : Tarmak (transitional Colemak) layouts.
+//  Norwegian adaptation with åøæ letters and locale-specific symbols.
+
+partial alphanumeric_keys
+xkb_symbols "tarmak1c_e" {
+    include "no(colemak)"
+    include "colemak(tarmak_mask_dgt_to_gtf)"
+    include "colemak(tarmak_mask_prs_to_rsd)"
+    include "colemak(tarmak_mask_jyoc_to_yocp)"
+    include "colemak(tarmak_mask_lui_to_uil)"
+    include "colemak(cmk_ed_hk)"
+    key <AD03> { [             j,             J,               U0283,               U01A9 ] }; // Cmk F - stray J
+    key <AB04> { [             v,             V,            division,         Greek_gamma ] }; // QWE/Cmk V
+    key <AB05> { [             b,             B,  enfilledcircbullet,          Greek_beta ] }; // QWE/Cmk B
+    name[Group1]= "Norwegian (Tarmak1c_E - Colemak Curl-DH transitional)";
+};
+
+partial alphanumeric_keys
+xkb_symbols "tarmak2c_et" {
+    include "no(colemak)"
+    include "colemak(tarmak_mask_prs_to_rsd)"
+    include "colemak(tarmak_mask_jyoc_to_yocp)"
+    include "colemak(tarmak_mask_lui_to_uil)"
+    include "colemak(cmk_ed_dbghk)"
+    key <AB04> { [             j,             J,               U0283,               U01A9 ] }; // QWE/Cmk B - stray J
+    key <AB05> { [             v,             V,            division,         Greek_gamma ] }; // QWE/Cmk V
+    name[Group1]= "Norwegian (Tarmak2c_ET - Colemak Curl-DH transitional)";
+};
+
+partial alphanumeric_keys
+xkb_symbols "tarmak3_etr" {
+    include "no(colemak)"
+    include "colemak(tarmak_mask_jyoc_to_yocp)"
+    include "colemak(tarmak_mask_lui_to_uil)"
+    include "colemak(cmk_ed_dbghk)"
+    key <AD04> { [             j,             J,               U0283,               U01A9 ] }; // Cmk P - stray J
+    name[Group1]= "Norwegian (Tarmak3_ETR - Colemak Curl-DH transitional)";
+};
+
+partial alphanumeric_keys
+xkb_symbols "tarmak4_etro" {
+    include "no(colemak)"
+    include "colemak(tarmak_mask_lui_to_uil)"
+    include "colemak(cmk_ed_dbghk)"
+    name[Group1]= "Norwegian (Tarmak4_ETRO - Colemak Curl-DH transitional)";
+};
+
 //  <--<< DreymaR: Additions to xkb/symbols/no
