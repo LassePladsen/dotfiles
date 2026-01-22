@@ -7,62 +7,24 @@ xkb_symbols "basic" {
 
     include "latin(type2)"
 
-
     name[Group1]="Norwegian";
 
     key <AB09>	{ [    period,      colon,   ellipsis, periodcentered ]	};
     key <AB10>	{ [     minus, underscore,       endash,       emdash ]	};
+    key <AD04>	{ [         r,          R,   registered,    trademark ]	};
+    key <AD10>	{ [         p,          P,     Greek_pi,     Greek_PI ]	};
     key <AE05>	{ [         5,    percent,      onehalf,    0x1002030 ]	};
 
     key <AE11>	{ [      plus,   question,    plusminus, questiondown ]	};
-    key <AE12>	{ [ backslash, grave,   dead_acute,      dead_grave ]	};
+    key <AE12>	{ [ backslash, dead_grave,   dead_acute,      notsign ]	};
 
 
     key <AC10>	{ [    oslash,   Ooblique,   dead_acute, dead_doubleacute ] };
+    key <AC11>	{ [        ae,         AE, dead_circumflex, dead_caron]	};
     key <TLDE>	{ [       bar,    section,    brokenbar,    paragraph ]	};
 
     key <BKSL>	{ [apostrophe,   asterisk, dead_doubleacute, multiply ]	};
     key <LSGT>	{ [      less,    greater,      onehalf, threequarters]	};
-
-    // LP CUSTOM remove alt gr + letter combos
-	// Top row
-	key <AD01>  { [         q,          Q,   q,    Q ]  };
-	key <AD02>  { [         w,          W,   w,    W ]  };
-	key <AD03>  { [         e,          E,   e,    E ]  };
-	key <AD04>  { [         r,          R,   r,    R ]  };
-	key <AD05>  { [         t,          T,   t,    T ]  };
-	key <AD06>  { [         y,          Y,   y,    Y ]  };
-	key <AD07>  { [         u,          U,   u,    U ]  };
-	key <AD08>  { [         i,          I,   i,    I ]  };
-	key <AD09>  { [         o,          O,   o,    O ]  };
-	key <AD10>  { [         p,          P,   p,    P ]  };
-
-	// Home/middle row
-	key <AC01>  { [         a,          A,   a,    A ]  };
-	key <AC02>  { [         s,          S,   s,    S ]  };
-	key <AC03>  { [         d,          D,   d,    D ]  };
-	key <AC04>  { [         f,          F,   f,    F ]  };
-	key <AC05>  { [         g,          G,   g,    G ]  };
-	key <AC06>  { [         h,          H,   h,    H ]  };
-	key <AC07>  { [         j,          J,   j,    J ]  };
-	key <AC08>  { [         k,          K,   k,    K ]  };
-	key <AC09>  { [         l,          L,   l,    L ]  };
-	key <AC10>  { [ semicolon,      colon, semicolon, colon ] };
-
-	// Bottom row
-	key <AB01>  { [         z,          Z,   z,    Z ]  };
-	key <AB02>  { [         x,          X,   x,    X ]  };
-	key <AB03>  { [         c,          C,   c,    C ]  };
-	key <AB04>  { [         v,          V,   v,    V ]  };
-	key <AB05>  { [         b,          B,   b,    B ]  };
-	key <AB06>  { [         n,          N,   n,    N ]  };
-	key <AB07>  { [         m,          M,   m,    M ]  };
-    key <AC11>	{ [        ae,         AE, ae, AE]	};
-	// For å (aring)
-	key <AC10>  { [        aring,      Aring,  aring,  Aring ]  };
-
-	// For ø (oslash)
-	key <AC10>  { [      oslash,    Oslash, oslash, Oslash ]  };
 
     include "nbsp(level3n)"
     include "keypad(ossmath)"
@@ -301,3 +263,43 @@ partial alphanumeric_keys
 	xkb_symbols "sun_type6" {
 	include "sun_vndr/no(sun_type6)"
 };
+
+//  >>--> DreymaR (OEystein Bech-Aase, formerly Bech Gadmar), 2012-01: Additions to xkb/symbols/no
+//  Colemak[eD]: National/locale Colemak "edition DreymaR" variants for Norwegian.
+//  2006-01-01  Shai Coleman  http://colemak.com/  (Public Domain)  : The Colemak keyboard layout.
+//  See the Big Bag section on Cmk[eD] locales: https://dreymar.colemak.org/variants.html#locales
+
+//  The 'keep local symbols' variant keeps the national symbol and special letter setup.
+partial alphanumeric_keys
+xkb_symbols "cmk_ed_ks" {
+    include "no(basic)"
+    include "colemak(cmk_ed_letters)"
+    name[Group1]= "Norwegian (Colemak[eD], keep local symbols)";
+
+//  NOTE: Symbols on letter keys may be lost in cmk_ed_ks if they are not on Colemak[eD] letter keys.
+//  EuroSign is often on 'E'. The latin(intl) and locale(winkeys) layout variants use '5'.
+//  Colemak[eD] has EuroSign on 'E' and mu on '5'.
+//    key <AE05> { [ NoSymbol, NoSymbol,       mu, onehalf ] };
+//    key <AE05> { [ NoSymbol, NoSymbol, EuroSign, onehalf ] }; // onehalf is moved, permille is lost
+
+    key <AD10>	{ [ oslash, Ooblique, dead_acute, dead_doubleacute ] }; // from <AC10>
+};
+
+//  The 'us' variant uses the US-type symbol key setup (recommended!) as it is nearly an intl. standard.
+//  For Norwegian, necessary local letters are added to designated flexible spots in the layout.
+//  For "writing" and "coding" subvariants, move the brackets between lv1-2 and lv3-4 as shown.
+partial alphanumeric_keys
+xkb_symbols "cmk_ed_us" {
+    include "colemak(cmk_ed_letters)"
+    include "symkeys(cmk_ed_symbols)"
+    include "level3(ralt_switch)"
+    name[Group1]= "Norwegian (Colemak[eD], unified symbols)";
+
+//    key <AD11> { [   bracketleft,     braceleft,               aring,               Aring ] };
+//    key <AD12> { [  bracketright,    braceright,                  ae,                  AE ] };
+    key <AD11> { [         aring,         Aring,         bracketleft,           braceleft ] }; // from <AD10>
+    key <AD12> { [            ae,            AE,        bracketright,          braceright ] }; // from <AC11>
+    key <LSGT> { [        oslash,      Ooblique,                  oe,                  OE ] }; // from <AC10>
+//  NOTE: The Scandinavian layouts (dk/fi/no/se) have been harmonized. This shouldn't affect typing efficiency.
+};
+//  <--<< DreymaR: Additions to xkb/symbols/no
