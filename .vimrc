@@ -178,8 +178,8 @@ noremap <leader>* :%s/\<<C-r><C-w>\>//gI<Left><Left><Left>
 " nnoremap <leader>x <cmd>silent exec "!chmod +x %"<CR><C-l>
 
 " Next and prev buffer
-nnoremap <leader>i :bn<enter>
-nnoremap <leader>o :bp<enter>
+nnoremap <leader>bi :bn<enter>
+nnoremap <leader>bo :bp<enter>
 
 " Faster terminal mode exit (apparantly wont work with all terminal
 " emulators/tmux etc
