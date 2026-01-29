@@ -15,7 +15,6 @@ xkb_symbols "basic" {
     key <AE05>	{ [         5,    percent,      onehalf,    0x1002030 ]	};
 
     key <AE11>	{ [      plus,   question,    plusminus, questiondown ]	};
-    key <AE12>	{ [ backslash, grave,   dead_acute,      dead_grave ]	};
 
 
     key <AC10>	{ [    oslash,   Ooblique,   dead_acute, dead_doubleacute ] };
@@ -64,6 +63,9 @@ xkb_symbols "basic" {
 	// For ø (oslash)
 	key <AC10>  { [      oslash,    Oslash, oslash, Oslash ]  };
 
+    // LP not dead keys (faster ` and ~)
+    key <AE12>	{ [ backslash, grave,   acute,      grave ]	};
+    key <AD12>	{ [ diaeresis, asciicircum,  asciitilde,      macron ]	};
 
     include "nbsp(level3n)"
     include "keypad(ossmath)"
