@@ -64,7 +64,10 @@ xkb_symbols "basic" {
 	key <AC10>  { [      oslash,    Oslash, oslash, Oslash ]  };
 
     // LP not dead keys (faster ` and ~)
-    key <AE12>	{ [ backslash, grave,   acute,      grave ]	};
+    //ORIG: key <AE12>	{ [ backslash, dead_grave,   dead_acute,      notsign ]	};
+    key <AE12>	{ [ backslash, grave,   dead_acute,      dead_grave ]	};
+
+    //ORIG: key <AD12>	{ [dead_diaeresis, dead_circumflex, dead_tilde, dead_caron ] };
     key <AD12>	{ [ diaeresis, asciicircum,  asciitilde,      macron ]	};
 
     include "nbsp(level3n)"
