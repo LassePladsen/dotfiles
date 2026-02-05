@@ -26,9 +26,9 @@ xkb_symbols "basic" {
 
     // LP CUSTOM remove alt gr + letter combos
 	// Top row
-	key <AD01>  { [         q,          Q,   bracketleft,    bracketleft]  };
-	key <AD02>  { [         w,          W,   bracketright,    bracketright ]  };
-	key <AD03>  { [         e,          E,   minus,    minus ]  };
+	key <AD01>  { [         q,          Q,   q,    Q]  };
+	key <AD02>  { [         w,          W,   w,    W ]  };
+	key <AD03>  { [         e,          E,   e,    E ]  };
 	key <AD04>  { [         r,          R,   slash,    slash ]  };
 	key <AD05>  { [         t,          T,   t,    T ]  };
 	key <AD06>  { [         y,          Y,   y,    Y ]  };
@@ -40,8 +40,8 @@ xkb_symbols "basic" {
 	// Home/middle row
 	key <AC01>  { [         a,          A,  braceleft,    braceleft ]  };
 	key <AC02>  { [         s,          S,   braceright,    braceright ]  };
-	key <AC03>  { [         d,          D,   underscore,    underscore ]  };
-	key <AC04>  { [         f,          F,   f,    F ]  };
+	key <AC03>  { [         d,          D,   bracketleft,    bracketleft ]  };
+	key <AC04>  { [         f,          F,   bracketright,    bracketright ]  };
 	key <AC05>  { [         g,          G,   g,    G ]  };
 	key <AC06>  { [         h,          H,   Left,    Left ]  };
 	key <AC07>  { [         j,          J,   Down,    Down ]  };
