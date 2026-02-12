@@ -46,3 +46,5 @@ disable_x11_fast_inject: true
 # inject_delay: 15
 # backend: Clipboard
 # key_delay: 10
+
+search_shortcut: ALT+SHIFT+SPACE

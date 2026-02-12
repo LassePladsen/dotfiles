@@ -286,6 +286,8 @@ function! DebugPrintLP(above)
         execute "normal! " . start . "print(f\"LP {" . word . "=}\")"
     elseif &filetype == 'rust'
         execute "normal! " . start . "println!(\"LP " . word . ": {". word  . ":?}\");"
+    elseif &filetype == 'sh'
+        execute "normal! " . start . "echo \"LP " . word . ": $". word . "\""
     else
         echo "Debug print not supported for filetype: " . &filetype . ". Add it to your .vimrc!"
     endif
