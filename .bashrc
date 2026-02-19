@@ -417,6 +417,9 @@ if [[ $(uname -r) =~ WSL ]]; then
     ssh-add 
 fi
 
+# Source Restic backup environment vars if exists, to avoid having to write the repo and password everytime
+[[ -e "/backup/lasse/restic/.env" ]] && . "/backup/lasse/restic/.env" 
+
 # bash syntax highlight, autocompletion, QoL, and much more: https://github.com/akinomyoga/ble.sh
 # source ~/.local/share/blesh/ble.sh # OLD VER
 # also see top of this file for part 1 sourcing

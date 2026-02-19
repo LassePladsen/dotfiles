@@ -280,7 +280,7 @@ function! DebugPrintLP(above)
 
     if &filetype == 'php'
         execute "normal! " . start . "error_log('LP " . word . ": ' . print_r($" . word . ", true));"
-    elseif &filetype =~ '\v^(javascript|typescript|javascriptreact|typescriptreact)$'
+    elseif &filetype =~ '\v^(javascript|typescript|javascriptreact|typescriptreact|html)$'
         execute "normal! " . start . "console.log('LP " . word . ": ', " . word . ");"
     elseif &filetype == 'python'
         execute "normal! " . start . "print(f\"LP {" . word . "=}\")"
