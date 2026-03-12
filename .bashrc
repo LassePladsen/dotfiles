@@ -424,3 +424,7 @@ fi
 # source ~/.local/share/blesh/ble.sh # OLD VER
 # also see top of this file for part 1 sourcing
 [[ -e "/home/lasse/.local/share/blesh/ble.sh" ]] && [[ ! ${BLE_VERSION-} ]] || ble-attach
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"

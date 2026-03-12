@@ -16,6 +16,7 @@
 	directory = /home/lasse/work/local/tools/plugin-vulns
 	directory = /home/lasse/work/local/sites/fpbooking
 	directory = /home/lasse/work/local/sites/fpbooking/booking
+	directory = /home/lasse/work/local/sites/freescout
 [user]
 	email = lasse.pladsen@hotmail.com
 	name = Lasse Pladsen
@@ -55,3 +56,9 @@
 
 [merge]
 	conflictStyle = zdiff3
+[credential "https://github.com"]
+	helper = 
+	helper = !/usr/bin/gh auth git-credential
+[credential "https://gist.github.com"]
+	helper = 
+	helper = !/usr/bin/gh auth git-credential

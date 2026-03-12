@@ -59,4 +59,9 @@ matches:
   - regex: "(?i):bash:"
     replace: "\u0060\u0060\u0060bash\n$|$\n\u0060\u0060\u0060"
 
-  # And much more! For more information, visit the docs: https://espanso.org/docs/
+  # Sed command to delete all php LP debug logs
+  - triggers:
+    - ":phplp:"
+    - ":lpphp:"
+    - ":rmlog:"
+    replace: "find . -type f -name \"*.php\" -exec sed -i \"/^error_log(['\\\"]LP/d\" {} +"
