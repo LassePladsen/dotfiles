@@ -64,4 +64,4 @@ matches:
     - ":phplp:"
     - ":lpphp:"
     - ":rmlog:"
-    replace: "find . -type f -name \"*.php\" -exec sed -i \"/^error_log(['\\\"]LP/d\" {} +"
+    replace: "find . -type f -name \"*.php\" -exec sed -i \"/error_log(['\\\"]LP/Id\" {} +"
