@@ -17,6 +17,8 @@
 	directory = /home/lasse/work/local/sites/fpbooking
 	directory = /home/lasse/work/local/sites/fpbooking/booking
 	directory = /home/lasse/work/local/sites/freescout
+	directory = /home/lasse/work/remote/tools/pluglist
+	directory = /home/lasse/work/local/tools/pluglist
 [user]
 	email = lasse.pladsen@hotmail.com
 	name = Lasse Pladsen

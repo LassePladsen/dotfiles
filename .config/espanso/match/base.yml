@@ -12,6 +12,10 @@ matches:
 
 
   # But matches can also be dynamic:
+  
+  # grep LP todo / fixmes
+  - regex: "(?i):todo:"
+    replace: "grep -E \"LP TODO|LP FIXME\" -Rn"
 
   # Print the current date
   - regex: "(?i):date:"
