@@ -14,7 +14,8 @@ matches:
   # But matches can also be dynamic:
   
   # grep LP todo / fixmes
-  - regex: "(?i):todo:"
+  - regex: "(?i):(todo|fixme):"
+    force_clipboard: true # workaround lowercase/uppercase issue
     replace: "grep -E \"LP TODO|LP FIXME\" -Rn"
 
   # Print the current date

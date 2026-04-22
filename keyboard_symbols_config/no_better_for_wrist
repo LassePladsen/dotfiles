@@ -72,7 +72,7 @@ xkb_symbols "basic" {
     key <AD12>	{ [ diaeresis, asciicircum,  asciitilde,      macron ]	};
 
     // LP disable escape, to get used to using caps lock as escape. 2026-02-03
-    key <ESC>	{ [VoidSymbol,   VoidSymbol, VoidSymbol, VoidSymbol ]	};
+    //key <ESC>	{ [VoidSymbol,   VoidSymbol, VoidSymbol, VoidSymbol ]	};
 
     // LP ptrscr -> alt+gr (laptop key too close)
     key <PRSC> {
