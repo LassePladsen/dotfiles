@@ -290,8 +290,8 @@ elif cmd-exists vim; then
     export MANPAGER="vim -M +MANPAGER - "
 fi
 
-# opencode
 export PATH=/home/lasse/.opencode/bin:$PATH
+export PATH=$PATH:/usr/local/go/bin
 ### END PATHS ### 
 
 ### ALIASES ###
