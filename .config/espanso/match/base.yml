@@ -40,6 +40,7 @@ matches:
   - triggers: 
     - ":print_r:"
     - ":print:"
+    force_clipboard: true # workaround lowercase/uppercase issue
     replace: "error_log(\"LP \" . print_r($|$, true));"
 
   # Print markdown code triple ````
