@@ -292,6 +292,7 @@ fi
 
 export PATH=/home/lasse/.opencode/bin:$PATH
 export PATH=$PATH:/usr/local/go/bin
+export PATH=$PATH:/opt/go/bin/
 ### END PATHS ### 
 
 ### ALIASES ###
